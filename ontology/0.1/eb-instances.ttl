@@ -1,0 +1,424 @@
+@prefix : <http://w3id.org/PBFAMP/EB#> .
+@prefix EB: <http://w3id.org/PBFAMP/EB#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix Core: <http://w3id.org/PBFAMP/Core#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix terms: <http://purl.org/dc/terms/> .
+@base <http://w3id.org/PBFAMP/EB> .
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://w3id.org/PBFAMP/Core#obp
+Core:obp rdf:type owl:NamedIndividual .
+
+
+###  http://w3id.org/PBFAMP/Core#py
+Core:py rdf:type owl:NamedIndividual .
+
+
+###  http://w3id.org/PBFAMP/Core#stl
+Core:stl rdf:type owl:NamedIndividual .
+
+
+###  http://w3id.org/PBFAMP/EB#Anton_Wiberg
+EB:Anton_Wiberg rdf:type owl:NamedIndividual ,
+                         <http://www.w3.org/ns/prov#Agent> .
+
+
+###  http://w3id.org/PBFAMP/EB#EB_PBF_3D_Printing_Method_1
+EB:EB_PBF_3D_Printing_Method_1 rdf:type owl:NamedIndividual ,
+                                        EB:Electron_Beam_Powder_Bed_Fusion_3D_Printing_Method .
+
+
+###  http://w3id.org/PBFAMP/EB#ElectronBeamEnergySource1
+EB:ElectronBeamEnergySource1 rdf:type owl:NamedIndividual ,
+                                      EB:Electron_Beam_Powder_Bed_Fusion_Energy_Source ;
+                             EB:has_beam_power "720.0"^^xsd:float ;
+                             EB:has_beam_spot_size 1 .
+
+
+###  http://w3id.org/PBFAMP/EB#ElectronBeamEnergySource2
+EB:ElectronBeamEnergySource2 rdf:type owl:NamedIndividual ,
+                                      EB:Electron_Beam_Powder_Bed_Fusion_Energy_Source ;
+                             EB:has_beam_power "660.0"^^xsd:float ;
+                             EB:has_beam_spot_size 1 .
+
+
+###  http://w3id.org/PBFAMP/EB#IEI_Freemelt_Printing_Machine
+EB:IEI_Freemelt_Printing_Machine rdf:type owl:NamedIndividual ,
+                                          EB:Electron_Beam_Powder_Bed_Fusion_Freemelt_Printing_Machine ;
+                                 EB:has_sensor EB:Temp_Sensor_1 ,
+                                               EB:Temp_Sensor_2 ,
+                                               EB:Temp_Sensor_3 ,
+                                               EB:Temp_Sensor_4 ;
+                                 EB:has_3d_printing_method EB:EB_PBF_3D_Printing_Method_1 .
+
+
+###  http://w3id.org/PBFAMP/EB#Infill_Strategy_1
+EB:Infill_Strategy_1 rdf:type owl:NamedIndividual ,
+                              EB:Electron_Beam_Powder_Bed_Fusion_Infill_Scan_Strategy ;
+                     EB:has_point_distance 0.1 .
+
+
+###  http://w3id.org/PBFAMP/EB#Infill_Strategy_2
+EB:Infill_Strategy_2 rdf:type owl:NamedIndividual ,
+                              EB:Electron_Beam_Powder_Bed_Fusion_Infill_Scan_Strategy ;
+                     EB:has_point_distance 0.35 .
+
+
+###  http://w3id.org/PBFAMP/EB#Manufacturer1
+EB:Manufacturer1 rdf:type owl:NamedIndividual ,
+                          EB:Manufacturer ;
+                 EB:has_name "Manufacturer1"@en .
+
+
+###  http://w3id.org/PBFAMP/EB#Print_2024_04_16_Build_Plate
+EB:Print_2024_04_16_Build_Plate rdf:type owl:NamedIndividual ,
+                                         EB:Electron_Beam_Powder_Bed_Fusion_Build_Plate ;
+                                EB:has_shape "circular"@en ;
+                                EB:has_surface_texture "R_a = 0.2 µm" ;
+                                EB:has_thickness 20 .
+
+
+###  http://w3id.org/PBFAMP/EB#Print_2024_04_16_Metal_Powder
+EB:Print_2024_04_16_Metal_Powder rdf:type owl:NamedIndividual ,
+                                          EB:Electron_Beam_Powder_Bed_Fusion_Metal_Powder ;
+                                 EB:is_manufactured_by EB:Manufacturer1 ;
+                                 EB:has_particle_size_distribution "Unknown"@en ;
+                                 EB:has_status "new"@en .
+
+
+###  http://w3id.org/PBFAMP/EB#Print_2024_04_16_Printed_Build
+EB:Print_2024_04_16_Printed_Build rdf:type owl:NamedIndividual ,
+                                           EB:Electron_Beam_Powder_Bed_Fusion_Printed_Build .
+
+
+###  http://w3id.org/PBFAMP/EB#Print_2024_04_16_Slicing_Srategy
+EB:Print_2024_04_16_Slicing_Srategy rdf:type owl:NamedIndividual ,
+                                             EB:Electron_Beam_Powder_Bed_Fusion_Slicing_Strategy .
+
+
+###  http://w3id.org/PBFAMP/EB#Print_2024_04_16_Start_Heating_Strategy
+EB:Print_2024_04_16_Start_Heating_Strategy rdf:type owl:NamedIndividual ,
+                                                    EB:Electron_Beam_Powder_Bed_Fusion_Start_Heating_Strategy ;
+                                           EB:contributes_to <http://w3id.org/PBFAMP/EB#build_2024_04_16/PlateHeat950W_SS100_S3000_obp> ;
+                                           EB:is_sub_slicing_strategy_of EB:Print_2024_04_16_Slicing_Srategy ;
+                                           EB:has_target_temprature 900 ;
+                                           EB:has_timeout 3600 .
+
+
+###  http://w3id.org/PBFAMP/EB#Prithwish_Tarafder
+EB:Prithwish_Tarafder rdf:type owl:NamedIndividual ,
+                               <http://www.w3.org/ns/prov#Agent> .
+
+
+###  http://w3id.org/PBFAMP/EB#Stainless_Steel
+EB:Stainless_Steel rdf:type owl:NamedIndividual ,
+                            EB:Material .
+
+
+###  http://w3id.org/PBFAMP/EB#Temp_Sensor_1
+EB:Temp_Sensor_1 rdf:type owl:NamedIndividual ,
+                          EB:Electron_Beam_Powder_Bed_Fusion_3D_Printing_Machine_Sensor ;
+                 EB:has_recorded_data "2024-04-16T08:30:15+02:00  Temp:23.40945243" ;
+                 EB:has_sensor_type "Temperature"@en .
+
+
+###  http://w3id.org/PBFAMP/EB#Temp_Sensor_2
+EB:Temp_Sensor_2 rdf:type owl:NamedIndividual ,
+                          EB:Electron_Beam_Powder_Bed_Fusion_3D_Printing_Machine_Sensor ;
+                 EB:has_sensor_type "Temperature"@en .
+
+
+###  http://w3id.org/PBFAMP/EB#Temp_Sensor_3
+EB:Temp_Sensor_3 rdf:type owl:NamedIndividual ,
+                          EB:Electron_Beam_Powder_Bed_Fusion_3D_Printing_Machine_Sensor ;
+                 EB:has_sensor_type "Temperature"@en .
+
+
+###  http://w3id.org/PBFAMP/EB#Temp_Sensor_4
+EB:Temp_Sensor_4 rdf:type owl:NamedIndividual ,
+                          EB:Electron_Beam_Powder_Bed_Fusion_3D_Printing_Machine_Sensor ;
+                 EB:has_sensor_type "Temperature"@en .
+
+
+###  http://w3id.org/PBFAMP/EB#build_2024_04_16_Experiment
+EB:build_2024_04_16_Experiment rdf:type owl:NamedIndividual ,
+                                        Core:Powder_Bed_Fusion_Additive_Manufacturing_Process ;
+                               Core:is_supervised_by EB:Anton_Wiberg ,
+                                                     EB:Prithwish_Tarafder .
+
+
+###  http://w3id.org/PBFAMP/EB#build_2024_04_16_Experiment_3DModelingProcess
+EB:build_2024_04_16_Experiment_3DModelingProcess rdf:type owl:NamedIndividual ,
+                                                          EB:Electron_Beam_Powder_Bed_Fusion_3D_Model_Design_Process .
+
+
+###  http://w3id.org/PBFAMP/EB#build_2024_04_16_Experiment_InspectionProcess
+EB:build_2024_04_16_Experiment_InspectionProcess rdf:type owl:NamedIndividual ,
+                                                          Core:Inspection_And_Quality_Measurement_Process ;
+                                                 Core:inspects_printed_build EB:Print_2024_04_16_Printed_Build ;
+                                                 Core:is_sub_process_of EB:build_2024_04_16_Experiment ;
+                                                 Core:reflects_to EB:build_2024_04_16_Experiment_SlicingProcess .
+
+
+###  http://w3id.org/PBFAMP/EB#build_2024_04_16_Experiment_MonitoringProcess
+EB:build_2024_04_16_Experiment_MonitoringProcess rdf:type owl:NamedIndividual ,
+                                                          EB:Electron_Beam_Powder_Bed_Fusion_Monitoring_Process ;
+                                                 Core:is_sub_process_of EB:build_2024_04_16_Experiment ;
+                                                 EB:receives_data_from EB:Temp_Sensor_1 ,
+                                                                       EB:Temp_Sensor_2 ,
+                                                                       EB:Temp_Sensor_3 ,
+                                                                       EB:Temp_Sensor_4 .
+
+
+###  http://w3id.org/PBFAMP/EB#build_2024_04_16_Experiment_PostPrintingProcess_BuildCleaning
+EB:build_2024_04_16_Experiment_PostPrintingProcess_BuildCleaning rdf:type owl:NamedIndividual ,
+                                                                          EB:Electron_Beam_Powder_Bed_Fusion_Build_Cleaning ;
+                                                                 Core:has_input_printed_build EB:Print_2024_04_16_Printed_Build ;
+                                                                 Core:has_output_printed_build EB:Print_2024_04_16_Printed_Build ;
+                                                                 Core:is_sub_process_of EB:build_2024_04_16_Experiment .
+
+
+###  http://w3id.org/PBFAMP/EB#build_2024_04_16_Experiment_PrintingProcess
+EB:build_2024_04_16_Experiment_PrintingProcess rdf:type owl:NamedIndividual ,
+                                                        EB:Electron_Beam_Powder_Bed_Fusion_Printing_Process ;
+                                               Core:has_input <http://w3id.org/PBFAMP/EB#build_2024_04_16/LowCurrentPreheat_PT_V_obp> ,
+                                                              <http://w3id.org/PBFAMP/EB#build_2024_04_16/PlateHeat950W_SS100_S3000_obp> ,
+                                                              <http://w3id.org/PBFAMP/EB#build_2024_04_16/PostMelt_IdleScan_obp> ,
+                                                              <http://w3id.org/PBFAMP/EB#build_2024_04_16/layer0.obp> ,
+                                                              <http://w3id.org/PBFAMP/EB#build_2024_04_16/layer1.obp> ,
+                                                              <http://w3id.org/PBFAMP/EB#build_2024_04_16/layer2.obp> ,
+                                                              <http://w3id.org/PBFAMP/EB#build_2024_04_16/layer3.obp> ,
+                                                              <http://w3id.org/PBFAMP/EB#build_2024_04_16/layer4.obp> ;
+                                               Core:has_output_printed_build EB:Print_2024_04_16_Printed_Build ;
+                                               Core:is_operated_by EB:IEI_Freemelt_Printing_Machine ;
+                                               Core:is_sub_process_of EB:build_2024_04_16_Experiment ;
+                                               EB:has_build_plate EB:Print_2024_04_16_Build_Plate ;
+                                               EB:has_powder_input EB:Print_2024_04_16_Metal_Powder .
+
+
+###  http://w3id.org/PBFAMP/EB#build_2024_04_16_Experiment_SlicingProcess
+EB:build_2024_04_16_Experiment_SlicingProcess rdf:type owl:NamedIndividual ,
+                                                       EB:Electron_Beam_Powder_Bed_Fusion_Method_Slicing_Process ;
+                                              Core:is_sub_process_of EB:build_2024_04_16_Experiment ;
+                                              EB:has_slicing_strategy EB:Print_2024_04_16_Slicing_Srategy .
+
+
+###  http://w3id.org/PBFAMP/EB#build_2024_04_16_Geometry_layer_melting_Strategy_geometry1
+EB:build_2024_04_16_Geometry_layer_melting_Strategy_geometry1 rdf:type owl:NamedIndividual ,
+                                                                       EB:Electron_Beam_Powder_Bed_Fusion_Geometry_Layer_Melting_Strategy ;
+                                                              EB:has_energy_source EB:ElectronBeamEnergySource2 ;
+                                                              EB:has_scan_strategy EB:build_2024_04_16_Scan_Strategy_geometry1 ;
+                                                              EB:has_point_distance 0.35 ;
+                                                              EB:has_rotation_angle 0 ;
+                                                              EB:has_uniform_point_distance "true" .
+
+
+###  http://w3id.org/PBFAMP/EB#build_2024_04_16_Geometry_layer_melting_Strategy_geometry11
+EB:build_2024_04_16_Geometry_layer_melting_Strategy_geometry11 rdf:type owl:NamedIndividual ,
+                                                                        EB:Electron_Beam_Powder_Bed_Fusion_Geometry_Layer_Melting_Strategy ;
+                                                               EB:has_energy_source EB:ElectronBeamEnergySource2 ;
+                                                               EB:has_scan_strategy EB:build_2024_04_16_Scan_Strategy_geometry11 ;
+                                                               EB:has_point_distance 0.35 ;
+                                                               EB:has_rotation_angle 0 ;
+                                                               EB:has_uniform_point_distance "true" .
+
+
+###  http://w3id.org/PBFAMP/EB#build_2024_04_16_Geometry_layer_melting_Strategy_geometry7
+EB:build_2024_04_16_Geometry_layer_melting_Strategy_geometry7 rdf:type owl:NamedIndividual ,
+                                                                       EB:Electron_Beam_Powder_Bed_Fusion_Geometry_Layer_Melting_Strategy ;
+                                                              EB:has_energy_source EB:ElectronBeamEnergySource1 ;
+                                                              EB:has_scan_strategy EB:build_2024_04_16_Scan_Strategy_geometry7 ;
+                                                              EB:has_point_distance 0.1 ;
+                                                              EB:has_rotation_angle 0 ;
+                                                              EB:has_uniform_point_distance "true" .
+
+
+###  http://w3id.org/PBFAMP/EB#build_2024_04_16_Scan_Strategy_geometry1
+EB:build_2024_04_16_Scan_Strategy_geometry1 rdf:type owl:NamedIndividual ,
+                                                     EB:Electron_Beam_Powder_Bed_Fusion_Scan_Strategy ;
+                                            EB:has_infill_scan_strategy EB:Infill_Strategy_2 ;
+                                            EB:has_dwell_time 570000 ;
+                                            EB:has_scan_speed 1700000 .
+
+
+###  http://w3id.org/PBFAMP/EB#build_2024_04_16_Scan_Strategy_geometry11
+EB:build_2024_04_16_Scan_Strategy_geometry11 rdf:type owl:NamedIndividual ,
+                                                      EB:Electron_Beam_Powder_Bed_Fusion_Scan_Strategy ;
+                                             EB:has_infill_scan_strategy EB:Infill_Strategy_2 ;
+                                             EB:has_dwell_time 570000 ;
+                                             EB:has_scan_speed 1700000 .
+
+
+###  http://w3id.org/PBFAMP/EB#build_2024_04_16_Scan_Strategy_geometry7
+EB:build_2024_04_16_Scan_Strategy_geometry7 rdf:type owl:NamedIndividual ,
+                                                     EB:Electron_Beam_Powder_Bed_Fusion_Scan_Strategy ;
+                                            EB:has_infill_scan_strategy EB:Infill_Strategy_1 ;
+                                            EB:has_dwell_time 58333 ;
+                                            EB:has_scan_speed 1700000 .
+
+
+###  http://w3id.org/PBFAMP/EB#build_2024_04_16_layer_melting_Strategy
+EB:build_2024_04_16_layer_melting_Strategy rdf:type owl:NamedIndividual ,
+                                                    EB:Electron_Beam_Powder_Bed_Fusion_Layer_Melting_Strategy ;
+                                           Core:is_composed_of EB:build_2024_04_16_Geometry_layer_melting_Strategy_geometry1 ,
+                                                               EB:build_2024_04_16_Geometry_layer_melting_Strategy_geometry11 ,
+                                                               EB:build_2024_04_16_Geometry_layer_melting_Strategy_geometry7 ;
+                                           Core:is_represented_by EB:build_2024_04_16_layer_melting_Strategy.py ;
+                                           EB:contributes_to <http://w3id.org/PBFAMP/EB#build_2024_04_16/layer1.obp> ,
+                                                             <http://w3id.org/PBFAMP/EB#build_2024_04_16/layer2.obp> ,
+                                                             <http://w3id.org/PBFAMP/EB#build_2024_04_16/layer3.obp> ,
+                                                             <http://w3id.org/PBFAMP/EB#build_2024_04_16/layer4.obp> ;
+                                           EB:has_layer_thickness 0.07 .
+
+
+###  http://w3id.org/PBFAMP/EB#build_2024_04_16_layer_melting_Strategy.py
+EB:build_2024_04_16_layer_melting_Strategy.py rdf:type owl:NamedIndividual ,
+                                                       Core:File ;
+                                              Core:has_file_format Core:py .
+
+
+###  http://w3id.org/PBFAMP/EB#geometry1
+EB:geometry1 rdf:type owl:NamedIndividual ,
+                      EB:Electron_Beam_Powder_Bed_Fusion_Geometry_Digital_Twin ;
+             Core:is_represented_by Core:stl .
+
+
+###  http://w3id.org/PBFAMP/EB#geometry11
+EB:geometry11 rdf:type owl:NamedIndividual ,
+                       EB:Electron_Beam_Powder_Bed_Fusion_Geometry_Digital_Twin ;
+              Core:is_represented_by Core:stl .
+
+
+###  http://w3id.org/PBFAMP/EB#geometry7
+EB:geometry7 rdf:type owl:NamedIndividual ,
+                      EB:Electron_Beam_Powder_Bed_Fusion_Geometry_Digital_Twin ;
+             Core:is_represented_by Core:stl .
+
+
+###  http://w3id.org/PBFAMP/EB#layer0.obp
+EB:layer0.obp rdf:type owl:NamedIndividual ,
+                       Core:File ;
+              Core:has_file_format Core:obp .
+
+
+###  http://w3id.org/PBFAMP/EB#layer1.obp
+EB:layer1.obp rdf:type owl:NamedIndividual ,
+                       Core:File ;
+              Core:has_file_format Core:obp .
+
+
+###  http://w3id.org/PBFAMP/EB#layer2.obp
+EB:layer2.obp rdf:type owl:NamedIndividual ,
+                       Core:File ;
+              Core:has_file_format Core:obp .
+
+
+###  http://w3id.org/PBFAMP/EB#layer3.obp
+EB:layer3.obp rdf:type owl:NamedIndividual ,
+                       Core:File ;
+              Core:has_file_format Core:obp .
+
+
+###  http://w3id.org/PBFAMP/EB#layer4.obp
+EB:layer4.obp rdf:type owl:NamedIndividual ,
+                       Core:File ;
+              Core:has_file_format Core:obp .
+
+
+###  http://w3id.org/PBFAMP/EB#layer5.obp
+EB:layer5.obp rdf:type owl:NamedIndividual ,
+                       Core:File ;
+              Core:has_file_format Core:obp .
+
+
+###  http://w3id.org/PBFAMP/EB#swemac_screw.stl
+EB:swemac_screw.stl rdf:type owl:NamedIndividual ,
+                             Core:File ;
+                    Core:has_file_format Core:stl .
+
+
+###  http://w3id.org/PBFAMP/EB#swemac_screw_stl
+EB:swemac_screw_stl rdf:type owl:NamedIndividual ,
+                             <http://w3id.org/PBFAMP/Core#3D_Model_Build> ;
+                    Core:is_represented_by EB:swemac_screw.stl .
+
+
+###  http://w3id.org/PBFAMP/EB#yml
+EB:yml rdf:type owl:NamedIndividual ,
+                Core:File_Format_For_Stratgy .
+
+
+###  http://w3id.org/PBFAMP/EB#build_2024_04_16/LowCurrentPreheat_PT_V.obp
+<http://w3id.org/PBFAMP/EB#build_2024_04_16/LowCurrentPreheat_PT_V.obp> rdf:type owl:NamedIndividual ,
+                                                                                 Core:File .
+
+
+###  http://w3id.org/PBFAMP/EB#build_2024_04_16/LowCurrentPreheat_PT_V_obp
+<http://w3id.org/PBFAMP/EB#build_2024_04_16/LowCurrentPreheat_PT_V_obp> rdf:type owl:NamedIndividual ,
+                                                                                 Core:Layer_Digital_Twin ;
+                                                                        Core:is_represented_by <http://w3id.org/PBFAMP/EB#build_2024_04_16/LowCurrentPreheat_PT_V.obp> .
+
+
+###  http://w3id.org/PBFAMP/EB#build_2024_04_16/PlateHeat950W_SS100_S3000.obp
+<http://w3id.org/PBFAMP/EB#build_2024_04_16/PlateHeat950W_SS100_S3000.obp> rdf:type owl:NamedIndividual ,
+                                                                                    Core:File ;
+                                                                           Core:has_file_format Core:obp .
+
+
+###  http://w3id.org/PBFAMP/EB#build_2024_04_16/PlateHeat950W_SS100_S3000_obp
+<http://w3id.org/PBFAMP/EB#build_2024_04_16/PlateHeat950W_SS100_S3000_obp> rdf:type owl:NamedIndividual ,
+                                                                                    Core:Layer_Digital_Twin ;
+                                                                           Core:is_represented_by <http://w3id.org/PBFAMP/EB#build_2024_04_16/PlateHeat950W_SS100_S3000.obp> .
+
+
+###  http://w3id.org/PBFAMP/EB#build_2024_04_16/PostMelt_IdleScan.obp
+<http://w3id.org/PBFAMP/EB#build_2024_04_16/PostMelt_IdleScan.obp> rdf:type owl:NamedIndividual ,
+                                                                            Core:File ;
+                                                                   Core:has_file_format Core:obp .
+
+
+###  http://w3id.org/PBFAMP/EB#build_2024_04_16/PostMelt_IdleScan_obp
+<http://w3id.org/PBFAMP/EB#build_2024_04_16/PostMelt_IdleScan_obp> rdf:type owl:NamedIndividual ,
+                                                                            Core:Layer_Digital_Twin ;
+                                                                   Core:is_represented_by <http://w3id.org/PBFAMP/EB#build_2024_04_16/PostMelt_IdleScan.obp> .
+
+
+###  http://w3id.org/PBFAMP/EB#build_2024_04_16/layer0.obp
+<http://w3id.org/PBFAMP/EB#build_2024_04_16/layer0.obp> rdf:type owl:NamedIndividual ,
+                                                                 Core:Layer_Digital_Twin ;
+                                                        Core:is_represented_by EB:layer0.obp .
+
+
+###  http://w3id.org/PBFAMP/EB#build_2024_04_16/layer1.obp
+<http://w3id.org/PBFAMP/EB#build_2024_04_16/layer1.obp> rdf:type owl:NamedIndividual ,
+                                                                 Core:Layer_Digital_Twin ;
+                                                        Core:is_represented_by EB:layer1.obp .
+
+
+###  http://w3id.org/PBFAMP/EB#build_2024_04_16/layer2.obp
+<http://w3id.org/PBFAMP/EB#build_2024_04_16/layer2.obp> rdf:type owl:NamedIndividual ,
+                                                                 Core:Layer_Digital_Twin ;
+                                                        Core:is_represented_by EB:layer2.obp .
+
+
+###  http://w3id.org/PBFAMP/EB#build_2024_04_16/layer3.obp
+<http://w3id.org/PBFAMP/EB#build_2024_04_16/layer3.obp> rdf:type owl:NamedIndividual ,
+                                                                 Core:Layer_Digital_Twin ;
+                                                        Core:is_represented_by EB:layer3.obp .
+
+
+###  http://w3id.org/PBFAMP/EB#build_2024_04_16/layer4.obp
+<http://w3id.org/PBFAMP/EB#build_2024_04_16/layer4.obp> rdf:type owl:NamedIndividual ,
+                                                                 Core:Layer_Digital_Twin ;
+                                                        Core:is_represented_by EB:layer4.obp .
+
+
+###  Generated by the OWL API (version 4.5.26.2023-07-17T20:34:13Z) https://github.com/owlcs/owlapi

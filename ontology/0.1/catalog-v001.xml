@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+    <uri id="Imports Wizard Entry" name="http://w3id.org/PBFAMP/Core/0.1" uri="PBF-AMP-ONTO_Core.rdf"/>
+    <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base="">
+        <uri id="Automatically generated entry, Timestamp=1719056269677" name="http://w3id.org/PBFAMP/Core/" uri="PBF-AMP-ONTO_Core.rdf"/>
+        <uri id="Automatically generated entry, Timestamp=1719056269677" name="duplicate:http://w3id.org/PBFAMP/EB" uri="PBF-AMP-ONTO_EB.rdf"/>
+        <uri id="Automatically generated entry, Timestamp=1719056269677" name="duplicate:http://w3id.org/PBFAMP/EB" uri="PBF-AMP-ONTO_EB-instance.rdf"/>
+    </group>
+</catalog>

@@ -1,0 +1,1521 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://w3id.org/PBFAMP/EB#"
+     xml:base="http://w3id.org/PBFAMP/EB"
+     xmlns:EB="http://w3id.org/PBFAMP/EB#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:Core="http://w3id.org/PBFAMP/Core#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:vann="http://purl.org/vocab/vann/"
+     xmlns:terms="http://purl.org/dc/terms/">
+    <owl:Ontology rdf:about="http://w3id.org/PBFAMP/EB">
+        <owl:versionIRI rdf:resource="http://w3id.org/PBFAMP/EB/0.1"/>
+        <owl:imports rdf:resource="http://w3id.org/PBFAMP/Core/0.1"/>
+        <terms:created>2024-06-22</terms:created>
+        <terms:creator>Mina Abd Nikooie Pour</terms:creator>
+        <terms:description>The EB (electron beam) module of the PBF-AMP-ONTO (Powder Bed Fusion-based Additive Manufacturing Ontology).</terms:description>
+        <terms:license>https://github.com/LiUSemWeb/PBF-AMP-Onto/blom/main/LICENSE</terms:license>
+        <terms:title>PBF-AMP-ONTO_EB</terms:title>
+        <vann:preferredNamespacePrefix>pbfamp-eb</vann:preferredNamespacePrefix>
+        <rdfs:seeAlso>https://github.com/LiUSemWeb/PBF-AMP-Onto</rdfs:seeAlso>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/dc/terms/contributor -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/contributor"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/created -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/created"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/creator -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/creator"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/description -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/description"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/isVersionOf -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/isVersionOf"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/license -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/license"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/title -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/title"/>
+    
+
+
+    <!-- http://purl.org/vocab/vann/preferredNamespacePrefix -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/vocab/vann/preferredNamespacePrefix"/>
+    
+
+
+    <!-- http://purl.org/vocab/vann/preferredNamespaceUri -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/vocab/vann/preferredNamespaceUri"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://w3id.org/PBFAMP/Core#has_file_format -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/PBFAMP/Core#has_file_format"/>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/Core#has_input -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/PBFAMP/Core#has_input"/>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/Core#has_input_printed_build -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/PBFAMP/Core#has_input_printed_build"/>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/Core#has_output_printed_build -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/PBFAMP/Core#has_output_printed_build"/>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/Core#has_printing_medium -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/PBFAMP/Core#has_printing_medium"/>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/Core#inspects_printed_build -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/PBFAMP/Core#inspects_printed_build"/>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/Core#is_composed_of -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/PBFAMP/Core#is_composed_of"/>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/Core#is_operated_by -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/PBFAMP/Core#is_operated_by"/>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/Core#is_predecessor_process_of -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/PBFAMP/Core#is_predecessor_process_of"/>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/Core#is_represented_by -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/PBFAMP/Core#is_represented_by"/>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/Core#is_sub_process_of -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/PBFAMP/Core#is_sub_process_of"/>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/Core#is_supervised_by -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/PBFAMP/Core#is_supervised_by"/>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/Core#is_used_to_print -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/PBFAMP/Core#is_used_to_print"/>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/Core#reflects_to -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/PBFAMP/Core#reflects_to"/>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/EB#contributes_to -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/PBFAMP/EB#contributes_to">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:label>contributes to</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/EB#has_3D_printing_method -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/PBFAMP/EB#has_3D_printing_method">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:label>has 3D printing method</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/EB#has_build_plate -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/PBFAMP/EB#has_build_plate">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:label>has build plate</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/EB#has_contour_scan_strategy -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/PBFAMP/EB#has_contour_scan_strategy">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:label>has contour scan strategy</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/EB#has_energy_source -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/PBFAMP/EB#has_energy_source">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:label>has energy source</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/EB#has_infill_scan_strategy -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/PBFAMP/EB#has_infill_scan_strategy">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:label>has infill scan strategy</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/EB#has_powder_input -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/PBFAMP/EB#has_powder_input">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:label>has powder input</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/EB#has_scan_strategy -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/PBFAMP/EB#has_scan_strategy">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:label>has scan strategy</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/EB#has_sensor -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/PBFAMP/EB#has_sensor">
+        <rdfs:label>has sensor</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/EB#has_slicing_strategy -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/PBFAMP/EB#has_slicing_strategy">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:label>has slicing strategy</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/EB#has_start_heating_strategy -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/PBFAMP/EB#has_start_heating_strategy">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:label>has start heating strategy</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/EB#is_manufactured_by -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/PBFAMP/EB#is_manufactured_by">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:label>is manufactured by</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/EB#is_manufactured_from -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/PBFAMP/EB#is_manufactured_from">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:label>is manufactured from</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/EB#is_part_of -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/PBFAMP/EB#is_part_of">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:label>is part of</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/EB#is_sub_slicing_strategy_of -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/PBFAMP/EB#is_sub_slicing_strategy_of">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:label>is sub slicing strategy of</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/EB#receives_data_from -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/PBFAMP/EB#receives_data_from">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:label>receives data from</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://w3id.org/PBFAMP/Core#has_end_date_time -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/PBFAMP/Core#has_end_date_time">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/Core#has_start_date_time -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/PBFAMP/Core#has_start_date_time">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/EB#has_address -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/PBFAMP/EB#has_address">
+        <rdfs:label>has address</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/EB#has_beam_power -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/PBFAMP/EB#has_beam_power">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:label>has beam power</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/EB#has_beam_spot_size -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/PBFAMP/EB#has_beam_spot_size">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:label>has beam spot size</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/EB#has_dwell_time -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/PBFAMP/EB#has_dwell_time">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:label>has dwell time</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/EB#has_electron_beam_wavelength -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/PBFAMP/EB#has_electron_beam_wavelength">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:label>has electron beam wavelength</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/EB#has_layer_thickness -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/PBFAMP/EB#has_layer_thickness">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:label>has layer thickness</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/EB#has_name -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/PBFAMP/EB#has_name">
+        <rdfs:label>has name</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/EB#has_number_of_repetitions -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/PBFAMP/EB#has_number_of_repetitions">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:label>has number of repetitions</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/EB#has_offeset_margin -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/PBFAMP/EB#has_offeset_margin">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:label>has offset margin</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/EB#has_particle_size_distribution -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/PBFAMP/EB#has_particle_size_distribution">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:label>has particle size distribution</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/EB#has_point_distance -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/PBFAMP/EB#has_point_distance">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:label>has point distance</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/EB#has_position -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/PBFAMP/EB#has_position">
+        <rdfs:label>has position</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/EB#has_recorded_data -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/PBFAMP/EB#has_recorded_data">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:label>has recorded data</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/EB#has_rotation_angle -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/PBFAMP/EB#has_rotation_angle">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:label>has rotation_angle</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/EB#has_scan_speed -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/PBFAMP/EB#has_scan_speed">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:label>has scan speed</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/EB#has_sensor_type -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/PBFAMP/EB#has_sensor_type">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:label>has sensor type</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/EB#has_shape -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/PBFAMP/EB#has_shape">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:label>has shape</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/EB#has_size -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/PBFAMP/EB#has_size">
+        <rdfs:label>has size</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/EB#has_status -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/PBFAMP/EB#has_status">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:label>has status</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/EB#has_surface_texture -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/PBFAMP/EB#has_surface_texture">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:label>has surface texture</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/EB#has_target_temprature -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/PBFAMP/EB#has_target_temprature">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:label>has target temperature</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/EB#has_thickness -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/PBFAMP/EB#has_thickness">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:label>has thickness</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/EB#has_timeout -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/PBFAMP/EB#has_timeout">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:label>has timeout</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/EB#has_uniform_point_distance -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/PBFAMP/EB#has_uniform_point_distance">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:label>has uniform point distance</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://w3id.org/PBFAMP/Core#File -->
+
+    <owl:Class rdf:about="http://w3id.org/PBFAMP/Core#File"/>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/Core#File_Format_For_Stratgy -->
+
+    <owl:Class rdf:about="http://w3id.org/PBFAMP/Core#File_Format_For_Stratgy"/>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/Core#Inspection_And_Quality_Measurement_Process -->
+
+    <owl:Class rdf:about="http://w3id.org/PBFAMP/Core#Inspection_And_Quality_Measurement_Process"/>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/Core#Layer_Digital_Twin -->
+
+    <owl:Class rdf:about="http://w3id.org/PBFAMP/Core#Layer_Digital_Twin"/>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/Core#Layer_Of_Printed_Build -->
+
+    <owl:Class rdf:about="http://w3id.org/PBFAMP/Core#Layer_Of_Printed_Build"/>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/Core#Monitoring_Process -->
+
+    <owl:Class rdf:about="http://w3id.org/PBFAMP/Core#Monitoring_Process"/>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/Core#Post_Printing_Method -->
+
+    <owl:Class rdf:about="http://w3id.org/PBFAMP/Core#Post_Printing_Method"/>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/Core#Post_Printing_Process -->
+
+    <owl:Class rdf:about="http://w3id.org/PBFAMP/Core#Post_Printing_Process"/>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/Core#Powder_Bed_Fusion_Additive_Manufacturing_Process -->
+
+    <owl:Class rdf:about="http://w3id.org/PBFAMP/Core#Powder_Bed_Fusion_Additive_Manufacturing_Process"/>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/Core#Printed_Build -->
+
+    <owl:Class rdf:about="http://w3id.org/PBFAMP/Core#Printed_Build"/>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/Core#Printing_Process -->
+
+    <owl:Class rdf:about="http://w3id.org/PBFAMP/Core#Printing_Process">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/Core#has_input"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onClass rdf:resource="http://w3id.org/PBFAMP/Core#Layer_Digital_Twin"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/Core#has_output_printed_build"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onClass rdf:resource="http://w3id.org/PBFAMP/Core#Printed_Build"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/Core#has_printing_medium"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onClass rdf:resource="http://www.w3.org/ns/prov#Entity"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/Core#is_predecessor_process_of"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onClass rdf:resource="http://w3id.org/PBFAMP/Core#Post_Printing_Process"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/Core#is_sub_process_of"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onClass rdf:resource="http://w3id.org/PBFAMP/Core#Powder_Bed_Fusion_Additive_Manufacturing_Process"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/Core#Slicing_Process -->
+
+    <owl:Class rdf:about="http://w3id.org/PBFAMP/Core#Slicing_Process"/>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/Core#3D_Model_Build -->
+
+    <owl:Class rdf:about="http://w3id.org/PBFAMP/Core#3D_Model_Build"/>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/Core#3D_Model_Design_Process -->
+
+    <owl:Class rdf:about="http://w3id.org/PBFAMP/Core#3D_Model_Design_Process"/>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_3D_Model_Design_Process -->
+
+    <owl:Class rdf:about="http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_3D_Model_Design_Process">
+        <rdfs:subClassOf rdf:resource="http://w3id.org/PBFAMP/Core#3D_Model_Design_Process"/>
+        <rdfs:label>Electron Beam Powder Bed Fusion 3D Model Design Process</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_3D_Printing_Machine -->
+
+    <owl:Class rdf:about="http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_3D_Printing_Machine">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/EB#has_sensor"/>
+                <owl:someValuesFrom rdf:resource="http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_3D_Printing_Machine_Sensor"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label>Electron Beam Powder Bed Fusion 3D Printing Machine</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_3D_Printing_Machine_Sensor -->
+
+    <owl:Class rdf:about="http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_3D_Printing_Machine_Sensor">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/EB#has_recorded_data"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/EB#has_sensor_type"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label>Electron Beam Powder Bed Fusion 3D Printing Machine Sensor</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_3D_Printing_Method -->
+
+    <owl:Class rdf:about="http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_3D_Printing_Method">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/EB#has_energy_source"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_Energy_Source"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label>Electron Beam Powder Bed Fusion 3D Printing Method</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_Build_Cleaning -->
+
+    <owl:Class rdf:about="http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_Build_Cleaning">
+        <rdfs:subClassOf rdf:resource="http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_Post_Printing_Method"/>
+        <rdfs:label>Electron Beam Powder Bed Fusion Build Cleaning</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_Build_Plate -->
+
+    <owl:Class rdf:about="http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_Build_Plate">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/EB#is_manufactured_from"/>
+                        <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                        <owl:onClass rdf:resource="http://w3id.org/PBFAMP/EB#Material"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/EB#has_start_heating_strategy"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onClass rdf:resource="http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_Start_Heating_Strategy"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/EB#has_shape"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/EB#has_size"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/EB#has_surface_texture"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/EB#has_thickness"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:label>Electron Beam Powder Bed Fusion Build Plate</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_Build_Seperation_From_Build_Plate -->
+
+    <owl:Class rdf:about="http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_Build_Seperation_From_Build_Plate">
+        <rdfs:subClassOf rdf:resource="http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_Post_Printing_Method"/>
+        <rdfs:label>Electron Beam Powder Bed Fusion Build Seperation From Build Plate</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_Contour_Scan_Strategy -->
+
+    <owl:Class rdf:about="http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_Contour_Scan_Strategy">
+        <rdfs:label>Electron Beam Powder Bed Fusion Contour Scan Strategy</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_Energy_Source -->
+
+    <owl:Class rdf:about="http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_Energy_Source">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/EB#has_beam_power"/>
+                        <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/EB#has_beam_spot_size"/>
+                        <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/EB#has_electron_beam_wavelength"/>
+                        <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:label>Electron Beam Powder Bed Fusion Energy Source</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_Freemelt_Printing_Machine -->
+
+    <owl:Class rdf:about="http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_Freemelt_Printing_Machine">
+        <rdfs:subClassOf rdf:resource="http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_3D_Printing_Machine"/>
+        <rdfs:label>Electron Beam Powder Bed Fusion Freemelt Printing Machine</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_Geometry_Digital_Twin -->
+
+    <owl:Class rdf:about="http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_Geometry_Digital_Twin">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/EB#has_name"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/EB#has_position"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/EB#has_size"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/Core#is_composed_of"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_Geometry_Layer_Digital_Twin"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label>Electron Beam Powder Bed Fusion Geometry Digital Twin</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_Geometry_Layer_Digital_Twin -->
+
+    <owl:Class rdf:about="http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_Geometry_Layer_Digital_Twin">
+        <rdfs:label>Electron Beam Powder Bed Fusion Geometry Layer Digital Twin</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_Geometry_Layer_Melting_Strategy -->
+
+    <owl:Class rdf:about="http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_Geometry_Layer_Melting_Strategy">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/EB#has_offeset_margin"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/EB#has_rotation_angle"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/EB#has_uniform_point_distance"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/EB#has_energy_source"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_Energy_Source"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label>Electron Beam Powder Bed Fusion Geometry Layer Melting Strategy</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_Geometry_Layer_Printed_Build -->
+
+    <owl:Class rdf:about="http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_Geometry_Layer_Printed_Build">
+        <rdfs:label>Electron Beam Powder Bed Fusion Geometry Layer Printed Build</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_Geometry_Printed_Build -->
+
+    <owl:Class rdf:about="http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_Geometry_Printed_Build">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/Core#is_composed_of"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_Geometry_Layer_Printed_Build"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label>Electron Beam Powder Bed Fusion Geometry Printed Build</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_Heat_Treatment -->
+
+    <owl:Class rdf:about="http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_Heat_Treatment">
+        <rdfs:subClassOf rdf:resource="http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_Post_Printing_Method"/>
+        <rdfs:label>Electron Beam Powder Bed Fusion Heat Treatment</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_Infill_Scan_Strategy -->
+
+    <owl:Class rdf:about="http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_Infill_Scan_Strategy">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/EB#has_point_distance"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label>Electron Beam Powder Bed Fusion Infill Scan Strategy</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_Layer_Digital_Twin -->
+
+    <owl:Class rdf:about="http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_Layer_Digital_Twin">
+        <rdfs:subClassOf rdf:resource="http://w3id.org/PBFAMP/Core#Layer_Digital_Twin"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/Core#is_composed_of"/>
+                <owl:someValuesFrom rdf:resource="http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_Geometry_Layer_Digital_Twin"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label>Electron Beam Powder Bed Fusion Layer Digital Twin</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_Layer_Melting_Strategy -->
+
+    <owl:Class rdf:about="http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_Layer_Melting_Strategy">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/Core#is_composed_of"/>
+                        <owl:someValuesFrom rdf:resource="http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_Geometry_Layer_Melting_Strategy"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/EB#has_energy_source"/>
+                        <owl:someValuesFrom rdf:resource="http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_Energy_Source"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/EB#has_scan_strategy"/>
+                        <owl:someValuesFrom rdf:resource="http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_Scan_Strategy"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/Core#has_input"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onClass rdf:resource="http://w3id.org/PBFAMP/Core#3D_Model_Build"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/Core#is_represented_by"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onClass>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="http://w3id.org/PBFAMP/Core#File"/>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/Core#has_file_format"/>
+                                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                                        <owl:onClass rdf:resource="http://w3id.org/PBFAMP/Core#File_Format_For_Stratgy"/>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:onClass>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/EB#contributes_to"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onClass rdf:resource="http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_Layer_Digital_Twin"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/EB#is_sub_slicing_strategy_of"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onClass rdf:resource="http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_Slicing_Strategy"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/EB#has_layer_thickness"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label>Electron Beam Powder Bed Fusion Layer Melting Strategy</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_Layer_Of_Printed_Build -->
+
+    <owl:Class rdf:about="http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_Layer_Of_Printed_Build">
+        <rdfs:subClassOf rdf:resource="http://w3id.org/PBFAMP/Core#Layer_Of_Printed_Build"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/Core#is_composed_of"/>
+                <owl:someValuesFrom rdf:resource="http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_Geometry_Layer_Printed_Build"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label>Electron Beam Powder Bed Fusion Layer Of Printed Build</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_Layer_Post_Heating_Strategy -->
+
+    <owl:Class rdf:about="http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_Layer_Post_Heating_Strategy">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/EB#has_energy_source"/>
+                        <owl:someValuesFrom rdf:resource="http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_Energy_Source"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/EB#has_scan_strategy"/>
+                        <owl:someValuesFrom rdf:resource="http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_Scan_Strategy"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/Core#is_represented_by"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onClass>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="http://w3id.org/PBFAMP/Core#File"/>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/Core#has_file_format"/>
+                                        <owl:allValuesFrom rdf:resource="http://w3id.org/PBFAMP/Core#File_Format_For_Stratgy"/>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:onClass>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/EB#contributes_to"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onClass rdf:resource="http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_Layer_Digital_Twin"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/EB#is_sub_slicing_strategy_of"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onClass rdf:resource="http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_Slicing_Strategy"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/EB#has_number_of_repetitions"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label>Electron Beam Powder Bed Fusion Layer Post Heating Strategy</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_Layer_Pre_Heating_Strategy -->
+
+    <owl:Class rdf:about="http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_Layer_Pre_Heating_Strategy">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/EB#has_energy_source"/>
+                        <owl:someValuesFrom rdf:resource="http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_Energy_Source"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/EB#has_scan_strategy"/>
+                        <owl:someValuesFrom rdf:resource="http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_Scan_Strategy"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/Core#is_represented_by"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onClass>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="http://w3id.org/PBFAMP/Core#File"/>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/Core#has_file_format"/>
+                                        <owl:allValuesFrom rdf:resource="http://w3id.org/PBFAMP/Core#File_Format_For_Stratgy"/>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:onClass>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/EB#contributes_to"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onClass rdf:resource="http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_Layer_Digital_Twin"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/EB#is_sub_slicing_strategy_of"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onClass rdf:resource="http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_Slicing_Strategy"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/EB#has_number_of_repetitions"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label>Electron Beam Powder Bed Fusion Layer Pre Heating Strategy</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_Metal_Powder -->
+
+    <owl:Class rdf:about="http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_Metal_Powder">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/prov#Entity"/>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/Core#is_used_to_print"/>
+                        <owl:someValuesFrom rdf:resource="http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_Printed_Build"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/EB#is_manufactured_from"/>
+                        <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                        <owl:onClass rdf:resource="http://w3id.org/PBFAMP/EB#Material"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/EB#is_manufactured_by"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onClass rdf:resource="http://w3id.org/PBFAMP/EB#Manufacturer"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/EB#has_particle_size_distribution"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/EB#has_status"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:label>Electron Beam Powder Bed Fusion Metal Powder</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_Method_Slicing_Process -->
+
+    <owl:Class rdf:about="http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_Method_Slicing_Process">
+        <rdfs:subClassOf rdf:resource="http://w3id.org/PBFAMP/Core#Slicing_Process"/>
+        <rdfs:label>Electron Beam Powder Bed Fusion Slicing Process</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_Monitoring_Process -->
+
+    <owl:Class rdf:about="http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_Monitoring_Process">
+        <rdfs:subClassOf rdf:resource="http://w3id.org/PBFAMP/Core#Monitoring_Process"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/EB#receives_data_from"/>
+                <owl:someValuesFrom rdf:resource="http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_3D_Printing_Machine_Sensor"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label>Electron Beam Powder Bed Fusion Monitoring Process</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_Post_Printing_Method -->
+
+    <owl:Class rdf:about="http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_Post_Printing_Method">
+        <rdfs:subClassOf rdf:resource="http://w3id.org/PBFAMP/Core#Post_Printing_Method"/>
+        <rdfs:label>Electron Beam Powder Bed Fusion Post Printing Method</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_Printed_Build -->
+
+    <owl:Class rdf:about="http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_Printed_Build">
+        <rdfs:subClassOf rdf:resource="http://w3id.org/PBFAMP/Core#Printed_Build"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/Core#is_composed_of"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_Geometry_Printed_Build"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label>Electron Beam Powder Bed Fusion Printed Build</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_Printing_Process -->
+
+    <owl:Class rdf:about="http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_Printing_Process">
+        <rdfs:subClassOf rdf:resource="http://w3id.org/PBFAMP/Core#Printing_Process"/>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/Core#has_output_printed_build"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onClass rdf:resource="http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_Printed_Build"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/Core#is_operated_by"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onClass rdf:resource="http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_3D_Printing_Machine"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/EB#has_build_plate"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onClass rdf:resource="http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_Build_Plate"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/EB#has_powder_input"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onClass rdf:resource="http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_Metal_Powder"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:label>Electron Beam Powder Bed Fusion Printing Process</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_Scan_Strategy -->
+
+    <owl:Class rdf:about="http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_Scan_Strategy">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/EB#has_contour_scan_strategy"/>
+                        <owl:someValuesFrom rdf:resource="http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_Contour_Scan_Strategy"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/EB#has_infill_scan_strategy"/>
+                        <owl:someValuesFrom rdf:resource="http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_Infill_Scan_Strategy"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/EB#is_part_of"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onClass rdf:resource="http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_Scan_Strategy"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/EB#has_dwell_time"/>
+                        <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/EB#has_scan_speed"/>
+                        <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:label>Electron Beam Powder Bed Fusion Scan Strategy</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_Slicing_Strategy -->
+
+    <owl:Class rdf:about="http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_Slicing_Strategy">
+        <rdfs:label>Electron Beam Powder Bed Fusion Slicing Strategy</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_Start_Heating_Strategy -->
+
+    <owl:Class rdf:about="http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_Start_Heating_Strategy">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/EB#has_energy_source"/>
+                        <owl:someValuesFrom rdf:resource="http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_Energy_Source"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/EB#has_scan_strategy"/>
+                        <owl:someValuesFrom rdf:resource="http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_Scan_Strategy"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/Core#is_represented_by"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onClass>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="http://w3id.org/PBFAMP/Core#File"/>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/Core#has_file_format"/>
+                                        <owl:allValuesFrom rdf:resource="http://w3id.org/PBFAMP/Core#File_Format_For_Stratgy"/>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:onClass>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/EB#contributes_to"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onClass rdf:resource="http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_Layer_Digital_Twin"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/EB#is_sub_slicing_strategy_of"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onClass rdf:resource="http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_Slicing_Strategy"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/EB#has_target_temprature"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/EB#has_timeout"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:label>Electron Beam Powder Bed Fusion Start Heating Strategy</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_Support_Removal -->
+
+    <owl:Class rdf:about="http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_Support_Removal">
+        <rdfs:subClassOf rdf:resource="http://w3id.org/PBFAMP/EB#Electron_Beam_Powder_Bed_Fusion_Post_Printing_Method"/>
+        <rdfs:label>Electron Beam Powder Bed Fusion Support Removal</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/EB#Manufacturer -->
+
+    <owl:Class rdf:about="http://w3id.org/PBFAMP/EB#Manufacturer">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/EB#has_address"/>
+                        <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/EB#has_name"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:label>Manufacturer</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/EB#Material -->
+
+    <owl:Class rdf:about="http://w3id.org/PBFAMP/EB#Material">
+        <rdfs:label>Material</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/ns/prov#Entity -->
+
+    <owl:Class rdf:about="http://www.w3.org/ns/prov#Entity"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://w3id.org/PBFAMP/Core#obp -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/PBFAMP/Core#obp"/>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/Core#py -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/PBFAMP/Core#py"/>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/Core#stl -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/PBFAMP/Core#stl"/>
+    
+
+
+    <!-- http://w3id.org/PBFAMP/EB#yml -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/PBFAMP/EB#yml">
+        <rdf:type rdf:resource="http://w3id.org/PBFAMP/Core#File_Format_For_Stratgy"/>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.26.2023-07-17T20:34:13Z) https://github.com/owlcs/owlapi -->
+
