@@ -1,0 +1,173 @@
+#CQ1: What is the material used for each printed build in an EB-PBF printing process?
+PREFIX pbfampocore: <http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#>
+PREFIX pbfampoeb: <http://www.semanticweb.org/minab62/ontologies/2024/5/PBF-AMP-Onto_EB#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+SELECT  ?printing_process ?printed_build ?material
+WHERE {
+  ?printed_build rdf:type pbfampoeb:Electron_Beam_Powder_Bed_Fusion_Printed_Build.
+  ?printing_process rdf:type pbfampoeb:Electron_Beam_Powder_Bed_Fusion_Printing_Process.
+  ?printing_process pbfampocore:has_output_printed_build ?printed_build.
+  ?metal_powder rdf:type pbfampoeb:Electron_Beam_Powder_Bed_Fusion_Metal_Powder.
+  ?printing_process pbfampocore:has_printing_medium ?metal_powder.
+  ?metal_powder pbfampoeb:is_manufactured_from ?material.
+  }
+
+#CQ2:Who is the manufacturer of the metal powder used in an EB-PBF printing process?
+PREFIX pbfampocore: <http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#>
+PREFIX pbfampoeb: <http://www.semanticweb.org/minab62/ontologies/2024/5/PBF-AMP-Onto_EB#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+SELECT ?printing_process ?metal_powder ?manufacturer
+WHERE {
+  ?printing_process rdf:type pbfampoeb:Electron_Beam_Powder_Bed_Fusion_Printing_Process.
+  ?printing_process pbfampocore:has_printing_medium ?metal_powder.
+  ?metal_powder pbfampoeb:is_manufactured_by ?manufacturer.
+  }
+ 
+#CQ3:What are different sub-processes in an EB-PBF process?
+PREFIX pbfampocore: <http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#>
+PREFIX pbfampoeb: <http://www.semanticweb.org/minab62/ontologies/2024/5/PBF-AMP-Onto_EB#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+SELECT ?process ?subProcess
+WHERE {
+  ?subProcess pbfampocore:is_sub_process_of ?process.
+  ?process rdf:type pbfampocore:Powder_Bed_Fusion_Additive_Manufacturing_Process.
+  }
+
+ 
+#CQ4: What are the inputs and outputs of each sub-process in an EB-PBF process?
+PREFIX pbfampocore: <http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#>
+PREFIX pbfampoeb: <http://www.semanticweb.org/minab62/ontologies/2024/5/PBF-AMP-Onto_EB#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+SELECT ?process ?resultsubprocess ?input ?output ?inprint ?outprint
+WHERE {
+  ?resultsubprocess pbfampocore:is_sub_process_of ?process.
+  ?process rdf:type pbfampocore:Powder_Bed_Fusion_Additive_Manufacturing_Process.
+  OPTIONAL {
+  ?resultsubprocess pbfampocore:has_input ?input.}
+  OPTIONAL {
+  ?resultsubprocess pbfampocore:has_output ?output.}
+  OPTIONAL {
+  ?resultsubprocess pbfampocore:has_input_printed_build ?inprint.}
+   OPTIONAL {
+  ?resultsubprocess pbfampocore:has_output_printed_build ?outprint.}
+  }
+
+#CQ5: What are the properties of the layer melting strategy used in an EB-PBF slicing sub-process?
+PREFIX pbfampocore: <http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#>
+PREFIX pbfampoeb: <http://www.semanticweb.org/minab62/ontologies/2024/5/PBF-AMP-Onto_EB#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+SELECT ?slicing_process ?layer_melting_strategy ?layerThickness ?infill_strategy ?contour_strategy ?enery_source
+{ 
+   ?slicing_process rdf:type pbfampoeb:Electron_Beam_Powder_Bed_Fusion_Slicing_Process.
+   ?slicing_process pbfampoeb:has_slicing_strategy ?slicing_strategy.
+   ?layer_melting_strategy pbfampoeb:is_sub_slicing_strategy_of ?sicing_strategy.
+   ?layer_melting_strategy rdf:type pbfampoeb:Electron_Beam_Powder_Bed_Fusion_Layer_Melting_Strategy.
+   ?layer_melting_strategy pbfampoeb:contributes_to ?layer_digital_twin. 
+   ?layer_digital_twin pbfampoeb:has_layer_thickness ?layerThickness. 
+   ?layer_melting_strategy pbfampoeb:has_scan_strategy ?scanStrategy.
+   ?scanStrategy pbfampoeb:has_infill_scan_strategy ?infill_strategy.
+   ?scanStrategy pbfampoeb:has_contour_scan_strategy ?contour_strategy.
+   ?layer_melting_strategy pbfampoeb:has_energy_source ?enery_source.
+}
+
+#CQ6: Which 3D printing machine has been used for an EB-PBF printing process?
+PREFIX pbfampocore: <http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#>
+PREFIX pbfampoeb: <http://www.semanticweb.org/minab62/ontologies/2024/5/PBF-AMP-Onto_EB#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+SELECT ?printing_machine
+WHERE {
+  ?printing_process rdf:type pbfampoeb:Electron_Beam_Powder_Bed_Fusion_Printing_Process.
+  ?printing_process pbfampocore:is_operated_by ?printing_machine.
+  }
+
+#CQ7: What types of sensors are utilized in an EB-PBF 3D printing machine?
+PREFIX pbfampocore: <http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#>
+PREFIX pbfampoeb: <http://www.semanticweb.org/minab62/ontologies/2024/5/PBF-AMP-Onto_EB#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT ?printing_machine ?sensor ?sensor_type
+WHERE {
+  ?printing_machine_subclass rdfs:subClassOf pbfampoeb:Electron_Beam_Powder_Bed_Fusion_3D_Printing_Machine.
+  ?printing_machine rdf:type ?printing_machine_subclass.
+  ?printing_machine pbfampoeb:has_sensor ?sensor.
+  ?sensor pbfampoeb:has_sensor_type ?sensor_type .
+  }
+
+#CQ8: What is the total number of layers used in an EB-PBF printing process?
+PREFIX pbfampocore: <http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#>
+PREFIX pbfampoeb: <http://www.semanticweb.org/minab62/ontologies/2024/5/PBF-AMP-Onto_EB#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+SELECT ?printing_process  (COUNT(?layer_digital_twin) AS ?numberofLayers)
+WHERE {
+   ?printing_process rdf:type pbfampoeb:Electron_Beam_Powder_Bed_Fusion_Printing_Process.
+   ?printing_process pbfampocore:has_input ?layer_digital_twin.
+   ?layer_melting_strategy rdf:type pbfampoeb:Electron_Beam_Powder_Bed_Fusion_Layer_Melting_Strategy.
+   ?layer_melting_strategy pbfampoeb:contributes_to ?layer_digital_twin.
+  }
+GROUP BY ?printing_process
+
+#CQ9:What is the layer thickness used in an EB-PBF printing process?
+PREFIX pbfampocore: <http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#>
+PREFIX pbfampoeb: <http://www.semanticweb.org/minab62/ontologies/2024/5/PBF-AMP-Onto_EB#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+SELECT ?printing_process ?dataPropertyValue_layerthickness
+WHERE {
+   ?printing_process rdf:type pbfampoeb:Electron_Beam_Powder_Bed_Fusion_Printing_Process.
+   ?printing_process pbfampocore:has_input ?layer_digital_twin.
+   ?layer_digital_twin pbfampoeb:has_layer_thickness ?dataPropertyValue_layerthickness .
+  }
+
+#CQ10: What is the start and end date and time for an PBF-AM process?
+PREFIX pbfampocore: <http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#>
+PREFIX pbfampoeb: <http://www.semanticweb.org/minab62/ontologies/2024/5/PBF-AMP-Onto_EB#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+SELECT ?process ?startTime ?endTime
+WHERE {
+   ?process rdf:type pbfampocore:Powder_Bed_Fusion_Additive_Manufacturing_Process.
+   ?process pbfampocore:has_start_date_time ?startTime.
+   ?process pbfampocore:has_end_date_time ?endTime.             
+  }
+
+#CQ11: What is the typical beam power for the energy source used in an EB-BPF printing process?
+PREFIX pbfampocore: <http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#>
+PREFIX pbfampoeb: <http://www.semanticweb.org/minab62/ontologies/2024/5/PBF-AMP-Onto_EB#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+SELECT ?PBAMProcess ?scan_strategy ?infill_beamPower ?contour_beamPower
+WHERE {
+   ?printing_process rdf:type pbfampoeb:Electron_Beam_Powder_Bed_Fusion_Printing_Process.
+   ?printing_process pbfampocore:is_sub_process_of ?PBAMProcess.
+   ?slicing_process rdf:type pbfampoeb:Electron_Beam_Powder_Bed_Fusion_Slicing_Process.
+   ?slicing_process pbfampocore:is_sub_process_of ?PBAMProcess.
+   ?slicing_process pbfampoeb:has_scan_strategy ?scan_strategy.
+   ?scanStrategy pbfampoeb:has_infill_scan_strategy ?infillstrategy.
+   ?scanStrategy pbfampoeb:has_contour_scan_strategy ?contourstrategy.
+   ?infillstrategy pbfampoeb:has_beam_power ?infill_beamPower.
+   ?contourstrategy pbfampoeb:has_beam_power ?contour_beamPower.         
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
