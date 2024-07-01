@@ -1,21 +1,23 @@
 <?xml version="1.0"?>
-<rdf:RDF xmlns="http://w3id.org/PBFAMP/Core/"
-     xml:base="http://w3id.org/PBFAMP/Core/"
+<rdf:RDF xmlns="http://www.semanticweb.org/minab62/ontologies/2024/4/MetalAMPOnto_core/"
+     xml:base="http://www.semanticweb.org/minab62/ontologies/2024/4/MetalAMPOnto_core/"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:xml="http://www.w3.org/XML/1998/namespace"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-     xmlns:vann="http://purl.org/vocab/vann/"
      xmlns:terms="http://purl.org/dc/terms/">
-    <owl:Ontology rdf:about="http://w3id.org/PBFAMP/Core">
-        <owl:versionIRI rdf:resource="http://w3id.org/PBFAMP/Core/0.1"/>
-        <terms:created>2024-06-22</terms:created>
+    <owl:Ontology rdf:about="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core">
+        <terms:contributer>Anton Wiberg</terms:contributer>
+        <terms:contributer>Huanyu Li</terms:contributer>
+        <terms:contributer>Johan Moverare</terms:contributer>
+        <terms:contributer>Patrick Lambrix</terms:contributer>
+        <terms:contributer>Prithwish Tarafder</terms:contributer>
+        <terms:created>2024-06-01</terms:created>
         <terms:creator>Mina Abd Nikooie Pour</terms:creator>
-        <terms:description>The core module of the PBF-AMP-ONTO (Powder Bed Fusion-based Additive Manufacturing Ontology).</terms:description>
-        <terms:license>https://github.com/LiUSemWeb/PBF-AMP-Onto/blom/main/LICENSE</terms:license>
-        <terms:title>PBF-AMP-ONTO_Core</terms:title>
-        <vann:preferredNamespacePrefix>pbfamp-core</vann:preferredNamespacePrefix>
+        <terms:license>https://github.com/LiUSemWeb/PBF-AMP-Onto/blob/main/LICENCE</terms:license>
+        <terms:title>The Powder Bed Fusion Additive Manufacturing Process Ontology - Core</terms:title>
+        <rdfs:comment xml:lang="en">This is the Powder Bed Fusion Additive Manufacturing Process Ontology.</rdfs:comment>
         <rdfs:seeAlso>https://github.com/LiUSemWeb/PBF-AMP-Onto</rdfs:seeAlso>
         <owl:versionInfo>0.1</owl:versionInfo>
     </owl:Ontology>
@@ -33,9 +35,9 @@
     
 
 
-    <!-- http://purl.org/dc/terms/contributor -->
+    <!-- http://purl.org/dc/terms/contributer -->
 
-    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/contributor"/>
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/contributer"/>
     
 
 
@@ -51,18 +53,6 @@
     
 
 
-    <!-- http://purl.org/dc/terms/description -->
-
-    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/description"/>
-    
-
-
-    <!-- http://purl.org/dc/terms/isVersionOf -->
-
-    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/isVersionOf"/>
-    
-
-
     <!-- http://purl.org/dc/terms/license -->
 
     <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/license"/>
@@ -72,18 +62,6 @@
     <!-- http://purl.org/dc/terms/title -->
 
     <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/title"/>
-    
-
-
-    <!-- http://purl.org/vocab/vann/preferredNamespacePrefix -->
-
-    <owl:AnnotationProperty rdf:about="http://purl.org/vocab/vann/preferredNamespacePrefix"/>
-    
-
-
-    <!-- http://purl.org/vocab/vann/preferredNamespaceUri -->
-
-    <owl:AnnotationProperty rdf:about="http://purl.org/vocab/vann/preferredNamespaceUri"/>
     
 
 
@@ -98,181 +76,157 @@
     
 
 
-    <!-- http://w3id.org/PBFAMP/Core#has_file_format -->
+    <!-- http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#has_file_format -->
 
-    <owl:ObjectProperty rdf:about="http://w3id.org/PBFAMP/Core#has_file_format">
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#has_file_format">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-        <rdfs:domain rdf:resource="http://w3id.org/PBFAMP/Core#File"/>
-        <rdfs:range rdf:resource="http://w3id.org/PBFAMP/Core#File_Format"/>
-        <rdfs:label>has file format</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#File"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#File_Format"/>
+        <rdfs:label xml:lang="en">has file format</rdfs:label>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://w3id.org/PBFAMP/Core#has_input -->
+    <!-- http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#has_input -->
 
-    <owl:ObjectProperty rdf:about="http://w3id.org/PBFAMP/Core#has_input">
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#has_input">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-        <rdfs:label>has input</rdfs:label>
+        <rdfs:label xml:lang="en">has input</rdfs:label>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://w3id.org/PBFAMP/Core#has_input_printed_build -->
+    <!-- http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#has_input_printed_build -->
 
-    <owl:ObjectProperty rdf:about="http://w3id.org/PBFAMP/Core#has_input_printed_build">
-        <rdfs:range rdf:resource="http://w3id.org/PBFAMP/Core#Printed_Build"/>
-        <rdfs:label>has input printed build</rdfs:label>
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#has_input_printed_build">
+        <rdfs:range rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#Printed_Build"/>
+        <rdfs:label xml:lang="en">has input printed build</rdfs:label>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://w3id.org/PBFAMP/Core#has_output -->
+    <!-- http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#has_output -->
 
-    <owl:ObjectProperty rdf:about="http://w3id.org/PBFAMP/Core#has_output">
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#has_output">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-        <rdfs:label>has output</rdfs:label>
+        <rdfs:label xml:lang="en">has output</rdfs:label>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://w3id.org/PBFAMP/Core#has_output_printed_build -->
+    <!-- http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#has_output_printed_build -->
 
-    <owl:ObjectProperty rdf:about="http://w3id.org/PBFAMP/Core#has_output_printed_build">
-        <rdfs:range rdf:resource="http://w3id.org/PBFAMP/Core#Printed_Build"/>
-        <rdfs:label>has output printed build</rdfs:label>
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#has_output_printed_build">
+        <rdfs:range rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#Printed_Build"/>
+        <rdfs:label xml:lang="en">has output printed build</rdfs:label>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://w3id.org/PBFAMP/Core#has_printing_medium -->
+    <!-- http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#has_printing_medium -->
 
-    <owl:ObjectProperty rdf:about="http://w3id.org/PBFAMP/Core#has_printing_medium">
-        <rdfs:domain rdf:resource="http://w3id.org/PBFAMP/Core#Printing_Process"/>
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#has_printing_medium">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#Printing_Process"/>
         <rdfs:range rdf:resource="http://www.w3.org/ns/prov#Entity"/>
-        <rdfs:label>has printing medium</rdfs:label>
+        <rdfs:label xml:lang="en">has printing medium</rdfs:label>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://w3id.org/PBFAMP/Core#inspects_printed_build -->
+    <!-- http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#inspects_printed_build -->
 
-    <owl:ObjectProperty rdf:about="http://w3id.org/PBFAMP/Core#inspects_printed_build">
-        <rdfs:domain rdf:resource="http://w3id.org/PBFAMP/Core#Inspection_And_Quality_Measurement_Process"/>
-        <rdfs:range rdf:resource="http://w3id.org/PBFAMP/Core#Printed_Build"/>
-        <rdfs:label>inspects printed build</rdfs:label>
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#inspects_printed_build">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#Inspection_And_Quality_Measurement_Process"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#Printed_Build"/>
+        <rdfs:label xml:lang="en">inspects printed build</rdfs:label>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://w3id.org/PBFAMP/Core#is_composed_of -->
+    <!-- http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#is_composed_of -->
 
-    <owl:ObjectProperty rdf:about="http://w3id.org/PBFAMP/Core#is_composed_of">
-        <rdfs:label>is composed of</rdfs:label>
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#is_composed_of">
+        <rdfs:label xml:lang="en">is composed of</rdfs:label>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://w3id.org/PBFAMP/Core#is_operated_by -->
+    <!-- http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#is_predecessor_process_of -->
 
-    <owl:ObjectProperty rdf:about="http://w3id.org/PBFAMP/Core#is_operated_by">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/ns/prov#wasAssociatedWith"/>
-        <rdfs:domain rdf:resource="http://w3id.org/PBFAMP/Core#Inspection_And_Quality_Measurement_Process"/>
-        <rdfs:domain rdf:resource="http://w3id.org/PBFAMP/Core#Post_Printing_Process"/>
-        <rdfs:range rdf:resource="http://w3id.org/PBFAMP/Core#Post_Printing_Method"/>
-        <rdfs:range rdf:resource="http://w3id.org/PBFAMP/Core#Quality_Measurement_Method"/>
-        <rdfs:label>is operated by</rdfs:label>
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#is_predecessor_process_of">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#Process"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#Process"/>
+        <rdfs:label xml:lang="en">is predecessor process of</rdfs:label>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://w3id.org/PBFAMP/Core#is_predecessor_process_of -->
+    <!-- http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#is_represented_by -->
 
-    <owl:ObjectProperty rdf:about="http://w3id.org/PBFAMP/Core#is_predecessor_process_of">
-        <rdfs:domain rdf:resource="http://w3id.org/PBFAMP/Core#Process"/>
-        <rdfs:range rdf:resource="http://w3id.org/PBFAMP/Core#Process"/>
-        <rdfs:label>is predecessor process of</rdfs:label>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://w3id.org/PBFAMP/Core#is_represented_by -->
-
-    <owl:ObjectProperty rdf:about="http://w3id.org/PBFAMP/Core#is_represented_by">
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#is_represented_by">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-        <rdfs:range rdf:resource="http://w3id.org/PBFAMP/Core#File"/>
-        <rdfs:label>is represented by</rdfs:label>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#File"/>
+        <rdfs:label xml:lang="en">is represented by</rdfs:label>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://w3id.org/PBFAMP/Core#is_sub_process_of -->
+    <!-- http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#is_sub_process_of -->
 
-    <owl:ObjectProperty rdf:about="http://w3id.org/PBFAMP/Core#is_sub_process_of">
-        <rdfs:domain rdf:resource="http://w3id.org/PBFAMP/Core#Process"/>
-        <rdfs:range rdf:resource="http://w3id.org/PBFAMP/Core#Process"/>
-        <rdfs:label>is sub process of</rdfs:label>
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#is_sub_process_of">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#Process"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#Process"/>
+        <rdfs:label xml:lang="en">is sub process of</rdfs:label>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://w3id.org/PBFAMP/Core#is_supervised_by -->
+    <!-- http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#is_supervised_by -->
 
-    <owl:ObjectProperty rdf:about="http://w3id.org/PBFAMP/Core#is_supervised_by">
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#is_supervised_by">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/ns/prov#wasAssociatedWith"/>
-        <rdfs:domain rdf:resource="http://w3id.org/PBFAMP/Core#Process"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#Process"/>
         <rdfs:range rdf:resource="http://www.w3.org/ns/prov#Agent"/>
-        <rdfs:label>is supervised by</rdfs:label>
+        <rdfs:label xml:lang="en">is supervised by</rdfs:label>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://w3id.org/PBFAMP/Core#is_used_to_print -->
+    <!-- http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#is_used_to_print -->
 
-    <owl:ObjectProperty rdf:about="http://w3id.org/PBFAMP/Core#is_used_to_print">
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#is_used_to_print">
         <rdfs:domain rdf:resource="http://www.w3.org/ns/prov#Entity"/>
-        <rdfs:range rdf:resource="http://w3id.org/PBFAMP/Core#Printed_Build"/>
-        <rdfs:label>is used to print</rdfs:label>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#Printed_Build"/>
+        <rdfs:label xml:lang="en">is used to print</rdfs:label>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://w3id.org/PBFAMP/Core#monitors -->
+    <!-- http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#monitors -->
 
-    <owl:ObjectProperty rdf:about="http://w3id.org/PBFAMP/Core#monitors">
-        <rdfs:domain rdf:resource="http://w3id.org/PBFAMP/Core#Process"/>
-        <rdfs:range rdf:resource="http://w3id.org/PBFAMP/Core#Process"/>
-        <rdfs:label>monitors</rdfs:label>
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#monitors">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#Process"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#Process"/>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://w3id.org/PBFAMP/Core#reflects_to -->
+    <!-- http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#uses_post_printing_method -->
 
-    <owl:ObjectProperty rdf:about="http://w3id.org/PBFAMP/Core#reflects_to">
-        <rdfs:domain rdf:resource="http://w3id.org/PBFAMP/Core#Inspection_And_Quality_Measurement_Process"/>
-        <rdfs:range rdf:resource="http://w3id.org/PBFAMP/Core#Slicing_Process"/>
-        <rdfs:label>reflects to</rdfs:label>
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#uses_post_printing_method">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#Post_Printing_Process"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#Post_Printing_Method"/>
+        <rdfs:label xml:lang="en">uses post printing method</rdfs:label>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://w3id.org/PBFAMP/Core#uses_post_printing_method -->
+    <!-- http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#uses_quality_measurement_method -->
 
-    <owl:ObjectProperty rdf:about="http://w3id.org/PBFAMP/Core#uses_post_printing_method">
-        <rdfs:domain rdf:resource="http://w3id.org/PBFAMP/Core#Post_Printing_Process"/>
-        <rdfs:range rdf:resource="http://w3id.org/PBFAMP/Core#Post_Printing_Method"/>
-        <rdfs:label>uses post printing method</rdfs:label>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://w3id.org/PBFAMP/Core#uses_quality_measurement_method -->
-
-    <owl:ObjectProperty rdf:about="http://w3id.org/PBFAMP/Core#uses_quality_measurement_method">
-        <rdfs:domain rdf:resource="http://w3id.org/PBFAMP/Core#Inspection_And_Quality_Measurement_Process"/>
-        <rdfs:range rdf:resource="http://w3id.org/PBFAMP/Core#Quality_Measurement_Method"/>
-        <rdfs:label>uses quality measurement method</rdfs:label>
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#uses_quality_measurement_method">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#Inspection_And_Quality_Measurement_Process"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#Quality_Measurement_Method"/>
+        <rdfs:label xml:lang="en">uses quality measurement method</rdfs:label>
     </owl:ObjectProperty>
     
 
@@ -296,22 +250,30 @@
     
 
 
-    <!-- http://w3id.org/PBFAMP/Core#has_end_date_time -->
+    <!-- http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#has_end_date_time -->
 
-    <owl:DatatypeProperty rdf:about="http://w3id.org/PBFAMP/Core#has_end_date_time">
-        <rdfs:domain rdf:resource="http://w3id.org/PBFAMP/Core#Process"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTimeStamp"/>
-        <rdfs:comment>has end date time</rdfs:comment>
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#has_end_date_time">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#Process"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <rdfs:label xml:lang="en">has end date time</rdfs:label>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://w3id.org/PBFAMP/Core#has_start_date_time -->
+    <!-- http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#has_height -->
 
-    <owl:DatatypeProperty rdf:about="http://w3id.org/PBFAMP/Core#has_start_date_time">
-        <rdfs:domain rdf:resource="http://w3id.org/PBFAMP/Core#Process"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTimeStamp"/>
-        <rdfs:comment>has start date time</rdfs:comment>
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#has_height">
+        <rdfs:label xml:lang="en">has height</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#has_start_date_time -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#has_start_date_time">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#Process"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <rdfs:label xml:lang="en">has start date time</rdfs:label>
     </owl:DatatypeProperty>
     
 
@@ -327,367 +289,398 @@
     
 
 
-    <!-- http://w3id.org/PBFAMP/Core#Additive_Manufacturing_Process -->
+    <!-- http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#Additive_Manufacturing_Process -->
 
-    <owl:Class rdf:about="http://w3id.org/PBFAMP/Core#Additive_Manufacturing_Process">
-        <rdfs:subClassOf rdf:resource="http://w3id.org/PBFAMP/Core#Process"/>
-        <rdfs:label>Additive Manufacturing Process</rdfs:label>
+    <owl:Class rdf:about="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#Additive_Manufacturing_Process">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#Process"/>
+        <rdfs:label xml:lang="en">Additive Manufacturing Process</rdfs:label>
     </owl:Class>
     
 
 
-    <!-- http://w3id.org/PBFAMP/Core#File -->
+    <!-- http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#File -->
 
-    <owl:Class rdf:about="http://w3id.org/PBFAMP/Core#File">
+    <owl:Class rdf:about="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#File">
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/Core#has_file_format"/>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#has_file_format"/>
                 <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onClass rdf:resource="http://w3id.org/PBFAMP/Core#File_Format"/>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#File_Format"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:label>File</rdfs:label>
     </owl:Class>
     
 
 
-    <!-- http://w3id.org/PBFAMP/Core#File_Format -->
+    <!-- http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#File_Format -->
 
-    <owl:Class rdf:about="http://w3id.org/PBFAMP/Core#File_Format">
-        <rdfs:label>File Format</rdfs:label>
+    <owl:Class rdf:about="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#File_Format">
+        <rdfs:label xml:lang="en">File Format</rdfs:label>
     </owl:Class>
     
 
 
-    <!-- http://w3id.org/PBFAMP/Core#File_Format_For_3D_Model -->
+    <!-- http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#File_Format_For_3D_Model -->
 
-    <owl:Class rdf:about="http://w3id.org/PBFAMP/Core#File_Format_For_3D_Model">
-        <rdfs:subClassOf rdf:resource="http://w3id.org/PBFAMP/Core#File_Format"/>
-        <owl:disjointWith rdf:resource="http://w3id.org/PBFAMP/Core#File_Format_For_Layer"/>
-        <owl:disjointWith rdf:resource="http://w3id.org/PBFAMP/Core#File_Format_For_Stratgy"/>
-        <rdfs:label>File Format For 3D Model</rdfs:label>
+    <owl:Class rdf:about="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#File_Format_For_3D_Model">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#File_Format"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#File_Format_For_Layer"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#File_Format_For_Stratgy"/>
+        <rdfs:label xml:lang="en">File Format For 3D Model</rdfs:label>
     </owl:Class>
     
 
 
-    <!-- http://w3id.org/PBFAMP/Core#File_Format_For_Layer -->
+    <!-- http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#File_Format_For_Layer -->
 
-    <owl:Class rdf:about="http://w3id.org/PBFAMP/Core#File_Format_For_Layer">
-        <rdfs:subClassOf rdf:resource="http://w3id.org/PBFAMP/Core#File_Format"/>
-        <owl:disjointWith rdf:resource="http://w3id.org/PBFAMP/Core#File_Format_For_Stratgy"/>
-        <rdfs:label>File Format For Layer</rdfs:label>
+    <owl:Class rdf:about="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#File_Format_For_Layer">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#File_Format"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#File_Format_For_Stratgy"/>
+        <rdfs:label xml:lang="en">File Format For Layer</rdfs:label>
     </owl:Class>
     
 
 
-    <!-- http://w3id.org/PBFAMP/Core#File_Format_For_Stratgy -->
+    <!-- http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#File_Format_For_Stratgy -->
 
-    <owl:Class rdf:about="http://w3id.org/PBFAMP/Core#File_Format_For_Stratgy">
-        <rdfs:subClassOf rdf:resource="http://w3id.org/PBFAMP/Core#File_Format"/>
-        <rdfs:label>File Format For Strategy</rdfs:label>
+    <owl:Class rdf:about="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#File_Format_For_Stratgy">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#File_Format"/>
+        <rdfs:label xml:lang="en">File Format For Stratgy</rdfs:label>
     </owl:Class>
     
 
 
-    <!-- http://w3id.org/PBFAMP/Core#Inspection_And_Quality_Measurement_Process -->
+    <!-- http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#Inspection_And_Quality_Measurement_Process -->
 
-    <owl:Class rdf:about="http://w3id.org/PBFAMP/Core#Inspection_And_Quality_Measurement_Process">
-        <rdfs:subClassOf rdf:resource="http://w3id.org/PBFAMP/Core#Process"/>
+    <owl:Class rdf:about="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#Inspection_And_Quality_Measurement_Process">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#Process"/>
         <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/Core#is_operated_by"/>
-                <owl:someValuesFrom rdf:resource="http://w3id.org/PBFAMP/Core#Quality_Measurement_Method"/>
-            </owl:Restriction>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#uses_quality_measurement_method"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#Quality_Measurement_Method"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#is_sub_process_of"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onClass rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#Powder_Bed_Fusion_Additive_Manufacturing_Process"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#inspects_printed_build"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                        <owl:onClass rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#Printed_Build"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
         </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/Core#reflects_to"/>
-                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
-                <owl:onClass rdf:resource="http://w3id.org/PBFAMP/Core#Slicing_Process"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/Core#is_sub_process_of"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onClass rdf:resource="http://w3id.org/PBFAMP/Core#Powder_Bed_Fusion_Additive_Manufacturing_Process"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:label>Inspection And Quality Measurement Process</rdfs:label>
+        <rdfs:label xml:lang="en">Inspection And Quality Measurement Process</rdfs:label>
     </owl:Class>
     
 
 
-    <!-- http://w3id.org/PBFAMP/Core#Layer_Digital_Twin -->
+    <!-- http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#Layer_Digital_Twin -->
 
-    <owl:Class rdf:about="http://w3id.org/PBFAMP/Core#Layer_Digital_Twin">
+    <owl:Class rdf:about="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#Layer_Digital_Twin">
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/Core#is_represented_by"/>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#is_represented_by"/>
                 <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
                 <owl:onClass>
                     <owl:Class>
                         <owl:intersectionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="http://w3id.org/PBFAMP/Core#File"/>
+                            <rdf:Description rdf:about="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#File"/>
                             <owl:Restriction>
-                                <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/Core#has_file_format"/>
+                                <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#has_file_format"/>
                                 <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                                <owl:onClass rdf:resource="http://w3id.org/PBFAMP/Core#File_Format_For_Layer"/>
+                                <owl:onClass rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#File_Format_For_Layer"/>
                             </owl:Restriction>
                         </owl:intersectionOf>
                     </owl:Class>
                 </owl:onClass>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:label>Layer Digital Twin</rdfs:label>
+        <rdfs:label xml:lang="en">Layer Digital Twin</rdfs:label>
     </owl:Class>
     
 
 
-    <!-- http://w3id.org/PBFAMP/Core#Layer_Of_Printed_Build -->
+    <!-- http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#Layer_Of_Printed_Build -->
 
-    <owl:Class rdf:about="http://w3id.org/PBFAMP/Core#Layer_Of_Printed_Build">
-        <rdfs:label>Layer Of Printed Build</rdfs:label>
+    <owl:Class rdf:about="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#Layer_Of_Printed_Build">
+        <rdfs:label xml:lang="en">Layer Of Printed Build</rdfs:label>
     </owl:Class>
     
 
 
-    <!-- http://w3id.org/PBFAMP/Core#Monitoring_Process -->
+    <!-- http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#Monitoring_Process -->
 
-    <owl:Class rdf:about="http://w3id.org/PBFAMP/Core#Monitoring_Process">
-        <rdfs:subClassOf rdf:resource="http://w3id.org/PBFAMP/Core#Process"/>
+    <owl:Class rdf:about="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#Monitoring_Process">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#Process"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/Core#is_sub_process_of"/>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#is_sub_process_of"/>
                 <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onClass rdf:resource="http://w3id.org/PBFAMP/Core#Powder_Bed_Fusion_Additive_Manufacturing_Process"/>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#Powder_Bed_Fusion_Additive_Manufacturing_Process"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/Core#monitors"/>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#monitors"/>
                 <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onClass rdf:resource="http://w3id.org/PBFAMP/Core#Printing_Process"/>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#Printing_Process"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:label>Monitoring Process</rdfs:label>
+        <rdfs:label xml:lang="en">Monitoring Process</rdfs:label>
     </owl:Class>
     
 
 
-    <!-- http://w3id.org/PBFAMP/Core#Post_Printing_Method -->
+    <!-- http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#Post_Printing_Method -->
 
-    <owl:Class rdf:about="http://w3id.org/PBFAMP/Core#Post_Printing_Method">
-        <rdfs:label>Posting Printing Method</rdfs:label>
+    <owl:Class rdf:about="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#Post_Printing_Method">
+        <rdfs:label xml:lang="en">Post Printing Method</rdfs:label>
     </owl:Class>
     
 
 
-    <!-- http://w3id.org/PBFAMP/Core#Post_Printing_Process -->
+    <!-- http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#Post_Printing_Process -->
 
-    <owl:Class rdf:about="http://w3id.org/PBFAMP/Core#Post_Printing_Process">
-        <rdfs:subClassOf rdf:resource="http://w3id.org/PBFAMP/Core#Process"/>
+    <owl:Class rdf:about="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#Post_Printing_Process">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#Process"/>
         <rdfs:subClassOf>
             <owl:Class>
                 <owl:intersectionOf rdf:parseType="Collection">
                     <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/Core#has_input_printed_build"/>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#has_input_printed_build"/>
                         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                        <owl:onClass rdf:resource="http://w3id.org/PBFAMP/Core#Printed_Build"/>
+                        <owl:onClass rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#Printed_Build"/>
                     </owl:Restriction>
                     <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/Core#has_output_printed_build"/>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#has_output_printed_build"/>
                         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                        <owl:onClass rdf:resource="http://w3id.org/PBFAMP/Core#Printed_Build"/>
+                        <owl:onClass rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#Printed_Build"/>
                     </owl:Restriction>
                 </owl:intersectionOf>
             </owl:Class>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/Core#uses_post_printing_method"/>
-                <owl:someValuesFrom rdf:resource="http://w3id.org/PBFAMP/Core#Post_Printing_Method"/>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#uses_post_printing_method"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#Post_Printing_Method"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/Core#is_sub_process_of"/>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#is_sub_process_of"/>
                 <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onClass rdf:resource="http://w3id.org/PBFAMP/Core#Powder_Bed_Fusion_Additive_Manufacturing_Process"/>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#Powder_Bed_Fusion_Additive_Manufacturing_Process"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/Core#is_predecessor_process_of"/>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#is_predecessor_process_of"/>
                 <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onClass rdf:resource="http://w3id.org/PBFAMP/Core#Inspection_And_Quality_Measurement_Process"/>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#Inspection_And_Quality_Measurement_Process"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:label>Post Printing Process</rdfs:label>
+        <rdfs:label xml:lang="en">Post Printing Process</rdfs:label>
     </owl:Class>
     
 
 
-    <!-- http://w3id.org/PBFAMP/Core#Powder_Bed_Fusion_Additive_Manufacturing_Process -->
+    <!-- http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#Powder_Bed_Fusion_Additive_Manufacturing_Process -->
 
-    <owl:Class rdf:about="http://w3id.org/PBFAMP/Core#Powder_Bed_Fusion_Additive_Manufacturing_Process">
-        <rdfs:subClassOf rdf:resource="http://w3id.org/PBFAMP/Core#Additive_Manufacturing_Process"/>
+    <owl:Class rdf:about="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#Powder_Bed_Fusion_Additive_Manufacturing_Process">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#Additive_Manufacturing_Process"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/Core#is_supervised_by"/>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#is_supervised_by"/>
                 <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
                 <owl:onClass rdf:resource="http://www.w3.org/ns/prov#Agent"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:label>Powder Bed Fusion Additive Manufacturing Process</rdfs:label>
+        <rdfs:label xml:lang="en">Powder Bed Fusion Additive Manufacturing Process</rdfs:label>
     </owl:Class>
     
 
 
-    <!-- http://w3id.org/PBFAMP/Core#Printed_Build -->
+    <!-- http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#Printed_Build -->
 
-    <owl:Class rdf:about="http://w3id.org/PBFAMP/Core#Printed_Build">
+    <owl:Class rdf:about="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#Printed_Build">
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/Core#is_composed_of"/>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#is_composed_of"/>
                 <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
-                <owl:onClass rdf:resource="http://w3id.org/PBFAMP/Core#Layer_Of_Printed_Build"/>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#Layer_Of_Printed_Build"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:label>Printed Build</rdfs:label>
+        <rdfs:label xml:lang="en">Printed Build</rdfs:label>
     </owl:Class>
     
 
 
-    <!-- http://w3id.org/PBFAMP/Core#Printing_Process -->
+    <!-- http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#Printing_Process -->
 
-    <owl:Class rdf:about="http://w3id.org/PBFAMP/Core#Printing_Process">
-        <rdfs:subClassOf rdf:resource="http://w3id.org/PBFAMP/Core#Process"/>
-        <rdfs:label>Printing Process</rdfs:label>
+    <owl:Class rdf:about="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#Printing_Process">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#Process"/>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#has_input"/>
+                        <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                        <owl:onClass rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#Layer_Digital_Twin"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#has_output_printed_build"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onClass rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#Printed_Build"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#has_printing_medium"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onClass rdf:resource="http://www.w3.org/ns/prov#Entity"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#is_sub_process_of"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onClass rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#Powder_Bed_Fusion_Additive_Manufacturing_Process"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#is_predecessor_process_of"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                        <owl:onClass rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#Post_Printing_Process"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="en">Printing Process</rdfs:label>
     </owl:Class>
     
 
 
-    <!-- http://w3id.org/PBFAMP/Core#Process -->
+    <!-- http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#Process -->
 
-    <owl:Class rdf:about="http://w3id.org/PBFAMP/Core#Process">
+    <owl:Class rdf:about="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#Process">
         <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/prov#Activity"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/Core#has_end_date_time"/>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#has_end_date_time"/>
                 <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#dateTimeStamp"/>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/Core#has_start_date_time"/>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#has_start_date_time"/>
                 <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#dateTimeStamp"/>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:label>Process</rdfs:label>
     </owl:Class>
     
 
 
-    <!-- http://w3id.org/PBFAMP/Core#Quality_Measurement_Method -->
+    <!-- http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#Quality_Measurement_Method -->
 
-    <owl:Class rdf:about="http://w3id.org/PBFAMP/Core#Quality_Measurement_Method">
-        <rdfs:label>Quality Measurement Method</rdfs:label>
+    <owl:Class rdf:about="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#Quality_Measurement_Method">
+        <rdfs:label xml:lang="en">Quality Measurement Method</rdfs:label>
     </owl:Class>
     
 
 
-    <!-- http://w3id.org/PBFAMP/Core#Slicing_Process -->
+    <!-- http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#Slicing_Process -->
 
-    <owl:Class rdf:about="http://w3id.org/PBFAMP/Core#Slicing_Process">
-        <rdfs:subClassOf rdf:resource="http://w3id.org/PBFAMP/Core#Process"/>
+    <owl:Class rdf:about="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#Slicing_Process">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#Process"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/Core#has_output"/>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#has_output"/>
                 <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
-                <owl:onClass rdf:resource="http://w3id.org/PBFAMP/Core#Layer_Digital_Twin"/>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#Layer_Digital_Twin"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/Core#has_input"/>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#is_predecessor_process_of"/>
                 <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onClass rdf:resource="http://w3id.org/PBFAMP/Core#3D_Model_Build"/>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#Printing_Process"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/Core#is_predecessor_process_of"/>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#is_sub_process_of"/>
                 <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onClass rdf:resource="http://w3id.org/PBFAMP/Core#Printing_Process"/>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#Powder_Bed_Fusion_Additive_Manufacturing_Process"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/Core#is_sub_process_of"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onClass rdf:resource="http://w3id.org/PBFAMP/Core#Powder_Bed_Fusion_Additive_Manufacturing_Process"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:label>Slicing Process</rdfs:label>
+        <rdfs:label xml:lang="en">Slicing Process</rdfs:label>
     </owl:Class>
     
 
 
-    <!-- http://w3id.org/PBFAMP/Core#3D_Model_Build -->
+    <!-- http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#3D_Model_Build -->
 
-    <owl:Class rdf:about="http://w3id.org/PBFAMP/Core#3D_Model_Build">
+    <owl:Class rdf:about="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#3D_Model_Build">
         <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/Core#is_represented_by"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onClass>
-                    <owl:Class>
-                        <owl:intersectionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="http://w3id.org/PBFAMP/Core#File"/>
-                            <owl:Restriction>
-                                <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/Core#has_file_format"/>
-                                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                                <owl:onClass rdf:resource="http://w3id.org/PBFAMP/Core#File_Format_For_3D_Model"/>
-                            </owl:Restriction>
-                        </owl:intersectionOf>
-                    </owl:Class>
-                </owl:onClass>
-            </owl:Restriction>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#is_represented_by"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onClass>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#File"/>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#has_file_format"/>
+                                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                                        <owl:onClass rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#File_Format_For_3D_Model"/>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:onClass>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#has_height"/>
+                        <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
         </rdfs:subClassOf>
-        <rdfs:label>3D Model Build</rdfs:label>
+        <rdfs:label xml:lang="en">3D Model Build</rdfs:label>
     </owl:Class>
     
 
 
-    <!-- http://w3id.org/PBFAMP/Core#3D_Model_Design_Process -->
+    <!-- http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#3D_Model_Design_Process -->
 
-    <owl:Class rdf:about="http://w3id.org/PBFAMP/Core#3D_Model_Design_Process">
-        <rdfs:subClassOf rdf:resource="http://w3id.org/PBFAMP/Core#Process"/>
+    <owl:Class rdf:about="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#3D_Model_Design_Process">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#Process"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/Core#has_output"/>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#has_output"/>
                 <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onClass rdf:resource="http://w3id.org/PBFAMP/Core#3D_Model_Build"/>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#3D_Model_Build"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/Core#is_predecessor_process_of"/>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#is_predecessor_process_of"/>
                 <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onClass rdf:resource="http://w3id.org/PBFAMP/Core#Slicing_Process"/>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#Slicing_Process"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/Core#is_sub_process_of"/>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#is_sub_process_of"/>
                 <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onClass rdf:resource="http://w3id.org/PBFAMP/Core#Powder_Bed_Fusion_Additive_Manufacturing_Process"/>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#Powder_Bed_Fusion_Additive_Manufacturing_Process"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:label>3D Model Design Process</rdfs:label>
+        <rdfs:label xml:lang="en">3D Model Design Process</rdfs:label>
     </owl:Class>
     
 
@@ -713,8 +706,8 @@
     <owl:Class rdf:about="http://www.w3.org/ns/prov#Entity">
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://w3id.org/PBFAMP/Core#is_used_to_print"/>
-                <owl:someValuesFrom rdf:resource="http://w3id.org/PBFAMP/Core#Printed_Build"/>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#is_used_to_print"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#Printed_Build"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:isDefinedBy rdf:resource="https://www.w3.org/TR/prov-o/"/>
@@ -733,37 +726,38 @@
     
 
 
-    <!-- http://w3id.org/PBFAMP/Core#obp -->
+    <!-- http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#obp -->
 
-    <owl:NamedIndividual rdf:about="http://w3id.org/PBFAMP/Core#obp">
-        <rdf:type rdf:resource="http://w3id.org/PBFAMP/Core#File_Format_For_Layer"/>
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#obp">
+        <rdf:type rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#File_Format_For_Layer"/>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://w3id.org/PBFAMP/Core#py -->
+    <!-- http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#py -->
 
-    <owl:NamedIndividual rdf:about="http://w3id.org/PBFAMP/Core#py">
-        <rdf:type rdf:resource="http://w3id.org/PBFAMP/Core#File_Format_For_Stratgy"/>
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#py">
+        <rdf:type rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#File_Format_For_Stratgy"/>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://w3id.org/PBFAMP/Core#stl -->
+    <!-- http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#stl -->
 
-    <owl:NamedIndividual rdf:about="http://w3id.org/PBFAMP/Core#stl">
-        <rdf:type rdf:resource="http://w3id.org/PBFAMP/Core#File_Format_For_3D_Model"/>
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#stl">
+        <rdf:type rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#File_Format_For_3D_Model"/>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://w3id.org/PBFAMP/Core#3mf -->
+    <!-- http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#3mf -->
 
-    <owl:NamedIndividual rdf:about="http://w3id.org/PBFAMP/Core#3mf">
-        <rdf:type rdf:resource="http://w3id.org/PBFAMP/Core#File_Format_For_3D_Model"/>
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#3mf">
+        <rdf:type rdf:resource="http://www.semanticweb.org/minab62/ontologies/2024/4/PBF-AMP-Onto_Core#File_Format_For_3D_Model"/>
     </owl:NamedIndividual>
 </rdf:RDF>
 
 
 
 <!-- Generated by the OWL API (version 4.5.26.2023-07-17T20:34:13Z) https://github.com/owlcs/owlapi -->
+
