@@ -1,0 +1,1798 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB/"
+     xml:base="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB">
+        <owl:imports rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#contains -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#contains">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:label xml:lang="en">contains</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#corresponds_to -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#corresponds_to">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:label xml:lang="en">corresponds to</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasBuildPlate -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasBuildPlate">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:label xml:lang="en">has build plate</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasScanStrategy -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasScanStrategy">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:label xml:lang="en">has scan strategy</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#isManufacturedBy -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#isManufacturedBy">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:label xml:lang="en">is manufactured by</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#isManufacturedFrom -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#isManufacturedFrom">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:label xml:lang="en">is manufactured from</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#isSubStrategyOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#isSubStrategyOf">
+        <rdfs:label xml:lang="en">is sub-strategy of</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasAListOfLayerThicknesses -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasAListOfLayerThicknesses">
+        <rdfs:label xml:lang="en">has a list of layer thicknesses</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasAddress -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasAddress">
+        <rdfs:label xml:lang="en">has address</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasBeamPower -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasBeamPower">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:label xml:lang="en">has beam power</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasBeamSpotSize -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasBeamSpotSize">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:label xml:lang="en">has beam spot size</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasDensity -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasDensity">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:label xml:lang="en">has density</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasDwellTime -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasDwellTime">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:label xml:lang="en">has dwell time</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasElectricalConductivity -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasElectricalConductivity">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:label xml:lang="en">has electrical conductivity</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasElectricalResistivity -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasElectricalResistivity">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:label xml:lang="en">has electrical resistivity</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasElectronBeamAbsorptionRate -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasElectronBeamAbsorptionRate">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:label xml:lang="en">has electron beam absorption rate</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasEnergyDensity -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasEnergyDensity">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:label xml:lang="en">has energy density</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasFormula -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasFormula">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:label xml:lang="en">has formula</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasMeltingPoint -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasMeltingPoint">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:label xml:lang="en">has melting point</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasNumberOfRepetitions -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasNumberOfRepetitions">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:label xml:lang="en">has number of repetitions</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasOffsetMargin -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasOffsetMargin">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:label xml:lang="en">has offset margin</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasOxidationResistance -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasOxidationResistance">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:label xml:lang="en">has oxidation resistance</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasPointDistance -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasPointDistance">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:label xml:lang="en">has point distance</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasRecoaterAdvancedSpeed -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasRecoaterAdvancedSpeed">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:label xml:lang="en">has recoater advanced speed</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasRecoaterBuildRepeats -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasRecoaterBuildRepeats">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:label xml:lang="en">has recoater build repeats</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasRecoaterDwellTime -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasRecoaterDwellTime">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:label xml:lang="en">has recoater dwell time</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasRecoaterFullRepeats -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasRecoaterFullRepeats">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:label xml:lang="en">has recoater full repeats</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasRecoaterRetractSpeed -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasRecoaterRetractSpeed">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:label xml:lang="en">has recoater retract speed</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasRotationAngle -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasRotationAngle">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:label xml:lang="en">has rotation angle</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasScanSpeed -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasScanSpeed">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:label xml:lang="en">has scan speed</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasShape -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasShape">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:label xml:lang="en">has shape</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasSize -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasSize">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:label xml:lang="en">has size</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasSpecificHeatCapacity -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasSpecificHeatCapacity">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:label xml:lang="en">has specific heat capacity</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasStrategyName -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasStrategyName">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:label xml:lang="en">has strategy name</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasSurfaceTexture -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasSurfaceTexture">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:label xml:lang="en">has surface texture</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasTargetTemperature -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasTargetTemperature">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:label xml:lang="en">has target temperature</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasThermalConductivity -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasThermalConductivity">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:label xml:lang="en">has thermal conductivity</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasThermalDiffusivity -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasThermalDiffusivity">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:label xml:lang="en">has thermal diffusivity</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasThickness -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasThickness">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:label xml:lang="en">has thickness</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasTimeout -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasTimeout">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:label xml:lang="en">has timeout</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasTriggeredStart -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasTriggeredStart">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:label xml:lang="en">has triggered start</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasUniformPointDistance -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasUniformPointDistance">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:label xml:lang="en">has uniform point distance</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#PBFBuildModelAMPart -->
+
+    <rdf:Description rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#PBFBuildModelAMPart">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#hasName"/>
+                        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#hasName"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#PBFPowder -->
+
+    <rdf:Description rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#PBFPowder">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#isManufacturedBy"/>
+                        <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#Manufacturer"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#isManufacturedFrom"/>
+                        <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#Material"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#isUsedToPrint"/>
+                <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFPrintedBuild"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFAMPartLayerMeltingPrintingProcessInstructions -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFAMPartLayerMeltingPrintingProcessInstructions">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#hasName"/>
+                                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                            </owl:Restriction>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#hasName"/>
+                                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#isRepresentedBy"/>
+                        <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#File"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#corresponds_to"/>
+                        <owl:allValuesFrom>
+                            <owl:Class>
+                                <owl:unionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#LayerOfPBFBuildModelAMPart"/>
+                                    <rdf:Description rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFAMPartLayerMeltingStrategy"/>
+                                </owl:unionOf>
+                            </owl:Class>
+                        </owl:allValuesFrom>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Electron Beam Powder Bed Fusion Additive Manufacturing Part Layer Printing Process Instructions are contained within &quot;EB-PBF Layer Melting Printing Process Instructions&quot;. These instructions define how the electron beam energy source should be used to locally melt and fuse a &quot;Layer Of PBF Build Model AM Part&quot;/s during an &quot;EB-PBF Printing Process&quot;.</rdfs:comment>
+        <rdfs:label xml:lang="en">EB-PBF AM Part Layer Melting Printing Process Instructions</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFAMPartLayerMeltingStrategy -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFAMPartLayerMeltingStrategy">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasEnergyDensity"/>
+                                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                            </owl:Restriction>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasEnergyDensity"/>
+                                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasOffsetMargin"/>
+                                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                            </owl:Restriction>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasOffsetMargin"/>
+                                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasRotationAngle"/>
+                                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                            </owl:Restriction>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasRotationAngle"/>
+                                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasUniformPointDistance"/>
+                                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                            </owl:Restriction>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasUniformPointDistance"/>
+                                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#isRepresentedBy"/>
+                        <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#File"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasScanStrategy"/>
+                <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFScanStrategy"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Electron Beam Powder Bed Fusion Additive Manufacturing Part Layer Melting Strategy consists in an &quot;EB-PBF Layer Melting Strategy&quot;. It is used locally to melt and fuse &quot;Layer Of PBF Build Model AM Part&quot;/s.</rdfs:comment>
+        <rdfs:label xml:lang="en">EB-PBF AM Part Layer Melting Strategy</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFAMPartLayerPost-HeatingPrintingProcessInstructions -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFAMPartLayerPost-HeatingPrintingProcessInstructions">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#hasName"/>
+                                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                            </owl:Restriction>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#hasName"/>
+                                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#isRepresentedBy"/>
+                        <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#File"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#corresponds_to"/>
+                        <owl:allValuesFrom>
+                            <owl:Class>
+                                <owl:unionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#LayerOfPBFBuildModelAMPart"/>
+                                    <rdf:Description rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFAMPartLayerPost-HeatingStrategy"/>
+                                </owl:unionOf>
+                            </owl:Class>
+                        </owl:allValuesFrom>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Electron Beam Powder Bed Fusion Additive Manufacturing Part Layer Post-Heating Printing Process Instructions are contained within &quot;EB-PBF Layer Post-Heating Printing Process Instructions&quot;. These instructions define how the electron beam energy source should be used to locally post-heat a &quot;Layer Of PBF Build Model AM Part&quot;/s during an &quot;EB-PBF Printing Process&quot;.</rdfs:comment>
+        <rdfs:label xml:lang="en">EB-PBF AM Part Layer Post-Heating Printing Process Instructions</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFAMPartLayerPost-HeatingStrategy -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFAMPartLayerPost-HeatingStrategy">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#isRepresentedBy"/>
+                        <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#File"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasNumberOfRepetitions"/>
+                        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasRotationAngle"/>
+                        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasNumberOfRepetitions"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasRotationAngle"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasScanStrategy"/>
+                <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFScanStrategy"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Electron Beam Powder Bed Fusion Additive Manufacturing Part Layer Post-Heating Strategy consists in an &quot;EB-PBF Layer Post-Heating Strategy&quot;. It is used locally to post-heat &quot;Layer Of PBF  Build Model AM Part&quot;/s.</rdfs:comment>
+        <rdfs:label xml:lang="en">EB-PBF AM Part Layer Post-Heating Strategy</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFAMPartLayerPre-HeatingPrintingProcessInstructions -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFAMPartLayerPre-HeatingPrintingProcessInstructions">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#isRepresentedBy"/>
+                        <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#File"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#corresponds_to"/>
+                        <owl:allValuesFrom>
+                            <owl:Class>
+                                <owl:unionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#LayerOfPBFBuildModelAMPart"/>
+                                    <rdf:Description rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFAMPartLayerPre-HeatingStrategy"/>
+                                </owl:unionOf>
+                            </owl:Class>
+                        </owl:allValuesFrom>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#hasName"/>
+                        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#hasName"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Electron Beam Powder Bed Fusion Additive Manufacturing Part Layer Pre-Heating Printing Process Instructions are contained within &quot;EB-PBF Layer Pre-Heating Printing Process Instructions&quot;. These instructions define how the electron beam energy source should be used to locally pre-heat &quot;PBF Powder&quot; specific to &quot;Layer Of PBF Build Model AM Part&quot;/s during an &quot;EB-PBF Printing Process&quot;.</rdfs:comment>
+        <rdfs:label xml:lang="en">EB-PBF AM Part Layer Pre-Heating Printing Process Instructions</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFAMPartLayerPre-HeatingStrategy -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFAMPartLayerPre-HeatingStrategy">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#isRepresentedBy"/>
+                        <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#File"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasNumberOfRepetitions"/>
+                        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasRotationAngle"/>
+                        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasNumberOfRepetitions"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasRotationAngle"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasScanStrategy"/>
+                <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFScanStrategy"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Electron Beam Powder Bed Fusion Additive Manufacturing Part Pre-Heating Strategy consists in an &quot;EB-PBF Layer Pre-Heating Strategy&quot; and it is used locally to pre-heat &quot;Layer Of PBF Build Model AM Part&quot;/s.</rdfs:comment>
+        <rdfs:label xml:lang="en">EB-PBF AM Part Layer Pre-Heating Strategy</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFBeamControlSlicingStrategy -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFBeamControlSlicingStrategy">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#PBFBeamControlSlicingStrategy"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#isRepresentedBy"/>
+                <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#File"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Electron Beam Powder Bed Fusion Beam Control Slicing Strategy is a set of strategies used in an &quot;EB-PBF Path Planning Process&quot; to plan the electron beam movements and electron beam-related properties (defined in &quot;EB-PBF Scan Strategy&quot;).</rdfs:comment>
+        <rdfs:label xml:lang="en">EB-PBF Beam Control Slicing Strategy</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFBuildCleaningMethod -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFBuildCleaningMethod">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFPost-PrintingMethod"/>
+        <rdfs:comment xml:lang="en">Electron Beam Powder Bed Fusion Build Cleaning Method is an &quot;EB-PBF Post-Printing Method&quot; that removes loose, partly sintered or un-melted powder from a &quot;PBF Printed Build&quot;.</rdfs:comment>
+        <rdfs:label xml:lang="en">EB-PBF Build Cleaning Method</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFBuildModelDesignProcess -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFBuildModelDesignProcess">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#PBFBuildModelDesignProcess"/>
+        <rdfs:comment xml:lang="en">Electron Beam Powder Bed Fusion Build Model Design Process is a &quot;PBF Build Model Design Process&quot; adapted for EB-PBF AM.</rdfs:comment>
+        <rdfs:label xml:lang="en">EB-PBF Build Model Design Process</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFBuildPlate -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFBuildPlate">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#isManufacturedBy"/>
+                        <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#Manufacturer"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#isManufacturedBy"/>
+                        <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                        <owl:onClass rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#Manufacturer"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasShape"/>
+                        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasSize"/>
+                        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasSurfaceTexture"/>
+                        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasThickness"/>
+                        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasShape"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasSize"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasSurfaceTexture"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasThickness"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#isManufacturedFrom"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#Material"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Electron Beam Powder Bed Fusion Build Plate is a plate which can be used as a stable foundation for an &quot;EB-PBF Printing Process&quot;.</rdfs:comment>
+        <rdfs:label xml:lang="en">EB-PBF Build Plate</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFBuildSeparationFromBuildPlateMethod -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFBuildSeparationFromBuildPlateMethod">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFPost-PrintingMethod"/>
+        <rdfs:comment xml:lang="en">Electron Beam Powder Bed Fusion Build Separation From Build Plate Method is an &quot;EB-PBF Post-Printing Method&quot; that separates a PBF Printed Build from an &quot;EB-PBF Build Plate&quot; at the intersection or near the bottom of the support structure.</rdfs:comment>
+        <rdfs:label xml:lang="en">EB-PBF Build Separation From Build Plate Method</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFFreemeltPrintingMachine -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFFreemeltPrintingMachine">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFPrintingMachine"/>
+        <rdfs:comment xml:lang="en">Electron Beam Powder Bed Fusion Freemelt Printing Machine is an &quot;EB-PBF Printing Machine&quot; manufactured by Freemelt company.</rdfs:comment>
+        <rdfs:label xml:lang="en">EB-PBF Freemelt Printing Machine</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFHeatTreatmentMethod -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFHeatTreatmentMethod">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFPost-PrintingMethod"/>
+        <rdfs:comment xml:lang="en">Electron Beam Powder Bed Fusion Heat Treatment Method is an &quot;EB-PBF Post-Printing Method&quot; that involves applying controlled heat and pressure to a &quot;PBF Printed Build&quot; to enhance the overall quality (e.g. increased density, reduced internal stress) of a &quot;PBF Printed Build&quot;.</rdfs:comment>
+        <rdfs:label xml:lang="en">EB-PBF Heat Treatment Method</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFLayerMeltingPrintingProcessInstructions -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFLayerMeltingPrintingProcessInstructions">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#isComposedOf"/>
+                        <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFAMPartLayerMeltingPrintingProcessInstructions"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#isRepresentedBy"/>
+                        <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#File"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#hasLayerNumber"/>
+                        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#hasLayerNumber"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#corresponds_to"/>
+                <owl:allValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#LayerOfPBFBuildModel"/>
+                            <rdf:Description rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFLayerMeltingStrategy"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Electron Beam Powder Bed Fusion Layer Melting Printing Process Instructions are the instructions that define how the electron beam energy source should be used to melt and fuse a &quot;Layer Of PBF Build Model&quot; during an &quot;EB-PBF Printing Process&quot;. These instructions are composed of &quot;EB-PBF AM Part Layer Melting Printing Process Instructions&quot; and are contained within an &quot;EB-PBF Printing Process Instructions&quot;.</rdfs:comment>
+        <rdfs:label xml:lang="en">EB-PBF Layer Melting Printing Process Instructions</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFLayerMeltingStrategy -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFLayerMeltingStrategy">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#isComposedOf"/>
+                        <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFAMPartLayerMeltingStrategy"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#isRepresentedBy"/>
+                        <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#File"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasScanStrategy"/>
+                        <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFScanStrategy"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#isSubStrategyOf"/>
+                        <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFBeamControlSlicingStrategy"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#isSubStrategyOf"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onClass rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFBeamControlSlicingStrategy"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Electron Beam Powder Bed Fusion Layer Melting Strategy is a sub-strategy of an &quot;EB-PBF Beam Control Slicing Strategy&quot; and it is composed of &quot;EB-PBF AM Part Layer Melting Strategy&quot;. This strategy is used to plan the melting and fusing of a layer of pre-heated &quot;PBF Powder&quot;.</rdfs:comment>
+        <rdfs:label xml:lang="en">EB-PBF Layer Melting Strategy</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFLayerPost-HeatingPrintingProcessInstructions -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFLayerPost-HeatingPrintingProcessInstructions">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#isComposedOf"/>
+                        <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFAMPartLayerPost-HeatingPrintingProcessInstructions"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#isRepresentedBy"/>
+                        <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#File"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#hasLayerNumber"/>
+                        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#hasLayerNumber"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#corresponds_to"/>
+                <owl:allValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#LayerOfPBFBuildModel"/>
+                            <rdf:Description rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFLayerPost-HeatingStrategy"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Electron Beam Powder Bed Fusion Layer Post-Heating Printing Process Instructions define how the electron beam energy source should be used to locally post-heat &quot;Layer Of PBF Printed Build&quot; during an &quot;EB-PBF Printing Process&quot;. These instructions are composed of &quot;EB-PBF AM Part Layer Post-Heating Printing Process Instructions&quot; and are contained within an &quot;EB-PBF Printing Process Instructions&quot;.</rdfs:comment>
+        <rdfs:label xml:lang="en">EB-PBF Layer Post-Heating Printing Process Instructions</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFLayerPost-HeatingStrategy -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFLayerPost-HeatingStrategy">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#isComposedOf"/>
+                        <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFAMPartLayerPost-HeatingStrategy"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#isRepresentedBy"/>
+                        <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#File"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasScanStrategy"/>
+                        <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFScanStrategy"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#isSubStrategyOf"/>
+                        <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFBeamControlSlicingStrategy"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#isSubStrategyOf"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onClass rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFBeamControlSlicingStrategy"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Electron Beam Powder Bed Fusion Layer Post Heating Strategy is a sub-strategy of an &quot;EB-PBF Beam Control Slicing Strategy&quot;. This heating strategy is used to maintain the thermal condition of the powder bed or provide additional cooling time before a new layer of powder is spread.</rdfs:comment>
+        <rdfs:label xml:lang="en">EB-PBF Layer Post-Heating Strategy</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFLayerPre-HeatingPrintingProcessInstructions -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFLayerPre-HeatingPrintingProcessInstructions">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#isComposedOf"/>
+                        <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFAMPartLayerPre-HeatingPrintingProcessInstructions"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#isRepresentedBy"/>
+                        <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#File"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#hasLayerNumber"/>
+                        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#hasLayerNumber"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#corresponds_to"/>
+                <owl:allValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#LayerOfPBFBuildModel"/>
+                            <rdf:Description rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFLayerPre-HeatingStrategy"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Electron Beam Powder Bed Fusion Layer Pre-Heating Printing Process Instructions define how the electron beam energy source should be used to pre-heat a layer of &quot;PBF Powder&quot; during an &quot;EB-PBF Printing Process&quot;. These instructions compose of &quot;EB-PBF AM Part Layer Pre-Heating Printing Process Instructions&quot; and are contained within an &quot;EB-PBF Printing Process Instructions&quot;.</rdfs:comment>
+        <rdfs:label xml:lang="en">EB-PBF Layer Pre-Heating Printing Process Instructions</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFLayerPre-HeatingStrategy -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFLayerPre-HeatingStrategy">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#isComposedOf"/>
+                        <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFAMPartLayerPre-HeatingStrategy"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#isRepresentedBy"/>
+                        <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#File"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasScanStrategy"/>
+                        <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFScanStrategy"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#isSubStrategyOf"/>
+                        <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFBeamControlSlicingStrategy"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#isSubStrategyOf"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onClass rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFBeamControlSlicingStrategy"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Electron Beam Powder Bed Fusion Layer Pre-Heating Strategy, a sub-strategy of an &quot;EB-PBF Beam Control Slicing Strategy&quot;, is used to plan globally the pre-heating of the powder bed for a layer. Pre-heating loosely sinters the powder particles by raising their temperature and serves different purposes such as preventing undesirable powder smoking .</rdfs:comment>
+        <rdfs:label xml:lang="en">EB-PBF Layer Pre-Heating Strategy</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFMachinePowderFeedControlPrintingProcessInstructions -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFMachinePowderFeedControlPrintingProcessInstructions">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#isRepresentedBy"/>
+                        <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#File"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#corresponds_to"/>
+                        <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFMachinePowderFeedControlStrategy"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#corresponds_to"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onClass rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFMachinePowderFeedControlStrategy"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Electron Beam Powder Bed Fusion Machine Powder Feed Control Printing Process Instructions are the instructions that define  how an &quot;EB-PBF Printing Machine&quot; controls the movements of its powder feeder during an &quot;EB-PBF Printing Process&quot;.</rdfs:comment>
+        <rdfs:label xml:lang="en">EB-PBF Machine Powder Feed Control Printing Process Instructions</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFMachinePowderFeedControlStrategy -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFMachinePowderFeedControlStrategy">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#PBFMachinePowderFeedControlStrategy"/>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasRecoaterAdvancedSpeed"/>
+                        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasRecoaterBuildRepeats"/>
+                        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasRecoaterDwellTime"/>
+                        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasRecoaterFullRepeats"/>
+                        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasRecoaterRetractSpeed"/>
+                        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasTriggeredStart"/>
+                        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasRecoaterAdvancedSpeed"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasRecoaterBuildRepeats"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasRecoaterDwellTime"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasRecoaterFullRepeats"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasRecoaterRetractSpeed"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasTriggeredStart"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#isRepresentedBy"/>
+                <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#File"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Electron Beam Powder Bed Fusion Machine Powder Feed Control Strategy is a strategy designed to plan the movements of the powder feeder in an &quot;EB-PBF Printing Machine&quot; during an &quot;EB-PBF Printing Process&quot;.</rdfs:comment>
+        <rdfs:label xml:lang="en">EB-PBF Machine Powder Feed Control Strategy</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFMonitoringProcess -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFMonitoringProcess">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#PBFMonitoringProcess"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#monitors"/>
+                <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFPrintingProcess"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Electron Beam Powder Bed Fusion Monitoring Process is a &quot;PBF Monitoring Process&quot;. It involves observing process stability and documenting measurable properties during an &quot;EB-PBF Printing Process&quot;.</rdfs:comment>
+        <rdfs:label xml:lang="en">EB-PBF Monitoring Process</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFPathPlanningProcess -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFPathPlanningProcess">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#PBFPathPlanningProcess"/>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#hasBeamControlSlicingStrategy"/>
+                        <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFBeamControlSlicingStrategy"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#hasInput"/>
+                        <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#LayerOfPBFBuildModel"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#hasPowderFeedControlStrategy"/>
+                        <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFMachinePowderFeedControlStrategy"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#hasOutput"/>
+                <owl:allValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFLayerMeltingPrintingProcessInstructions"/>
+                            <rdf:Description rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFLayerPost-HeatingPrintingProcessInstructions"/>
+                            <rdf:Description rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFLayerPre-HeatingPrintingProcessInstructions"/>
+                            <rdf:Description rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFStartHeatingPrintingProcessInstructions"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Electron Beam Powder Bed Fusion Path Planning Process is a &quot;PBF Path Planning Process&quot;.</rdfs:comment>
+        <rdfs:label xml:lang="en">EB-PBF Path Planning Process</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFPost-PrintingMethod -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFPost-PrintingMethod">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#PBFPost-PrintingMethod"/>
+        <rdfs:comment xml:lang="en">Electron Beam Powder Bed Fusion Post-Printing Method is a &quot;PBF Post-Printing Method&quot;.</rdfs:comment>
+        <rdfs:label xml:lang="en">EB-PBF Post-Printing Method</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFPrintedBuild -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFPrintedBuild">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#PBFPrintedBuild"/>
+        <rdfs:comment xml:lang="en">Electron Beam Powder Bed Fusion Printed Build is a &quot;PBF Printed Build&quot;. It is printed using electron beam as energy source and  &quot;PBF Powder&quot;.</rdfs:comment>
+        <rdfs:label xml:lang="en">EB-PBF Printed Build</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFPrintingMachine -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFPrintingMachine">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#PBFPrintingMachine"/>
+        <rdfs:comment xml:lang="en">Electron Beam Powder Bed Fusion Printing Machine is a &quot;PBF Printing Machine&quot; that uses electron beam as energy source.</rdfs:comment>
+        <rdfs:label xml:lang="en">EB-PBF Printing Machine</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFPrintingProcess -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFPrintingProcess">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#PBFPrintingProcess"/>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#hasInput"/>
+                        <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFPrintingProcessInstructions"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#hasOutputPrintedBuild"/>
+                        <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFPrintedBuild"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#hasPrintingMedium"/>
+                        <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#PBFPowder"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#isOperatedBy"/>
+                        <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFPrintingMachine"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasBuildPlate"/>
+                        <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFBuildPlate"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#isOperatedBy"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onClass rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFPrintingMachine"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasBuildPlate"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onClass rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFBuildPlate"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Electron Beam Powder Bed Fusion Printing Process is a &quot;PBF Printing Process&quot; utilizing an electron beam as the energy source.</rdfs:comment>
+        <rdfs:label xml:lang="en">EB-PBF Printing Process</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFPrintingProcessInstructions -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFPrintingProcessInstructions">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#PBFPrintingProcessInstructions"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#isRepresentedBy"/>
+                <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#File"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#contains"/>
+                <owl:allValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFLayerMeltingPrintingProcessInstructions"/>
+                            <rdf:Description rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFLayerPost-HeatingPrintingProcessInstructions"/>
+                            <rdf:Description rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFLayerPre-HeatingPrintingProcessInstructions"/>
+                            <rdf:Description rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFMachinePowderFeedControlPrintingProcessInstructions"/>
+                            <rdf:Description rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFStartHeatingPrintingProcessInstructions"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Electron Beam Powder Bed Fusion Printing Process Instructions are &quot;PBF Printing Process Instructions&quot; for an &quot;EB-PBF Printing Machine&quot;.</rdfs:comment>
+        <rdfs:label xml:lang="en">EB-PBF Printing Process Instructions</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFScanStrategy -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFScanStrategy">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasBeamPower"/>
+                        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasBeamSpotSize"/>
+                        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasDwellTime"/>
+                        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasPointDistance"/>
+                        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasScanSpeed"/>
+                        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasStrategyName"/>
+                        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasBeamPower"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasBeamSpotSize"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasDwellTime"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasPointDistance"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasScanSpeed"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasStrategyName"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Electron Beam Powder Bed Fusion Scan Strategy is a strategy used in an &quot;EB-PBF Path Planning Process&quot; to specify the movement pattern and parameters of the scanning electron beam (e.g. the electron beam power, beam spot size, beam speed).</rdfs:comment>
+        <rdfs:label xml:lang="en">EB-PBF Scan Strategy</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFSlicingProcess -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFSlicingProcess">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#PBFSlicingProcess"/>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#hasOutput"/>
+                        <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFPrintingProcessInstructions"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#isPredecessorProcessOf"/>
+                        <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFPrintingProcess"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Electron Beam Powder Bed Fusion Slicing Process is a &quot;PBF Slicing Process&quot;. The output of this process is &quot;EB-PBF Printing Process Instructions&quot;.</rdfs:comment>
+        <rdfs:label xml:lang="en">EB-PBF Slicing Process</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFStartHeatingPrintingProcessInstructions -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFStartHeatingPrintingProcessInstructions">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#isRepresentedBy"/>
+                        <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#File"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#corresponds_to"/>
+                        <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFStartHeatingStrategy"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#corresponds_to"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onClass rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFStartHeatingStrategy"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Electron Beam Powder Bed Fusion Start Heating Printing Process Instructions define how the &quot;EB-PBF Build plate&quot; should be heated using an electron beam energy source. These instructions are contained within an &quot;EB-PBF Printing Process Instructions&quot;.</rdfs:comment>
+        <rdfs:label xml:lang="en">EB-PBF Start Heating Printing Process Instructions</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFStartHeatingStrategy -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFStartHeatingStrategy">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#isSubStrategyOf"/>
+                        <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFBeamControlSlicingStrategy"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#isSubStrategyOf"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onClass rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFBeamControlSlicingStrategy"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasRotationAngle"/>
+                        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasShape"/>
+                        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasSize"/>
+                        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasTargetTemperature"/>
+                        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasTimeout"/>
+                        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasRotationAngle"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasShape"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasSize"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasTargetTemperature"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasTimeout"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#isRepresentedBy"/>
+                <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#File"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasScanStrategy"/>
+                <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFScanStrategy"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Electron Beam Powder Bed Fusion Start Heating Strategy is a sub-strategy of &quot;EB-PBF Slicing Strategy&quot;. It specifies the parameters used in planning for heating an &quot;EB-PBF Build Plate&quot;.</rdfs:comment>
+        <rdfs:label xml:lang="en">EB-PBF Start Heating Strategy</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFSupportRemovalMethod -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFSupportRemovalMethod">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#EB-PBFPost-PrintingMethod"/>
+        <rdfs:comment xml:lang="en">Electron Beam Powder Bed Fusion Support Removal Method is an &quot;EB-PBF Post-Printing Method&quot; that involves removing the support structures at their contact points with a &quot;PBF Printed Build&quot;.</rdfs:comment>
+        <rdfs:label xml:lang="en">EB-PBF Support Removal Method</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#Manufacturer -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#Manufacturer">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#hasName"/>
+                        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasAddress"/>
+                        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#hasName"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasAddress"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Manufacturer produces goods or products.</rdfs:comment>
+        <rdfs:label xml:lang="en">Manufacturer</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#Material -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#Material">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#hasName"/>
+                        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#hasName"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasDensity"/>
+                        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasElectricalConductivity"/>
+                        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasElectricalResistivity"/>
+                        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasElectronBeamAbsorptionRate"/>
+                        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasFormula"/>
+                        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasMeltingPoint"/>
+                        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasOxidationResistance"/>
+                        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasSpecificHeatCapacity"/>
+                        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasThermalConductivity"/>
+                        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasThermalDiffusivity"/>
+                        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasDensity"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasElectricalConductivity"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasElectricalResistivity"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasElectronBeamAbsorptionRate"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasFormula"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasMeltingPoint"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasOxidationResistance"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasSpecificHeatCapacity"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasThermalConductivity"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:EB#hasThermalDiffusivity"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Material refers to a matter from which a thing is or can be made.</rdfs:comment>
+        <rdfs:label xml:lang="en">Material</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/ns/prov#Entity -->
+
+    <rdf:Description rdf:about="http://www.w3.org/ns/prov#Entity">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#isUsedToPrint"/>
+                <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#PBFPrintedBuild"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.26.2023-07-17T20:34:13Z) https://github.com/owlcs/owlapi -->
+
