@@ -1,0 +1,4 @@
+owlready2==0.48
+PyQt6==6.9.1
+PyQt6_sip==13.10.0
+rdflib==7.1.4
