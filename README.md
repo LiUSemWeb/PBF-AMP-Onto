@@ -5,7 +5,6 @@ Please note that ontology/0.1 refers to the earlier version of PBF-AMP-Onto, whi
 
 The folder PBF-AMP-KG-Workbench contains all the source code and necessary files required to run the PBF-AMP-KG-Workbench tool.
 
-PBF-AMP-KG-Workbench is an ontology-based data entry inter-
-face that helps users structure (or map) their data according to
+PBF-AMP-KG-Workbench is an ontology-based data entry interface that helps users structure (or map) their data according to
 PBF-AMP-Onto, making the data entry process easier and more
 consistent.
