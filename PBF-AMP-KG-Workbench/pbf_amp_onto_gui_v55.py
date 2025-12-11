@@ -3,26 +3,22 @@ import os
 import pathlib
 import pickle
 import sys
-
 from PyQt6.QtGui import QIcon
 from PyQt6.QtPdf import QPdfDocument
 from PyQt6.QtPdfWidgets import QPdfView
 from rdflib import BNode, URIRef, Graph, Namespace, RDF
 from PyQt6.QtWidgets import QApplication, QMainWindow, QLineEdit, QDateTimeEdit, QRadioButton, QListWidget, QComboBox, \
     QMenu, QDialog, QCheckBox, QVBoxLayout, QLabel
-from PyQt6.QtWidgets import QMessageBox, QPlainTextEdit, QFileDialog
+from PyQt6.QtWidgets import QMessageBox, QPlainTextEdit, QFileDialog, QWidget
 from pbf_mainwindow_40 import Ui_MainWindow  # This is the converted UI file
 from Edit_Build_Model_v3 import Ui_Dialog  # This is the converted UI file
 from DisplayConceptsDefinitins import Ui_Form
 from Material_view_v1 import Material_View_Window
 from PyQt6.QtCore import QTimer, Qt, QEvent, QDateTime
-from PyQt6.QtWidgets import QWidget
 import re
 from rdflib import Graph, Namespace, URIRef, Literal
-from rdflib.namespace import RDF, RDFS, OWL, XSD
+from rdflib.namespace import RDF, RDFS, OWL, XSD, split_uri
 import json
-
-
 # ************************************************************************************************
 class PBF_AM_Process_Chain_class:
     def __init__(self, project_name=None, project_type=None, project_start_date_value=None,
@@ -35,15 +31,11 @@ class PBF_AM_Process_Chain_class:
         self.project_status = project_status
         self.project_comment = project_comment
         self.project_selected_supervisors = project_selected_supervisors
-
-
 # ******************************
 class Supervisor:
     def __init__(self, supervisor_name=None, supervisor_comment=None):
         self.supervisor_name = supervisor_name
         self.supervisor_comment = supervisor_comment
-
-
 # ******************************
 class Build_Model_Support_class:
     def __init__(self, support_name=None, support_file_path=None, support_file_format=None, support_comment=None):
@@ -51,8 +43,6 @@ class Build_Model_Support_class:
         self.support_file_path = support_file_path
         self.support_file_format = support_file_format
         self.support_comment = support_comment
-
-
 # ******************************
 class Build_Model_AM_Part_class:
     def __init__(self, am_part_name=None, am_part_dimension=None, am_part_file_path=None,
@@ -62,8 +52,6 @@ class Build_Model_AM_Part_class:
         self.am_part_file_path = am_part_file_path
         self.am_part_file_format = am_part_file_format
         self.am_part_comment = am_part_comment
-
-
 # ******************************
 class Build_Model_Design_Process_class:
     def __init__(self, ModelDesign_name=None, ModelDesign_start_date=None, ModelDesign_end_date=None,
@@ -74,8 +62,6 @@ class Build_Model_Design_Process_class:
         self.ModelDesign_completion_status = ModelDesign_completion_status
         self.ModelDesign_comment = ModelDesign_comment
         self.ModelDesign_output = ModelDesign_output
-
-
 # ******************************
 class output_Build_Model_Design_Process_class:
     def __init__(self, build_model_name=None, build_model_dimension=None, build_model_file_path=None,
@@ -88,8 +74,6 @@ class output_Build_Model_Design_Process_class:
         self.has_build_model_am_part = []
         self.has_support_for_build_model_am_part = []
         self.build_model_parts_supports = build_model_parts_supports
-
-
 # ******************************
 class Slicing_Process_class:
     def __init__(self, SlicingProcess_name=None, SlicingProcess_software=None,
@@ -104,8 +88,6 @@ class Slicing_Process_class:
         self.SlicingProcess_comment = SlicingProcess_comment
         self.SlicingProcess_input = SlicingProcess_input
         self.SlicingProcess_output = SlicingProcess_output
-
-
 # ******************************
 class Printing_Process_Instructions_class:
     def __init__(self, ppi_name=None, ppi_file=None, ppi_file_format=None, ppi_list_layer_thicknesses=None,
@@ -122,8 +104,6 @@ class Printing_Process_Instructions_class:
         self.ppi_layer_pre_heating_ppi = ppi_layer_pre_heating_ppi
         self.ppi_layer_post_heating_ppi = ppi_layer_post_heating_ppi
         self.ppi_layer_melting_heating_ppi = ppi_layer_melting_heating_ppi
-
-
 # ******************************
 class Layer_Of_Build_Model_class:
     def __init__(self, Layer_Of_Build_Model_name=None, Layer_Of_Build_Model_file=None,
@@ -138,8 +118,6 @@ class Layer_Of_Build_Model_class:
         self.Layer_Of_Build_Model_layer_num = Layer_Of_Build_Model_layer_num
         self.Layer_Of_Build_Model_comment = Layer_Of_Build_Model_comment
         self.Layer_Of_Build_Model_consists_of_am_part_layer = Layer_Of_Build_Model_consists_of_am_part_layer
-
-
 # ******************************
 class Monitoring_Process_class:
     def __init__(self, monitoring_process_name=None, monitoring_process_start_date=None,
@@ -154,8 +132,6 @@ class Monitoring_Process_class:
         self.monitoring_process_output_file = monitoring_process_output_file
         self.monitoring_process_printing_process = monitoring_process_printing_process
         self.monitoring_process_receives_data_from = monitoring_process_receives_data_from
-
-
 # ******************************
 class Post_Printing_Method:
     def __init__(self, post_printing_method_name=None, post_printing_method_type=None,
@@ -163,8 +139,6 @@ class Post_Printing_Method:
         self.post_printing_method_name = post_printing_method_name
         self.post_printing_method_type = post_printing_method_type
         self.post_printing_method_comment = post_printing_method_comment
-
-
 # ******************************
 class Post_Printing_Process_class:
     def __init__(self, post_printing_process_name=None, post_printing_process_status=None,
@@ -176,16 +150,12 @@ class Post_Printing_Process_class:
         self.post_printing_process_end_date = post_printing_process_end_date
         self.post_printing_process_used_methods = post_printing_process_used_methods
         self.post_printing_process_comment = post_printing_process_comment
-
-
 # ******************************
 class Testing_Method_class:
     def __init__(self, TestingMethod_name=None, TestingMethod_type=None, TestingMethod_comment=None):
         self.TestingMethod_name = TestingMethod_name
         self.TestingMethod_type = TestingMethod_type
         self.TestingMethod_comment = TestingMethod_comment
-
-
 # ******************************
 class applied_testing_method_class:
     def __init__(self, applied_testing_method_name=None, applied_testing_method_result=None,
@@ -193,8 +163,6 @@ class applied_testing_method_class:
         self.applied_testing_method_name = applied_testing_method_name
         self.applied_testing_method_result = applied_testing_method_result
         self.applied_testing_method_comment = applied_testing_method_comment
-
-
 # ******************************
 class Testing_Process_class:
     def __init__(self, TestingProcess_name=None, TestingProcess_status=None, TestingProcess_start_date=None,
@@ -213,14 +181,12 @@ class Testing_Process_class:
         self.TestingProcess_testing_method = TestingProcess_testing_method
         self.TestingProcess_testing_data = TestingProcess_testing_data
         self.TestingProcess_applied_methods_results = TestingProcess_applied_methods_results
-
-
 # ******************************
 class Printing_Process_class:
     def __init__(self, printing_process_name=None, printing_process_status=None, printing_process_start_date=None,
                  printing_process_end_date=None,
                  printing_process_comment=None, printing_process_build_plate=None,
-                 printing_process_printing_meduim=None,
+                 printing_process_printing_medium=None,
                  printing_process_printing_machine=None, printing_process_instructions=None,
                  printing_process_output=None):
         self.printing_process_name = printing_process_name
@@ -229,20 +195,16 @@ class Printing_Process_class:
         self.printing_process_end_date = printing_process_end_date
         self.printing_process_comment = printing_process_comment
         self.printing_process_build_plate = printing_process_build_plate
-        self.printing_process_printing_meduim = printing_process_printing_meduim
+        self.printing_process_printing_medium = printing_process_printing_medium
         self.printing_process_printing_machine = printing_process_printing_machine
         self.printing_process_instructions = printing_process_instructions
         self.printing_process_output = printing_process_output
-
-
 # ******************************
 class Sensor_class:
     def __init__(self, sensor_name=None, sensor_type=None, recorded_data_path=None):
         self.sensor_name = sensor_name
         self.sensor_type = sensor_type
         self.recorded_data_path = recorded_data_path
-
-
 # ******************************
 class Printing_Machine_class:
     def __init__(self, printing_machine_name=None, printing_machine_brand=None, printing_machine_comment=None,
@@ -251,30 +213,22 @@ class Printing_Machine_class:
         self.printing_machine_comment = printing_machine_comment
         self.printing_machine_sensor_info = printing_machine_sensor_info
         self.printing_machine_brand = printing_machine_brand
-
-
 # ******************************
 class Printed_Build_AM_Part_class:
     def __init__(self, Printed_Build_AM_Part_name=None, Printed_Build_AM_Part_comment=None):
         self.Printed_Build_AM_Part_name = Printed_Build_AM_Part_name
         self.Printed_Build_AM_Part_comment = Printed_Build_AM_Part_comment
-
-
 # ******************************
 class Printed_Build_Support_class:
     def __init__(self, Printed_Build_Support_name=None, Printed_Build_Support_comment=None):
         self.Printed_Build_Support_name = Printed_Build_Support_name
         self.Printed_Build_Support_comment = Printed_Build_Support_comment
-
-
 # ******************************
 class Printed_Build_class:
     def __init__(self, Printed_Build_name=None, Printed_Build_comment=None, Printed_Build_AM_Parts_and_supports=None):
         self.Printed_Build_name = Printed_Build_name
         self.Printed_Build_comment = Printed_Build_comment
         self.Printed_Build_AM_Parts_and_supports = Printed_Build_AM_Parts_and_supports
-
-
 # ******************************
 class Material_class:
     def __init__(self, material_name=None, material_melting_point=None, material_oxidation_resistance=None,
@@ -295,18 +249,14 @@ class Material_class:
         self.material_thermal_conductivity = material_thermal_conductivity
         self.material_thermal_diffusivity = material_thermal_diffusivity
         self.material_comment = material_comment
-
-
 # ******************************
 class Manufacturer_class:
     def __init__(self, manufacturer_name=None, manufacturer_address=None, manufacturer_comment=None):
         self.manufacturer_name = manufacturer_name
         self.manufacturer_address = manufacturer_address
         self.manufacturer_comment = manufacturer_comment
-
-
 # ******************************
-class Printing_Madium_class:
+class Printing_Medium_class:
     def __init__(self, printing_medium_name=None, printing_medium_status=None, printing_medium_type=None,
                  printing_medium_material=None, printing_medium_particle_size=None,
                  printing_medium_powder_morphology=None, printing_medium_manufacturer=None,
@@ -319,8 +269,6 @@ class Printing_Madium_class:
         self.printing_medium_powder_morphology = printing_medium_powder_morphology
         self.printing_medium_manufacturer = printing_medium_manufacturer
         self.printing_medium_comment = printing_medium_comment
-
-
 # ******************************
 class Build_Plate_class:
     def __init__(self, build_plate_name=None, build_plate_size=None, build_plate_thickness=None,
@@ -335,8 +283,6 @@ class Build_Plate_class:
         self.build_plate_manufacturer = build_plate_manufacturer
         self.build_plate_material = build_plate_material
         self.build_plate_comment = build_plate_comment
-
-
 # ******************************
 class layer_of_Build_Model_AM_Part_class:
     def __init__(self, layer_of_Build_Model_AM_Part_name=None, layer_of_Build_Model_AM_Part_area=None,
@@ -347,8 +293,6 @@ class layer_of_Build_Model_AM_Part_class:
         self.layer_of_Build_Model_AM_Part_file = layer_of_Build_Model_AM_Part_file
         self.layer_of_Build_Model_AM_Part_file_format = layer_of_Build_Model_AM_Part_file_format
         self.layer_of_Build_Model_AM_Part_comment = layer_of_Build_Model_AM_Part_comment
-
-
 # ******************************
 class Machine_Powder_Feed_Control_Strategy_class:
     def __init__(self, Machine_powder_s_name=None, Machine_powder_s_file=None, Machine_powder_s_file_format=None,
@@ -366,8 +310,6 @@ class Machine_Powder_Feed_Control_Strategy_class:
         self.Machine_powder_s_recoater_build_repeats = Machine_powder_s_recoater_build_repeats
         self.Machine_powder_s_comment = Machine_powder_s_comment
         self.Machine_powder_s_file_format = Machine_powder_s_file_format
-
-
 # ******************************
 class Machine_Powder_Feed_Control_PPI_class:
     def __init__(self, Machine_powder_s_PPI_name=None, Machine_powder_s_PPI_file=None,
@@ -376,8 +318,6 @@ class Machine_Powder_Feed_Control_PPI_class:
         self.Machine_powder_s_PPI_file = Machine_powder_s_PPI_file
         self.Machine_powder_s_PPI_file_format = Machine_powder_s_PPI_file_format
         self.Machine_powder_s_PPI_correspond_strategy = Machine_powder_s_PPI_correspond_strategy
-
-
 # ******************************
 class Scan_Strategy_class:
     def __init__(self, scan_strategy_name=None, scan_strategy_beam_spot_size=None, scan_strategy_dwell_time=None,
@@ -391,8 +331,6 @@ class Scan_Strategy_class:
         self.scan_strategy_scan_speed = scan_strategy_scan_speed
         self.scan_strategy_beam_power = scan_strategy_beam_power
         self.scan_strategy_comment = scan_strategy_comment
-
-
 # ******************************
 class Beam_Control_Slicing_Strategy_class:
     def __init__(self, beam_control_slic_strategy_name=None, beam_control_slic_strategy_file=None,
@@ -408,8 +346,6 @@ class Beam_Control_Slicing_Strategy_class:
         self.beam_control_slic_strategy_melting = beam_control_slic_strategy_melting
         self.beam_control_slic_strategy_post_heating = beam_control_slic_strategy_post_heating
         self.beam_control_start_heating_strategy = beam_control_start_heating_strategy
-
-
 # ******************************
 class Start_Heating_Strategy_class:
     def __init__(self, start_heat_name=None, start_heat_size=None, start_heat_timeout=None,
@@ -427,8 +363,6 @@ class Start_Heating_Strategy_class:
         self.start_heat_file_format = start_heat_file_format
         self.start_heat_target_temp = start_heat_target_temp
         self.start_heat_comment = start_heat_comment
-
-
 # ******************************
 class Start_Heating_PPI_class:
     def __init__(self, start_heat_ppi_name=None, start_heat_ppi_file=None, start_heat_ppi_file_format=None,
@@ -437,8 +371,6 @@ class Start_Heating_PPI_class:
         self.start_heat_ppi_file = start_heat_ppi_file
         self.start_heat_ppi_file_format = start_heat_ppi_file_format
         self.start_heat_ppi_correspond_start_heat_strategy = start_heat_ppi_correspond_start_heat_strategy
-
-
 # ******************************
 class Layer_Pre_Heating_Strategy_class:
     def __init__(self, pre_heat_strategy_name=None, pre_heat_strategy_scan_strategy=None,
@@ -450,8 +382,7 @@ class Layer_Pre_Heating_Strategy_class:
         self.pre_heat_strategy_file_format = pre_heat_strategy_file_format
         self.pre_heat_strategy_comment = pre_heat_strategy_comment
         self.pre_heat_strategy_composed_of_AM_Parts = pre_heat_strategy_composed_of_AM_Parts
-
-
+# ******************************
 class AM_Part_Layer_Pre_Heating_Strategy_class:
     def __init__(self, AM_part_pre_heat_strategy_name=None, AM_part_pre_heat_strategy_file=None,
                  AM_part_pre_heat_strategy_file_format=None, AM_part_pre_heat_strategy_scan_strategy=None,
@@ -464,8 +395,7 @@ class AM_Part_Layer_Pre_Heating_Strategy_class:
         self.AM_part_pre_heat_strategy_rotation_angle = AM_part_pre_heat_strategy_rotation_angle
         self.AM_part_pre_heat_strategy_number_repetitions = AM_part_pre_heat_strategy_number_repetitions
         self.AM_part_pre_heat_strategy_number_comment = AM_part_pre_heat_strategy_number_comment
-
-
+# ******************************
 class Layer_Pre_Heating_PPI_class:
     def __init__(self, pre_heat_ppi_name=None, pre_heat_ppi_layer_num=None, pre_heat_ppi_file=None,
                  pre_heat_ppi_file_format=None,
@@ -479,8 +409,7 @@ class Layer_Pre_Heating_PPI_class:
         self.pre_heat_ppi_correspond_pre_heating_strategy = pre_heat_ppi_correspond_pre_heating_strategy
         self.pre_heat_ppi_comment = pre_heat_ppi_comment
         self.pre_heat_ppi_composed_AM_part_Layer_pre_heat_ppi = pre_heat_ppi_composed_AM_part_Layer_pre_heat_ppi
-
-
+# ******************************
 class AM_Part_Layer_Pre_Heating_PPI_class:
     def __init__(self, AM_part_pre_heat_ppi_name=None, AM_part_pre_heat_ppi_file=None,
                  AM_part_pre_heat_ppi_file_format=None,
@@ -494,8 +423,6 @@ class AM_Part_Layer_Pre_Heating_PPI_class:
         self.AM_part_pre_heat_ppi_related_am_part = AM_part_pre_heat_ppi_related_am_part
         self.AM_part_pre_heat_ppi_correspond_layer_build_model = AM_part_pre_heat_ppi_correspond_layer_build_model
         self.AM_part_pre_heat_ppi_correspond_AM_part_pre_heat_strategy = AM_part_pre_heat_ppi_correspond_AM_part_pre_heat_strategy
-
-
 # ******************************
 class Layer_Post_Heating_Strategy_class:
     def __init__(self, post_heat_strategy_name=None, post_heat_strategy_scan_strategy=None,
@@ -507,8 +434,7 @@ class Layer_Post_Heating_Strategy_class:
         self.post_heat_strategy_file_format = post_heat_strategy_file_format
         self.post_heat_strategy_comment = post_heat_strategy_comment
         self.post_heat_strategy_composed_of_AM_Parts = post_heat_strategy_composed_of_AM_Parts
-
-
+# ******************************
 class AM_Part_Layer_Post_Heating_Strategy_class:
     def __init__(self, AM_part_post_heat_strategy_name=None, AM_part_post_heat_strategy_file=None,
                  AM_part_post_heat_strategy_file_format=None, AM_part_post_heat_strategy_scan_strategy=None,
@@ -521,8 +447,7 @@ class AM_Part_Layer_Post_Heating_Strategy_class:
         self.AM_part_post_heat_strategy_rotation_angle = AM_part_post_heat_strategy_rotation_angle
         self.AM_part_post_heat_strategy_number_repetitions = AM_part_post_heat_strategy_number_repetitions
         self.AM_part_post_heat_strategy_number_comment = AM_part_post_heat_strategy_number_comment
-
-
+# ******************************
 class Layer_Post_Heating_PPI_class:
     def __init__(self, post_heat_ppi_name=None, post_heat_ppi_layer_num=None, post_heat_ppi_file=None,
                  post_heat_ppi_file_format=None,
@@ -536,8 +461,7 @@ class Layer_Post_Heating_PPI_class:
         self.post_heat_ppi_correspond_post_heating_strategy = post_heat_ppi_correspond_post_heating_strategy
         self.post_heat_ppi_comment = post_heat_ppi_comment
         self.post_heat_ppi_composed_AM_part_Layer_post_heat_ppi = post_heat_ppi_composed_AM_part_Layer_post_heat_ppi
-
-
+# ******************************
 class AM_Part_Layer_Post_Heating_PPI_class:
     def __init__(self, AM_part_post_heat_ppi_name=None, AM_part_post_heat_ppi_file=None,
                  AM_part_post_heat_ppi_file_format=None,
@@ -551,31 +475,24 @@ class AM_Part_Layer_Post_Heating_PPI_class:
         self.AM_part_post_heat_ppi_related_am_part = AM_part_post_heat_ppi_related_am_part
         self.AM_part_post_heat_ppi_correspond_layer_build_model = AM_part_post_heat_ppi_correspond_layer_build_model
         self.AM_part_post_heat_ppi_correspond_AM_part_post_heat_strategy = AM_part_post_heat_ppi_correspond_AM_part_post_heat_strategy
-
-
 # ******************************
 class EditWindow(QDialog):
     def __init__(self, parent=None):
         super().__init__(parent)
         self.ui = Ui_Dialog()
         self.ui.setupUi(self)
-
-
+# ******************************
 class ConceptsDefinitionsWindow(QDialog):
     def __init__(self, parent=None):
         super().__init__(parent)
         self.ui = Ui_Form()
         self.ui.setupUi(self)
-
-
 # ******************************
 class MaterialWindow(QDialog):
     def __init__(self, parent=None):
         super().__init__(parent)
         self.ui = Material_View_Window()
         self.ui.setupUi(self)
-
-
 # ******************************
 class Layer_Melting_Strategy_class:
     def __init__(self, melting_strategy_name=None, melting_strategy_scan_strategy=None,
@@ -587,8 +504,7 @@ class Layer_Melting_Strategy_class:
         self.melting_strategy_file_format = melting_strategy_file_format
         self.melting_strategy_comment = melting_strategy_comment
         self.melting_strategy_composed_of_AM_Parts = melting_strategy_composed_of_AM_Parts
-
-
+# ******************************
 class AM_Part_Layer_Melting_Strategy_class:
     def __init__(self, AM_part_melting_strategy_name=None, AM_part_melting_strategy_file=None,
                  AM_part_melting_strategy_file_format=None, AM_part_melting_strategy_scan_strategy=None,
@@ -605,8 +521,7 @@ class AM_Part_Layer_Melting_Strategy_class:
         self.AM_part_melting_strategy_energy_density = AM_part_melting_strategy_energy_density
         self.AM_part_melting_strategy_offset_margin = AM_part_melting_strategy_offset_margin
         self.AM_part_melting_strategy_comment = AM_part_melting_strategy_comment
-
-
+# ******************************
 class Layer_Melting_PPI_class:
     def __init__(self, melting_ppi_name=None, melting_ppi_layer_num=None, melting_ppi_file=None,
                  melting_ppi_file_format=None,
@@ -620,8 +535,7 @@ class Layer_Melting_PPI_class:
         self.melting_ppi_correspond_melting_strategy = melting_ppi_correspond_melting_strategy
         self.melting_ppi_comment = melting_ppi_comment
         self.melting_ppi_composed_AM_part_Layer_melting_ppi = melting_ppi_composed_AM_part_Layer_melting_ppi
-
-
+# ******************************
 class AM_Part_Layer_Melting_PPI_class:
     def __init__(self, AM_part_melting_ppi_name=None, AM_part_melting_ppi_file=None,
                  AM_part_melting_ppi_file_format=None,
@@ -635,8 +549,6 @@ class AM_Part_Layer_Melting_PPI_class:
         self.AM_part_melting_ppi_related_am_part = AM_part_melting_ppi_related_am_part
         self.AM_part_melting_ppi_correspond_layer_build_model = AM_part_melting_ppi_correspond_layer_build_model
         self.AM_part_melting_ppi_correspond_AM_part_melting_strategy = AM_part_melting_ppi_correspond_AM_part_melting_strategy
-
-
 # ******************************
 class PDFViewer(QMainWindow):
     def __init__(self, file_path):
@@ -655,14 +567,11 @@ class PDFViewer(QMainWindow):
             layout.addWidget(pdf_view)
         else:
             layout.addWidget(QLabel("Failed to load PDF file."))
-
-
 # ************************************************************************************************
 class MyApp(QMainWindow):
     def __init__(self):
         super().__init__()
         self.ui = Ui_MainWindow()
-
         self.ui.setupUi(self)
         self.showMaximized()
         self.setWindowIcon(QIcon("jk.jpg"))
@@ -1048,7 +957,6 @@ class MyApp(QMainWindow):
         self.ui.list_defined_AM_part_layer_melting_strategy_ppi_listwidget.customContextMenuRequested.connect(
             self.list_defined_AM_part_layer_melting_strategy_ppi_listwidget_menu)
         self.ui.defined_start_heating_listWidget.setContextMenuPolicy(Qt.ContextMenuPolicy.CustomContextMenu)
-        # self.ui.defined_start_heating_listWidget.customContextMenuRequested.connect(self.defined_start_heating_listWidget_menu)
         self.ui.list_existing_part_model_layers.setContextMenuPolicy(Qt.ContextMenuPolicy.CustomContextMenu)
         self.ui.list_existing_part_model_layers.customContextMenuRequested.connect(
             self.list_existing_part_model_layers_menu)
@@ -1424,7 +1332,6 @@ class MyApp(QMainWindow):
                           self.ui.sensor_recorde_data_path]
         for w in tab_widgets_23: w.installEventFilter(self)
         for prev, nxt in zip(tab_widgets_23, tab_widgets_23[1:]): QWidget.setTabOrder(prev, nxt)
-
     # =======================================================================
     def input_printing_ppi_name_on_selection(self):
         item_text = self.ui.input_printing_ppi_name.currentText()
@@ -1437,19 +1344,16 @@ class MyApp(QMainWindow):
                     defined_Printing_Process_Instructions[index].ppi_list_layer_thicknesses)
                 self.ui.input_printing_ppi_file.setEnabled(False)
                 self.ui.input_printing_ppi_list_layer_thicknesses.setEnabled(False)
-
     # =======================================================================
     def close_func(self):
         self.save_shared_lists()
         self.close()
-
     # =======================================================================
     def display_pbf_amp_onto(self):
         current_dir = os.path.dirname(os.path.abspath(__file__))
         file_path = os.path.join(current_dir, "PBF_AMP_Onto_v53.pdf")
         self.pdf_window = PDFViewer(file_path)
         self.pdf_window.show()
-
     # =======================================================================
     def save_shared_lists(self):
         dictionary = {}
@@ -1488,7 +1392,6 @@ class MyApp(QMainWindow):
         dictionary["Testing_Methods_list"] = Testing_Methods_list
         dictionary["sensors_list"] = sensors_list
         dictionary["defined_Manufacturers"] = defined_Manufacturers
-
         filename = "shared_lists.pkl"
         try:
             with open(filename, 'wb') as f:
@@ -1524,8 +1427,7 @@ class MyApp(QMainWindow):
             defined_Printing_Process_Instructions = dictionary.get("defined_Printing_Process_Instructions", [])
             Layer_Of_Build_Models_list = dictionary.get("Layer_Of_Build_Models_list", [])
             Layer_Of_Build_Model_AM_Parts_list = dictionary.get("Layer_Of_Build_Model_AM_Parts_list", [])
-            Machine_Powder_Feed_Control_Strategies_list = dictionary.get("Machine_Powder_Feed_Control_Strategies_list",
-                                                                         [])
+            Machine_Powder_Feed_Control_Strategies_list = dictionary.get("Machine_Powder_Feed_Control_Strategies_list",[])
             Machine_Powder_Feed_Control_Strategy_PPIs_list = dictionary.get(
                 "Machine_Powder_Feed_Control_Strategy_PPIs_list", [])
             Scan_Strategies_list = dictionary.get("Scan_Strategies_list", [])
@@ -1534,8 +1436,7 @@ class MyApp(QMainWindow):
             AM_Part_Layer_Pre_Heating_Strategies_list = dictionary.get("AM_Part_Layer_Pre_Heating_Strategies_list", [])
             Layer_Pre_Heating_Strategies_list = dictionary.get("Layer_Pre_Heating_Strategies_list", [])
             AM_Part_Layer_Pre_Heating_PPI_list = dictionary.get("AM_Part_Layer_Pre_Heating_PPI_list", [])
-            AM_Part_Layer_Post_Heating_Strategies_list = dictionary.get("AM_Part_Layer_Post_Heating_Strategies_list",
-                                                                        [])
+            AM_Part_Layer_Post_Heating_Strategies_list = dictionary.get("AM_Part_Layer_Post_Heating_Strategies_list",[])
             Layer_Post_Heating_Strategies_list = dictionary.get("Layer_Post_Heating_Strategies_list", [])
             AM_Part_Layer_Post_Heating_PPI_list = dictionary.get("AM_Part_Layer_Post_Heating_PPI_list", [])
             Layer_Pre_Heating_PPI_list = dictionary.get("Layer_Pre_Heating_PPI_list", [])
@@ -1561,7 +1462,6 @@ class MyApp(QMainWindow):
             QTimer.singleShot(1500, msg.close)
         except Exception as e:
             QMessageBox.critical(self, "Error", f"Failed to load shared lists: {str(e)}")
-
     # =======================================================================
     def load_program(self):
         global PBF_AM_Process_Chains_list, supervisors_list, Build_Model_Support_list
@@ -1585,8 +1485,6 @@ class MyApp(QMainWindow):
                 self.ui.selectSupervisor.addItem(s.supervisor_name)
                 self.ui.defined_supervisors_list.addItem(s.supervisor_name)
         # ================================================================
-        # Defined_Build_models
-
         if Defined_Build_models:
             for build in Defined_Build_models:
                 self.ui.existing_digital_build_model_listwidget.addItem(build.build_model_name)
@@ -1764,7 +1662,6 @@ class MyApp(QMainWindow):
             for i in printed_build_list:
                 self.ui.defined_Printed_Builds_listWidget.addItem(i.Printed_Build_name)
                 self.ui.printing_process_output_printe_build.addItem(i.Printed_Build_name)
-
         # ================================================================
         if Post_Printing_Methods_list:
             for p in Post_Printing_Methods_list:
@@ -1873,11 +1770,9 @@ class MyApp(QMainWindow):
                 if Layer_Of_Build_Models_Layer_decomposition:
                     for l in Layer_Of_Build_Models_Layer_decomposition:
                         self.ui.list_output_layer_decomposition.addItem(l)
-                        # ===========================
                         self.ui.layer_pre_heating_ppi_correspond_layer_build_model_comboBox.addItem(l)
                         self.ui.correspond_layer_build_model_combobox.addItem(l)
                         self.ui.correspond_layer_build_model_combobox_2.addItem(l)
-                        # ===========================
                 # ================================================================
                 if Build_model:
                     self.ui.selected_digital_build_model.addItem(Build_model.build_model_name)
@@ -1972,7 +1867,7 @@ class MyApp(QMainWindow):
                 if index != -1:
                     self.ui.printing_process_buildplate.setCurrentIndex(index)
                 index = self.ui.printing_process_printing_medium.findText(
-                    Printing_Process.printing_process_printing_meduim)
+                    Printing_Process.printing_process_printing_medium)
                 if index != -1:
                     self.ui.printing_process_printing_medium.setCurrentIndex(index)
 
@@ -1988,8 +1883,7 @@ class MyApp(QMainWindow):
                         index = self.ui.printing_process_output_printe_build.findText(temp.Printed_Build_name)
                         if index != -1:
                             self.ui.printing_process_output_printe_build.setCurrentIndex(index)
-                except:
-                    pass
+                except:pass
                 # ================================================================
                 self.ui.monitoring_process_name.setPlainText(Monitoring_Process.monitoring_process_name)
                 start_dt = QDateTime.fromString(Monitoring_Process.monitoring_process_start_date, "yyyy-MM-dd HH:mm:ss")
@@ -2041,12 +1935,10 @@ class MyApp(QMainWindow):
                 QMessageBox.information(self, "Success", f"Project loaded successfully from '{filename}'")
             except Exception as e:
                 QMessageBox.critical(self, "Error", f"Failed to load project: {str(e)}")
-
     # =======================================================================
     def open_new_project(self):
         self.clear_all_inputs()
         self.load_program()
-
     # =======================================================================
     def clear_all_inputs(self):
         for widget in self.findChildren(
@@ -2058,12 +1950,11 @@ class MyApp(QMainWindow):
             elif isinstance(widget, QComboBox):
                 for i in range(widget.count() - 1, 0, -1):
                     widget.removeItem(i)
-                widget.setCurrentIndex(0)  # or 0 to reset to first item
+                widget.setCurrentIndex(0)
             elif isinstance(widget, QListWidget):
                 widget.clear()
             elif isinstance(widget, QDateTimeEdit):
                 widget.setDateTime(QDateTime.fromString("2025-01-01T00:00:00", "yyyy-MM-ddThh:mm:ss"))
-
     # =======================================================================
     def save_project_as_rdf(self):
         # ****************************************************************************************************
@@ -2075,11 +1966,10 @@ class MyApp(QMainWindow):
         prov = Namespace("http://www.w3.org/ns/prov#")
         # ****************************************************************************************************
         # General mapping for multiple classes
-        from rdflib.namespace import RDF, RDFS, OWL
         class_mappings = {
             "Material_class": {"rdf_type": EB.Material,
                                "attributes": {
-                                   'material_name': "label",
+                                   'material_name': RDFS.label,
                                    'material_melting_point': EB.hasMeltingPoint,
                                    'material_oxidation_resistance': EB.hasOxidationResistance,
                                    'material_heat_capacity': EB.hasSpecificHeatCapacity,
@@ -2092,69 +1982,59 @@ class MyApp(QMainWindow):
                                    'material_thermal_diffusivity': EB.hasThermalDiffusivity,
                                    'material_comment': RDFS.comment}},
             "Supervisor": {"rdf_type": prov.Agent,
-                           "attributes": {"supervisor_name": "label",
+                           "attributes": {"supervisor_name": RDFS.label,
                                           "supervisor_comment": RDFS.comment}},
             "PBF_AM_Process_Chain_class": {"rdf_type": CORE.PBFAMProcessChain,
                                            "attributes": {
-                                               "project_name": "label",
+                                               "project_name": RDFS.label,
                                                "project_start_date_value": AMPCORE.hasStartDateTime,
                                                "project_end_date_value": AMPCORE.hasEndDateTime,
                                                "project_status": AMPCORE.hasResultStatus,
                                                "project_comment": RDFS.comment,
-                                               "project_selected_supervisors": "nested"
-                                           }},
+                                               "project_selected_supervisors": "nested" }},
             "Build_Model_AM_Part_class": {"rdf_type": CORE.PBFBuildModelAMPart,
                                           "attributes": {
-                                              "am_part_name": "label",
+                                              "am_part_name": RDFS.label,
                                               "am_part_dimension": CORE.hasDimensions,
                                               "am_part_file_path": CORE.isRepresentedBy,
                                               "am_part_file_format": CORE.hasFileFormat,
                                               "am_part_comment": RDFS.comment}},
             "Manufacturer_class": {"rdf_type": EB.Manufacturer,
                                    "attributes": {
-                                       "manufacturer_name": "label",
-                                       # "name": CORE.hasName,
+                                       "manufacturer_name": RDFS.label,
                                        "manufacturer_address": EB.hasAddress,
                                        "manufacturer_comment": RDFS.comment}},
-            "Printing_Madium_class": {"rdf_type": CORE.PBFPowder,
-                                      "attributes": {"printing_medium_name": "label",
+            "Printing_Medium_class": {"rdf_type": CORE.PBFPowder,
+                                      "attributes": {"printing_medium_name": RDFS.label,
                                                      "printing_medium_comment": RDFS.comment,
                                                      "printing_medium_status": CORE.hasStatus,
                                                      "printing_medium_material": EB.isManufacturedFrom,
                                                      "printing_medium_particle_size": CORE.hasParticleSizeDistribution,
                                                      "printing_medium_powder_morphology": CORE.hasPowderMorphology,
-                                                     "printing_medium_manufacturer": EB.isManufacturedBy
-                                                     # CORE.PBFPowder is used to print EB-PBF Printed Build
-                                                     }},
+                                                     "printing_medium_manufacturer": EB.isManufacturedBy}},
             "Printed_Build_class": {"rdf_type": EB["EB-PBFPrintedBuild"],
-                                    "attributes": {"Printed_Build_name": "label",
+                                    "attributes": {"Printed_Build_name": RDFS.label,
                                                    "Printed_Build_comment": RDFS.comment,
-                                                   "Printed_Build_AM_Parts_and_supports": "nested"
-                                                   # CORE.Printed_Build_class is composed of CORE.PBFPrintedBuildAMPart and CORE.PBFPrintedBuildSupport
-                                                   }},
+                                                   "Printed_Build_AM_Parts_and_supports": "nested"}},
             "Printed_Build_AM_Part_class": {"rdf_type": CORE.PBFPrintedBuildAMPart,
-                                            "attributes": {"Printed_Build_AM_Part_name": "label",
+                                            "attributes": {"Printed_Build_AM_Part_name": RDFS.label,
                                                            "Printed_Build_AM_Part_comment": RDFS.comment}},
             "Printed_Build_Support_class": {"rdf_type": CORE.PBFPrintedBuildSupport,
-                                            "attributes": {"Printed_Build_Support_name": "label",
-                                                           "Printed_Build_Support_comment": RDFS.comment
-                                                           # CORE.PBFPrintedBuildSupport is support for CORE.PBFPrintedBuildAMPart
-                                                           }},
+                                            "attributes": {"Printed_Build_Support_name": RDFS.label,
+                                                           "Printed_Build_Support_comment": RDFS.comment}},
             "Printing_Machine_class": {"rdf_type": CORE.PBFPrintingMachine,
                                        "attributes": {
-                                           "printing_machine_name": "label",
+                                           "printing_machine_name": RDFS.label,
                                            "printing_machine_brand": EX.hasBrand,
                                            "printing_machine_comment": RDFS.comment,
-                                           "printing_machine_sensor_info": "nested"  # special handling
-                                           # CORE.PBFPrintingMachine has sensor PBF PrintingMachineSensor
-                                       }},
+                                           "printing_machine_sensor_info": "nested"}},
             "Sensor_class": {"rdf_type": CORE.PBFPrintingMachineSensor,
                              "attributes": {
-                                 "sensor_name": "label",
+                                 "sensor_name": RDFS.label,
                                  "sensor_type": CORE.hasSensorType,
                                  "recorded_data_path": CORE.hasRecordedData}},
             "Build_Plate_class": {"rdf_type": EB["EB-PBFBuildPlate"],
-                                  "attributes": {"build_plate_name": "label",
+                                  "attributes": {"build_plate_name": RDFS.label,
                                                  "build_plate_comment": RDFS.comment,
                                                  "build_plate_size": EB.hasSize,
                                                  "build_plate_thickness": EB.hasThickness,
@@ -2162,9 +2042,8 @@ class MyApp(QMainWindow):
                                                  "build_plate_shape": EB.hasShape,
                                                  "build_plate_manufacturer": EB.isManufacturedBy,
                                                  "build_plate_material": EB.isManufacturedFrom}},
-
             "Scan_Strategy_class": {"rdf_type": EB["EB-PBFScanStrategy"],
-                                    "attributes": {"scan_strategy_name": "label",
+                                    "attributes": {"scan_strategy_name": RDFS.label,
                                                    "scan_strategy_comment": RDFS.comment,
                                                    "scan_strategy_beam_spot_size": EB.hasBeamSpotSize,
                                                    "scan_strategy_dwell_time": EB.hasDwellTime,
@@ -2173,68 +2052,56 @@ class MyApp(QMainWindow):
                                                    "scan_strategy_scan_speed": EB.hasScanSpeed,
                                                    "scan_strategy_beam_power": EB.hasBeamPower}},
             "Testing_Method_class": {"rdf_type": CORE.PBFTestingMethod,
-                                     "attributes": {"TestingMethod_name": "label",
+                                     "attributes": {"TestingMethod_name": RDFS.label,
                                                     "TestingMethod_type": EX.hasTestingMethodType,
                                                     "TestingMethod_comment": RDFS.comment}},
             "Build_Model_Support_class": {"rdf_type": CORE.PBFBuildModelSupport,
                                           "attributes": {
-                                              "support_name": "label",
-                                              # "support_name": CORE.hasName,
+                                              "support_name": RDFS.label,
                                               "support_dimensions": CORE.hasDimensions,
                                               "support_file_path": CORE.isRepresentedBy,
                                               "support_file_format": CORE.hasFileFormat,
-                                              "support_comment": RDFS.comment
-                                              # CORE.PBFBuildModelSupport  CORE:providesSupportFor CORE:PBFBuildModelAMPart
-                                          }},
+                                              "support_comment": RDFS.comment}},
             "output_Build_Model_Design_Process_class": {"rdf_type": CORE.PBFBuildModel,
                                                         "attributes": {
-                                                            "build_model_name": "label",
+                                                            "build_model_name": RDFS.label,
                                                             "build_model_dimension": CORE.hasDimensions,
                                                             "build_model_file_path": CORE.isRepresentedBy,
                                                             "build_model_file_format": CORE.hasFileFormat,
                                                             "build_model_comment": RDFS.comment,
-                                                            "build_model_parts_supports": EX.hasBuildModelPartSupport
-                                                            # CORE.PBFBuildModel consistsOf CORE.PBFBuildModelSupport
-                                                            # CORE.PBFBuildModel conceitsOf CORE.PBFBuildModelAMPart
-                                                        }},
+                                                            "build_model_parts_supports": EX.hasBuildModelPartSupport}},
             "Build_Model_Design_Process_class": {"rdf_type": EB["EB-PBFBuildModelDesignProcess"],
                                                  "attributes": {
-                                                     "ModelDesign_name": "label",
+                                                     "ModelDesign_name": RDFS.label,
                                                      "ModelDesign_start_date": AMPCORE.hasStartDateTime,
                                                      "ModelDesign_end_date": AMPCORE.hasEndDateTime,
                                                      "ModelDesign_completion_status": AMPCORE.hasCompletenessStatus,
                                                      "ModelDesign_comment": RDFS.comment,
-                                                     "ModelDesign_output": EX.hasModelDesignOutput
-                                                     # CORE.PBFBuildModelDesignProcess has output CORE:PBFBuildModel
-                                                     # CORE.PBFBuildModelDesignProcess AMPCORE: is predecessor process of CORE:PBFSlicingProcess
-                                                     # CORE.PBFBuildModelDesignProcess is sub process of CORE:PBFAMProcessChain
-                                                     # CORE.PBFBuildModelDesignProcess is a AMPCORE:Process
-                                                 }},
+                                                     "ModelDesign_output": EX.hasModelDesignOutput}},
             "Machine_Powder_Feed_Control_PPI_class": {
                 "rdf_type": EB["EB-PBFMachinePowderFeedControlPrintingProcessInstructions"],
-                "attributes": {"Machine_powder_s_PPI_name": "label",
+                "attributes": {"Machine_powder_s_PPI_name": RDFS.label,
                                "Machine_powder_s_PPI_file": CORE.isRepresentedBy,
                                "Machine_powder_s_PPI_file_format": CORE.hasFileFormat,
                                "Machine_powder_s_PPI_correspond_strategy": "nested"}},
             "Start_Heating_PPI_class": {"rdf_type": EB["EB-PBFStartHeatingPrintingProcessInstructions"],
-                                        "attributes": {"start_heat_ppi_name": "label",
+                                        "attributes": {"start_heat_ppi_name": RDFS.label,
                                                        "start_heat_ppi_file": CORE.isRepresentedBy,
                                                        "start_heat_ppi_file_format": CORE.hasFileFormat,
                                                        "start_heat_ppi_correspond_start_heat_strategy": EB.corresponds_to}},
             "Layer_Pre_Heating_PPI_class": {"rdf_type": EB["EB-PBFLayerPre-HeatingPrintingProcessInstructions"],
                                             "attributes": {
-                                                "pre_heat_ppi_name": "label",
+                                                "pre_heat_ppi_name": RDFS.label,
                                                 "pre_heat_ppi_file": CORE.isRepresentedBy,
                                                 "pre_heat_ppi_file_format": CORE.hasFileFormat,
                                                 "pre_heat_ppi_corrspond_layer_build_model": EB.corresponds_to,
                                                 "pre_heat_ppi_correspond_pre_heating_strategy": EX.strategy,
                                                 "pre_heat_ppi_layer_num": CORE.hasLayerNumber,
                                                 "pre_heat_ppi_comment": RDFS.comment,
-                                                "pre_heat_ppi_composed_AM_part_Layer_pre_heat_ppi": "nested"
-                                            }},
+                                                "pre_heat_ppi_composed_AM_part_Layer_pre_heat_ppi": "nested"}},
             "Layer_Post_Heating_PPI_class": {"rdf_type": EB["EB-PBFLayerPost-HeatingPrintingProcessInstructions"],
                                              "attributes": {
-                                                 "post_heat_ppi_name": "label",
+                                                 "post_heat_ppi_name": RDFS.label,
                                                  "post_heat_ppi_file": CORE.isRepresentedBy,
                                                  "post_heat_ppi_file_format": CORE.hasFileFormat,
                                                  "post_heat_ppi_corrspond_layer_build_model": EB.corresponds_to,
@@ -2242,12 +2109,10 @@ class MyApp(QMainWindow):
                                                  "post_heat_ppi_layer_num": CORE.hasLayerNumber,
                                                  "post_heat_ppi_comment": RDFS.comment,
                                                  "post_heat_ppi_composed_AM_part_Layer_post_heat_ppi": CORE.isComposedOf,
-                                                 "post_heat_ppi_name": CORE.hasName
-                                                 # EB.EB-PBFStartHeatingPrintingProcessInstructions corresponds to EB.EB-PBFStartHeatingStrategy
-                                             }},
+                                                 "post_heat_ppi_name": CORE.hasName}},
             "Layer_Melting_PPI_class": {"rdf_type": EB["EB-PBFLayerMeltingPrintingProcessInstructions"],
                                         "attributes": {
-                                            "melting_ppi_name": "label",
+                                            "melting_ppi_name": RDFS.label,
                                             "melting_ppi_file": CORE.isRepresentedBy,
                                             "melting_ppi_file_format": CORE.hasFileFormat,
                                             "melting_ppi_corrspond_layer_build_model": EB.corresponds_to,
@@ -2259,7 +2124,7 @@ class MyApp(QMainWindow):
             "Printing_Process_Instructions_class": {
                 "rdf_type": EB["EB-PBFPrintingProcessInstructions"],
                 "attributes": {
-                    "printing_process_name": "label",
+                    "printing_process_name": RDFS.label,
                     "ppi_file": CORE.isRepresentedBy,
                     "ppi_file_format": CORE.hasFileFormat,
                     "ppi_list_layer_thicknesses": EB.hasAListOfLayerThicknesses,
@@ -2268,24 +2133,22 @@ class MyApp(QMainWindow):
                     "ppi_start_heating_ppi": "nested",
                     "ppi_layer_pre_heating_ppi": "nested",
                     "ppi_layer_post_heating_ppi": "nested",
-                    "ppi_layer_melting_heating_ppi": "nested"
-                }},
+                    "ppi_layer_melting_heating_ppi": "nested"}},
             "Printing_Process_class": {
-                "rdf_type": CORE.PBFPrintingProcess,
+                "rdf_type": EB["EB-PBFPrintingProcess"],
                 "attributes": {
-                    "printing_process_name": "label",
+                    "printing_process_name": RDFS.label,
                     "printing_process_status": AMPCORE.hasCompletenessStatus,
                     "printing_process_start_date": AMPCORE.hasStartDateTime,
                     "printing_process_end_date": AMPCORE.hasEndDateTime,
                     "printing_process_comment": RDFS.comment,
                     "printing_process_output": CORE.hasOutputPrintedBuild,
                     "printing_process_build_plate": EB.hasBuildPlate,
-                    "printing_process_printing_meduim": CORE.hasPrintingMedium,
+                    "printing_process_printing_medium": CORE.hasPrintingMedium,
                     "printing_process_printing_machine": CORE.isOperatedBy,
-                    "printing_process_instructions": CORE.hasInput
-                }},
+                    "printing_process_instructions": CORE.hasInput}},
             "Machine_Powder_Feed_Control_Strategy_class": {"rdf_type": EB["EB-PBFMachinePowderFeedControlStrategy"],
-                                                           "attributes": {"Machine_powder_s_name": "label",
+                                                           "attributes": {"Machine_powder_s_name": RDFS.label,
                                                                           "Machine_powder_s_comment": RDFS.comment,
                                                                           "Machine_powder_s_file": CORE.isRepresentedBy,
                                                                           "Machine_powder_s_triggered_start": EB.hasTriggeredStart,
@@ -2298,7 +2161,7 @@ class MyApp(QMainWindow):
             "AM_Part_Layer_Pre_Heating_PPI_class": {
                 "rdf_type": EB["EB-PBFAMPartLayerPre-HeatingPrintingProcessInstructions"],
                 "attributes": {
-                    "AM_part_pre_heat_ppi_name": "label",
+                    "AM_part_pre_heat_ppi_name": RDFS.label,
                     "AM_part_pre_heat_ppi_file": CORE.isRepresentedBy,
                     "AM_part_pre_heat_ppi_file_format": CORE.hasFileFormat,
                     "AM_part_pre_heat_ppi_correspond_layer_build_model": EB.corresponds_to,
@@ -2307,14 +2170,14 @@ class MyApp(QMainWindow):
             "AM_Part_Layer_Post_Heating_PPI_class": {
                 "rdf_type": EB["EB-PBFAMPartLayerPost-HeatingPrintingProcessInstructions"],
                 "attributes": {
-                    "AM_part_post_heat_ppi_name": "label",
+                    "AM_part_post_heat_ppi_name": RDFS.label,
                     "AM_part_post_heat_ppi_file": CORE.isRepresentedBy,
                     "AM_part_post_heat_ppi_file_format": CORE.hasFileFormat,
                     "AM_part_post_heat_ppi_correspond_layer_build_model": EB.corresponds_to,
                     "AM_part_post_heat_ppi_correspond_AM_part_post_heat_strategy": EB.corresponds_to,
                     "AM_part_post_heat_ppi_comment": RDFS.comment}},
             "AM_Part_Layer_Melting_PPI_class": {"rdf_type": EB["EB-PBFAMPartLayerMeltingPrintingProcessInstructions"],
-                                                "attributes": {"AM_part_melting_ppi_name": "label",
+                                                "attributes": {"AM_part_melting_ppi_name": RDFS.label,
                                                                "AM_part_melting_ppi_file": CORE.isRepresentedBy,
                                                                "AM_part_melting_ppi_file_format": CORE.hasFileFormat,
                                                                "AM_part_melting_ppi_correspond_layer_build_model": EB.corresponds_to,
@@ -2322,26 +2185,24 @@ class MyApp(QMainWindow):
                                                                "AM_part_melting_ppi_comment": RDFS.comment}},
             "applied_testing_method_class": {"rdf_type": CORE.PBFTestingData,
                                              "attributes": {
-                                                 # "applied_testing_method_name" : "label"
                                                  "applied_testing_method_name": CORE.nameOfTestingMethod,
                                                  "applied_testing_method_result": CORE.hasValue,
                                                  "TestingMethod_comment": RDFS.comment}},
             "Slicing_Process_class": {
                 "rdf_type": EB["EB-PBFSlicingProcess"],
                 "attributes": {
-                    "SlicingProcess_name": "label",
+                    "SlicingProcess_name": RDFS.label,
                     "SlicingProcess_completion_status": AMPCORE.hasCompletenessStatus,
                     "SlicingProcess_software": prov.wasAssociatedWith,
                     "SlicingProcess_start_date": AMPCORE.hasStartDateTime,
                     "SlicingProcess_end_date": AMPCORE.hasEndDateTime,
                     "SlicingProcess_comment": RDFS.comment,
                     "SlicingProcess_input": CORE.hasInput,
-                    "SlicingProcess_output": CORE.hasOutput
-                }},
+                    "SlicingProcess_output": CORE.hasOutput }},
             "Testing_Process_class": {
                 "rdf_type": CORE.PBFTestingProcess,
                 "attributes": {
-                    "TestingProcess_name": "label",
+                    "TestingProcess_name": RDFS.label,
                     "TestingProcess_status": AMPCORE.hasCompletenessStatus,
                     "TestingProcess_start_date": AMPCORE.hasStartDateTime,
                     "TestingProcess_end_date": AMPCORE.hasEndDateTime,
@@ -2349,53 +2210,43 @@ class MyApp(QMainWindow):
                     "TestingProcess_hasInputPrintedBuild": CORE.hasInputPrintedBuild,
                     "TestingProcess_hasInputPrintedBuildAMPart": "nested",
                     "TestingProcess_hasInputPrintedBuildSupport": "nested",
-                    "TestingProcess_testing_method": "nested",  # CORE.hasTestingMethod,
-                    "TestingProcess_testing_data": "nested"  # CORE.outputsTestingData
-                }},
+                    "TestingProcess_testing_method": "nested",
+                    "TestingProcess_testing_data": "nested"}},
             "Layer_Of_Build_Model_AM_Part_class": {
                 "rdf_type": CORE.LayerOfPBFBuildModelAMPart,
                 "attributes": {
-                    "layer_of_Build_Model_AM_Part_name": "label",
-                    # "layer_of_Build_Model_AM_Part_name": CORE.hasName,
+                    "layer_of_Build_Model_AM_Part_name": [RDFS.label, CORE.hasName],
                     "layer_of_Build_Model_AM_Part_file": CORE.isRepresentedBy,
                     "layer_of_Build_Model_AM_Part_file_format": CORE.hasFileFormat,
                     "layer_of_Build_Model_AM_Part_area": CORE.hasArea,
-                    "Layer_Of_Build_Model_AM_Part_comment": RDFS.comment
-                }},
+                    "Layer_Of_Build_Model_AM_Part_comment": RDFS.comment}},
             "Layer_Of_Build_Model_class": {
                 "rdf_type": CORE.LayerOfPBFBuildModel,
                 "attributes": {
-                    "Layer_Of_Build_Model_name": "label",
+                    "Layer_Of_Build_Model_name": RDFS.label,
                     "Layer_Of_Build_Model_file": CORE.isRepresentedBy,
                     "Layer_Of_Build_Model_file_format": CORE.hasFileFormat,
                     "Layer_Of_Build_Model_layer_height": CORE.hasLayerHeight,
                     "Layer_Of_Build_Model_layer_num": CORE.hasLayerNumber,
                     "Layer_Of_Build_Model_comment": RDFS.comment,
-                    "Layer_Of_Build_Model_consists_of_am_part_layer": "nested"
-                }},
+                    "Layer_Of_Build_Model_consists_of_am_part_layer": "nested"}},
             "Post_Printing_Method": {
                 "rdf_type": EB["EB-PBFPost-PrintingMethod"],
                 "attributes": {
-                    "post_printing_method_name": "label",
+                    "post_printing_method_name": RDFS.label,
                     "post_printing_method_comment": RDFS.comment,
-                    "post_printing_method_type": "nested"
-                    # 'Support Removal','Heat Treatment','Build Cleaning','Build Separation From Build Plate'
-                }},
+                    "post_printing_method_type": "nested"}},
             "Post_Printing_Process_class": {
                 "rdf_type": CORE["PBFPost-PrintingProcess"],
                 "attributes": {
-                    "post_printing_process_name": "label",
+                    "post_printing_process_name": RDFS.label,
                     "post_printing_process_status": AMPCORE.hasCompletenessStatus,
                     "post_printing_process_start_date": AMPCORE.hasStartDateTime,
                     "post_printing_process_end_date": AMPCORE.hasEndDateTime,
                     "post_printing_process_used_methods": "nested",
-                    # CORE.usesPostPrintingMethod,
-                    "post_printing_process_comment": RDFS.comment
-                    # CORE.PBFPost-PrintingProcess has input printed build PBFPrintedBuild
-                    # CORE.PBFPost-PrintingProcess has output printed build PBFPrintedBuild
-                }},
+                    "post_printing_process_comment": RDFS.comment}},
             "Start_Heating_Strategy_class": {"rdf_type": EB["EB-PBFStartHeatingStrategy"],
-                                             "attributes": {"start_heat_name": "label",
+                                             "attributes": {"start_heat_name": RDFS.label,
                                                             "start_heat_file": CORE.isRepresentedBy,
                                                             "start_heat_file_format": CORE.hasFileFormat,
                                                             "start_heat_size": EB.hasSize,
@@ -2406,7 +2257,7 @@ class MyApp(QMainWindow):
                                                             "start_heat_target_temp": EB.hasTargetTemperature,
                                                             "start_heat_comment": RDFS.comment}},
             "AM_Part_Layer_Pre_Heating_Strategy_class": {"rdf_type": EB["EB-PBFAMPartLayerPre-HeatingStrategy"],
-                                                         "attributes": {"AM_part_pre_heat_strategy_name": "label",
+                                                         "attributes": {"AM_part_pre_heat_strategy_name": RDFS.label,
                                                                         "AM_part_pre_heat_strategy_file": CORE.isRepresentedBy,
                                                                         "AM_part_pre_heat_strategy_file_format": CORE.hasFileFormat,
                                                                         "AM_part_pre_heat_strategy_number_comment": RDFS.comment,
@@ -2414,17 +2265,14 @@ class MyApp(QMainWindow):
                                                                         "AM_part_pre_heat_strategy_rotation_angle": EB.hasRotationAngle,
                                                                         "AM_part_pre_heat_strategy_number_repetitions": EB.hasNumberOfRepetitions}},
             "Layer_Pre_Heating_Strategy_class": {"rdf_type": EB["EB-PBFLayerPre-HeatingStrategy"],
-                                                 "attributes": {"pre_heat_strategy_name": "label",
+                                                 "attributes": {"pre_heat_strategy_name": RDFS.label,
                                                                 "pre_heat_strategy_file": CORE.isRepresentedBy,
                                                                 "pre_heat_strategy_file_format": CORE.hasFileFormat,
                                                                 "pre_heat_strategy_scan_strategy": EB.hasScanStrategy,
                                                                 "pre_heat_strategy_composed_of_AM_Parts": "nested",
-                                                                # CORE.isComposedOf,
-                                                                "pre_heat_strategy_comment": RDFS.comment
-                                                                # EB.EB-PBFLayerPre-HeatingStrategy is sub strategy of EB.EB-PBFBeamControlSlicingStrategy
-                                                                }},
+                                                                "pre_heat_strategy_comment": RDFS.comment}},
             "AM_Part_Layer_Post_Heating_Strategy_class": {"rdf_type": EB["EB-PBFAMPartLayerPost-HeatingStrategy"],
-                                                          "attributes": {"AM_part_post_heat_strategy_name": "label",
+                                                          "attributes": {"AM_part_post_heat_strategy_name": RDFS.label,
                                                                          "AM_part_post_heat_strategy_file": CORE.isRepresentedBy,
                                                                          "AM_part_post_heat_strategy_file_format": CORE.hasFileFormat,
                                                                          "AM_part_post_heat_strategy_number_comment": RDFS.comment,
@@ -2432,14 +2280,14 @@ class MyApp(QMainWindow):
                                                                          "AM_part_post_heat_strategy_rotation_angle": EB.hasRotationAngle,
                                                                          "AM_part_post_heat_strategy_number_repetitions": EB.hasNumberOfRepetitions}},
             "Layer_Post_Heating_Strategy_class": {"rdf_type": EB["EB-PBFLayerPost-HeatingStrategy"],
-                                                  "attributes": {"post_heat_strategy_name": "label",
+                                                  "attributes": {"post_heat_strategy_name": RDFS.label,
                                                                  "post_heat_strategy_file": CORE.isRepresentedBy,
                                                                  "post_heat_strategy_file_format": CORE.hasFileFormat,
                                                                  "post_heat_strategy_scan_strategy": EB.hasScanStrategy,
                                                                  "post_heat_strategy_composed_of_AM_Parts": CORE.isComposedOf,
                                                                  "post_heat_strategy_comment": RDFS.comment}},
             "AM_Part_Layer_Melting_Strategy_class": {"rdf_type": EB["EB-PBFAMPartLayerMeltingStrategy"],
-                                                     "attributes": {"AM_part_melting_strategy_name": "label",
+                                                     "attributes": {"AM_part_melting_strategy_name": RDFS.label,
                                                                     "AM_part_melting_strategy_file": CORE.isRepresentedBy,
                                                                     "AM_part_melting_strategy_file_format": CORE.hasFileFormat,
                                                                     "AM_part_melting_strategy_comment": RDFS.comment,
@@ -2450,7 +2298,7 @@ class MyApp(QMainWindow):
                                                                     "AM_part_melting_strategy_energy_density": EB.hasEnergyDensity,
                                                                     "AM_part_melting_strategy_offset_margin": EB.hasOffsetMargin}},
             "Layer_Melting_Strategy_class": {"rdf_type": EB["EB-PBFLayerMeltingStrategy"],
-                                             "attributes": {"melting_strategy_name": "label",
+                                             "attributes": {"melting_strategy_name": RDFS.label,
                                                             "melting_strategy_file": CORE.isRepresentedBy,
                                                             "melting_strategy_file_format": CORE.hasFileFormat,
                                                             "melting_strategy_scan_strategy": EB.hasScanStrategy,
@@ -2458,7 +2306,7 @@ class MyApp(QMainWindow):
                                                             "melting_strategy_comment": RDFS.comment}},
             "Beam_Control_Slicing_Strategy_class": {
                 "rdf_type": EB["EB-PBFBeamControlSlicingStrategy"],
-                "attributes": {"beam_control_slic_strategy_name": "label",
+                "attributes": {"beam_control_slic_strategy_name": RDFS.label,
                                "beam_control_slic_strategy_file": CORE.isRepresentedBy,
                                "beam_control_slic_strategy_file_format": CORE.hasFileFormat,
                                "beam_control_pre_heating": "nested",
@@ -2468,33 +2316,25 @@ class MyApp(QMainWindow):
             "Monitoring_Process_class": {
                 "rdf_type": CORE.PBFMonitoringProcess,
                 "attributes": {
-                    "monitoring_process_name": "label",
+                    "monitoring_process_name": RDFS.label,
                     "monitoring_process_start_date": AMPCORE.hasStartDateTime,
                     "monitoring_process_end_date": AMPCORE.hasEndDateTime,
                     "monitoring_process_comment": RDFS.comment,
                     "monitoring_process_status": AMPCORE.hasCompletenessStatus,
                     "monitoring_process_output_file": CORE.hasOutputData,
                     "monitoring_process_printing_process": CORE.monitors,
-                    "monitoring_process_receives_data_from": "nested"}},
+                    "monitoring_process_receives_data_from": "nested"}}
         }
         # ****************************************************************************************************
-        # Load JSON data
-        # Ask user to select the JSON file
-        # filename = "shared_lists.pkl"
+        # ****************************************************************************************************
+        # Load JSON data, "shared_lists.pkl"
         json_filename, _ = QFileDialog.getOpenFileName(self, "Open JSON file", "", "JSON files (*.json)")
         if not json_filename:
             QMessageBox.warning(self, "No File Selected", "No JSON file was selected.")
             return
-        # Load JSON data
-
         with open(json_filename, "r", encoding="utf-8") as f:
             data = json.load(f)
-        '''
-        with open(json_filename, "r") as f:
-            data = json.load(f)
-        '''
-
-        from rdflib.namespace import RDF, RDFS, OWL
+        # ****************************************************************************************************
         g = Graph()
         g.parse("EB-2.rdf", format="xml")
         g.bind("prov", prov)
@@ -2515,13 +2355,14 @@ class MyApp(QMainWindow):
 
             for instance in instances:
                 rdf_type = default_rdf_type
+
                 if rdf_type_name == "PBFPrintingMachine":
                     try:
                         brand_value = instance.get("printing_machine_brand", "").lower()
                         if brand_value == "EB-PBF Freemelt":
                             rdf_type = EB["EB-PBFPrintingMachine"]
-                    except:
-                        pass
+                    except: pass
+
                 if rdf_type_name == "Post_Printing_Method":
                     try:
                         type_value = instance.get("post_printing_method_type", "").lower()
@@ -2533,8 +2374,8 @@ class MyApp(QMainWindow):
                             rdf_type = EB["EB-PBFBuildCleaningMethod"]
                         if type_value == "Build Separation From Build Plate":
                             rdf_type = EB["EB-PBFBuildSeparationFromBuildPlateMethod"]
-                    except:
-                        pass
+                    except: pass
+
                 if rdf_type_name == "PBFTestingMethod":
                     try:
                         type_value = instance.get("TestingMethod_type", "").lower()
@@ -2542,52 +2383,53 @@ class MyApp(QMainWindow):
                             rdf_type = EB["PBFNon-DestructiveTestingMethod"]
                         if type_value == "Destructive":
                             rdf_type = EB["PBFDestructiveTestingMethod"]
-                    except:
-                        pass
+                    except: pass
 
-                # Create URI
+                #Create URI
                 label_value = ""
                 try:
-                    label_attr = [k for k, v in attr_map.items() if v == "label"][0]
+                    label_attr = [k for k, v in attr_map.items() if v == RDFS.label][0]
                     try:
                         if isinstance(instance, dict):
                             label_value = instance.get(label_attr, "").strip().replace(" ", "_")
                         else:
                             label_value = str(instance).strip().replace(" ", "_")
-                    except:
-                        pass
-                except:
-                    pass
+                    except: pass
+                except: pass
+
                 if label_value == "":
                     continue
 
                 uri = URIRef(EX + label_value)
-                # Check if the URI is already used as a subject in any triple
-                if any(g.triples((uri, None, None))):
-                    # If it exists, generate a class-specific URI to avoid collision
-                    uri = URIRef(f"{EX}{class_name}/{label_value.replace(' ', '_')}")
-
-                # Declare as owl:NamedIndividual and assign type
-                g.add((uri, RDF.type, OWL.NamedIndividual))
+                existing_types = [obj for _, _, obj in g.triples((uri, RDF.type, None))]
+                if rdf_type in existing_types: pass
+                else:
+                    if any(g.triples((uri, None, None))):
+                        try:
+                            uri = URIRef(f"{EX}{class_name.__name__}/{label_value.replace(' ', '_')}")
+                        except:
+                            uri = URIRef(f"{EX}{class_name}/{label_value.replace(' ', '_')}")
+                    g.add((uri, RDF.type, OWL.NamedIndividual))
                 g.add((uri, RDF.type, rdf_type))
+                namespace_1, local_name_1 = split_uri(rdf_type)
+                g.add((uri, RDFS.label, Literal(local_name_1)))
                 if rdf_type_name == "PBFBuildModelAMPart" or rdf_type_name == "Manufacturer" or rdf_type_name == "PBFBuildModelSupport" or rdf_type_name == "PBFBuildModel" \
                         or rdf_type_name == "Layer_Post_Heating_PPI_class" or rdf_type_name == "Layer_Melting_PPI_class" or rdf_type_name == "AM_Part_Layer_Pre_Heating_PPI_class" \
                         or rdf_type_name == "AM_Part_Layer_Post_Heating_PPI_class" or rdf_type_name == "AM_Part_Layer_Melting_PPI_class" \
                         or rdf_type_name == "Layer_Of_Build_Model_AM_Part_class":
                     g.add((uri, CORE.hasName, Literal(label_value)))
-
+                #================================================================================================
                 # Add basic attributes
                 for attr, predicate in attr_map.items():
-                    if predicate == "label" or predicate == "nested":
+                    if predicate == "nested":
                         continue
+                    # *********************************************************************
                     if attr == "Machine_powder_s_PPI_correspond_strategy":
                         try:
                             for i in instance["Machine_powder_s_PPI_correspond_strategy"]:
                                 i_name = i.strip().replace(" ", "_")
                                 i_uri = URIRef(EX + i_name)
-                                i_uri_2 = URIRef(
-                                    f"{EX}Machine_Powder_Feed_Control_Strategy_class/{i_name.replace(' ', '_')}")
-                                # =================================================================================
+                                i_uri_2 = URIRef(f"{EX}Machine_Powder_Feed_Control_Strategy_class/{i_name.replace(' ', '_')}")
                                 if (i_uri, RDF.type, EB["EB-PBFMachinePowderFeedControlStrategy"]) not in g:
                                     if (i_uri_2, RDF.type, EB["EB-PBFMachinePowderFeedControlStrategy"]) not in g:
                                         g.add((i_uri, RDF.type, EB["EB-PBFMachinePowderFeedControlStrategy"]))
@@ -2602,166 +2444,173 @@ class MyApp(QMainWindow):
                                     if (uri, EB.corresponds_to, i_uri) not in g:
                                         g.add((uri, EB.corresponds_to, i_uri_2))
                                         break
-                                # =================================================================================
                             continue
-                        except:
-                            pass
-
+                        except: pass
+                    # *********************************************************************
                     if attr == "pre_heat_ppi_corrspond_layer_build_model":
-                        m = attr.strip().replace(" ", "_")
-                        m_uri = URIRef(EX + m)
-                        if not any(g.triples((m_uri, None, None))):
-                            # If it exists, generate a class-specific URI to avoid collision
-                            m_uri = URIRef(f"{EX}{Layer_Of_Build_Model_class}/{m.replace(' ', '_')}")
-                        # i_uri_2 = URIRef(f"{EX}Layer_Of_Build_Model_class/{m.replace(' ', '_')}")
-                        g.add((uri, EB.corresponds_to, m_uri))
-                        continue
-
+                        try:
+                            m = instance.get(attr, "").strip().replace(" ", "_")
+                            m_uri = URIRef(EX + m)
+                            if not any(g.triples((m_uri, RDF.type, CORE.LayerOfPBFBuildModel))):
+                                g.add((m_uri, RDF.type, CORE.LayerOfPBFBuildModel))
+                            g.add((uri, EB.corresponds_to, m_uri))
+                            continue
+                        except: pass
+                    # *********************************************************************
                     if attr == "pre_heat_ppi_correspond_pre_heating_strategy":
                         try:
-                            m = attr.strip().replace(" ", "_")
+                            m = instance.get(attr, "").strip().replace(" ", "_")
                             m_uri = URIRef(EX + m)
-                            if not any(g.triples((m_uri, None, None))):
-                                # If it exists, generate a class-specific URI to avoid collision
-                                m_uri = URIRef(f"{EX}{Layer_Pre_Heating_Strategy_class}/{m.replace(' ', '_')}")
+                            if not any(g.triples((m_uri, RDF.type, EB["EB-PBFLayerPre-HeatingStrategy"]))):
+                                g.add((m_uri, RDF.type, EB["EB-PBFLayerPre-HeatingStrategy"]))
                             g.add((uri, EB.corresponds_to, m_uri))
                             continue
-                        except:
-                            pass
-
-                    #???????????????????????????????????????
+                        except: pass
+                    # *********************************************************************
                     if attr == "printing_process_output":
                         try:
-                            m = attr.strip().replace(" ", "_")
+                            m = instance.get(attr, "").strip().replace(" ", "_")
                             m_uri = URIRef(EX + m)
-                            #if not any(g.triples((m_uri, None, None))):
-                                # If it exists, generate a class-specific URI to avoid collision
-                            #    m_uri = URIRef(f"{EX}{Printed_Build_class}/{m.replace(' ', '_')}")
+                            if not any(g.triples((m_uri, RDF.type, EB["EB-PBFPrintedBuild"]))):
+                                g.add((m_uri, RDF.type, EB["EB-PBFPrintedBuild"]))
                             g.add((uri, CORE.hasOutputPrintedBuild, m_uri))
                             continue
-                        except:
-                            pass
-
+                        except: pass
+                    # *********************************************************************
                     if attr == "printing_process_build_plate":
                         try:
-                            m = attr.strip().replace(" ", "_")
+                            m = instance.get(attr, "").strip().replace(" ", "_")
                             m_uri = URIRef(EX + m)
-                            if not any(g.triples((m_uri, None, None))):
-                                # If it exists, generate a class-specific URI to avoid collision
-                                m_uri = URIRef(f"{EX}{Printed_Build_class}/{m.replace(' ', '_')}")
-                            g.add((uri, EB.hasBuildPlate, m_uri))
+                            if (m_uri, RDF.type, EB["EB-PBFBuildPlate"]) not in g:
+                                g.add((m_uri, RDF.type, EB["EB-PBFBuildPlate"]))
+                            if (uri, EB.hasBuildPlate, m_uri) not in g:
+                                g.add((uri, EB.hasBuildPlate, m_uri))
                             continue
-                        except:
-                            pass
-
-                    if attr == "printing_process_printing_meduim":
+                        except: pass
+                    # *********************************************************************
+                    if attr == "printing_process_printing_medium":
                         try:
-                            m = attr.strip().replace(" ", "_")
+                            m = instance.get(attr, "").strip().replace(" ", "_")
                             m_uri = URIRef(EX + m)
-                            if not any(g.triples((m_uri, None, None))):
-                                # If it exists, generate a class-specific URI to avoid collision
-                                m_uri = URIRef(f"{EX}{Printing_Madium_class}/{m.replace(' ', '_')}")
+                            if not any(g.triples((m_uri, RDF.type, CORE.PBFPowder))):
+                                g.add((m_uri, RDF.type, CORE.PBFPowder))
                             g.add((uri, CORE.hasPrintingMedium, m_uri))
                             continue
-                        except:
-                            pass
-
+                        except: pass
+                    # *********************************************************************
                     if attr == "printing_process_printing_machine":
                         try:
-                            m = attr.strip().replace(" ", "_")
+                            m = instance.get(attr, "").strip().replace(" ", "_")
                             m_uri = URIRef(EX + m)
-                            if not any(g.triples((m_uri, None, None))):
-                                # If it exists, generate a class-specific URI to avoid collision
-                                m_uri = URIRef(f"{EX}{Printing_Machine_class}/{m.replace(' ', '_')}")
+                            if not any(g.triples((m_uri, RDF.type, CORE.PBFPrintingMachine))):
+                                g.add((m_uri, RDF.type, CORE.PBFPrintingMachine))
                             g.add((uri, CORE.isOperatedBy, m_uri))
                             continue
-                        except:
-                            pass
-
+                        except: pass
+                    # *********************************************************************
                     if attr == "printing_process_instructions":
                         try:
-                            m = attr.strip().replace(" ", "_")
+                            m = instance.get(attr, "").strip().replace(" ", "_")
                             m_uri = URIRef(EX + m)
-                            if not any(g.triples((m_uri, None, None))):
-                                # If it exists, generate a class-specific URI to avoid collision
-                                m_uri = URIRef(f"{EX}{Printing_Process_Instructions_class}/{m.replace(' ', '_')}")
+                            if not any(g.triples((m_uri, RDF.type, EB["EB-PBFPrintingProcessInstructions"]))):
+                                g.add((m_uri, RDF.type, EB["EB-PBFPrintingProcessInstructions"]))
                             g.add((uri, CORE.hasInput, m_uri))
                             continue
-                        except:
-                            pass
-                    #???????????????????????????????????????
-                    #???????????????????????????????????????
-
-
-
+                        except: pass
+                    # *********************************************************************
                     if attr == "post_heat_ppi_corrspond_layer_build_model":
                         try:
-                            m = attr.strip().replace(" ", "_")
+                            m = instance.get(attr, "").strip().replace(" ", "_")
                             m_uri = URIRef(EX + m)
-                            if not any(g.triples((m_uri, None, None))):
-                                # If it exists, generate a class-specific URI to avoid collision
-                                m_uri = URIRef(f"{EX}{Layer_Of_Build_Model_class}/{m.replace(' ', '_')}")
+                            if not any(g.triples((m_uri, RDF.type, CORE.LayerOfPBFBuildModel))):
+                                g.add((m_uri, RDF.type, CORE.LayerOfPBFBuildModel))
                             g.add((uri, EB.corresponds_to, m_uri))
                             continue
-                        except:
-                            pass
+                        except: pass
+                    # *********************************************************************
                     if attr == "post_heat_ppi_correspond_post_heating_strategy":
                         try:
-                            m = attr.strip().replace(" ", "_")
+                            m = instance.get(attr, "").strip().replace(" ", "_")
                             m_uri = URIRef(EX + m)
-                            if not any(g.triples((m_uri, None, None))):
-                                # If it exists, generate a class-specific URI to avoid collision
-                                m_uri = URIRef(f"{EX}{Layer_Post_Heating_Strategy_class}/{m.replace(' ', '_')}")
+                            if not any(g.triples((m_uri, RDF.type, EB["EB-PBFLayerPost-HeatingStrategy"]))):
+                                g.add((m_uri, RDF.type, EB["EB-PBFLayerPost-HeatingStrategy"]))
                             g.add((uri, EB.corresponds_to, m_uri))
                             continue
-                        except:
-                            pass
-
+                        except: pass
+                    # *********************************************************************
                     if attr == "melting_ppi_corrspond_layer_build_model":
                         try:
-                            m = attr.strip().replace(" ", "_")
+                            m = instance.get(attr, "").strip().replace(" ", "_")
                             m_uri = URIRef(EX + m)
-                            if not any(g.triples((m_uri, None, None))):
-                                # If it exists, generate a class-specific URI to avoid collision
-                                m_uri = URIRef(f"{EX}{Layer_Of_Build_Model_class}/{m.replace(' ', '_')}")
+                            if not any(g.triples((m_uri, RDF.type, CORE.LayerOfPBFBuildModel))):
+                                g.add((m_uri, RDF.type, CORE.LayerOfPBFBuildModel))
                             g.add((uri, EB.corresponds_to, m_uri))
                             continue
-                        except:
-                            pass
-
+                        except: pass
+                    # *********************************************************************
                     if attr == "melting_ppi_correspond_melting_strategy":
                         try:
-                            m = attr.strip().replace(" ", "_")
+                            m = instance.get(attr, "").strip().replace(" ", "_")
                             m_uri = URIRef(EX + m)
-                            if not any(g.triples((m_uri, None, None))):
-                                # If it exists, generate a class-specific URI to avoid collision
-                                m_uri = URIRef(f"{EX}{Layer_Melting_Strategy_class}/{m.replace(' ', '_')}")
+                            if not any(g.triples((m_uri, RDF.type, EB["EB-PBFLayerMeltingStrategy"]))):
+                                g.add((m_uri, RDF.type, EB["EB-PBFLayerMeltingStrategy"]))
                             g.add((uri, EB.corresponds_to, m_uri))
                             continue
-                        except:
-                            pass
-
+                        except: pass
+                    # *********************************************************************
                     if attr == "ModelDesign_output":
                         try:
-                            m = attr.strip().replace(" ", "_")
-                            m_uri = URIRef(EX + m)
-                            # if not any(g.triples((m_uri, None, None))):
-                            # If it exists, generate a class-specific URI to avoid collision
-                            #    m_uri = URIRef(f"{EX}{output_Build_Model_Design_Process_class}/{m.replace(' ', '_')}")
-                            g.add((uri, CORE.hasOutput, m_uri))
-                            continue
-                        except:
-                            pass
-
+                            output_data = instance.get("ModelDesign_output")
+                            if output_data:
+                                m_uri, m_uri_2 = '', ''
+                                for key, value in output_data.items():
+                                    if value and key == 'build_model_name':  # skip empty or None values
+                                        m = str(value).strip().replace(" ", "_")
+                                        m_uri = URIRef(EX + m)
+                                        m_uri_2 = URIRef(f"{EX}output_Build_Model_Design_Process_class/{m}")
+                                        if (m_uri, RDF.type, CORE.PBFBuildModel) not in g:
+                                            g.add((m_uri, RDF.type, CORE.PBFBuildModel))
+                                            if (uri, CORE.hasOutput, m_uri) not in g:
+                                                g.add((uri, CORE.hasOutput, m_uri))
+                                                m_uri_2 = m_uri
+                                        else:
+                                            if (uri, CORE.hasOutput, m_uri_2) not in g:
+                                                g.add((uri, CORE.hasOutput, m_uri_2))
+                                                m_uri = m_uri_2
+                                    if value and key == 'build_model_dimension':
+                                        s = str(value).strip().replace(" ", "_")
+                                        g.add((m_uri, CORE.hasDimensions,Literal(s)))
+                                    if value and key == 'build_model_file_path':
+                                        s = str(value).strip().replace(" ", "_")
+                                        g.add((m_uri, CORE.isRepresentedBy,Literal(s)))
+                                    if value and key == 'build_model_file_format':
+                                        s = str(value).strip().replace(" ", "_")
+                                        file_format_uri = EX[s.replace(".", "_")]  # e.g., ex:partA_stl
+                                        if (file_format_uri, RDF.type, CORE.FileFormat) not in g:
+                                            g.add((file_format_uri, RDF.type, CORE.FileFormat))
+                                        g.add((m_uri, CORE.hasFileFormat, file_format_uri))
+                                    if value and key == 'build_model_comment':
+                                        s = str(value).strip().replace(" ", "_")
+                                        g.add((m_uri, RDFS.comment, Literal(s)))
+                                    if value and key == 'build_model_parts_supports':
+                                        try:
+                                            temp = value[0].strip("[]'")
+                                            temp_2 = temp.split("Get Support:", 1)[1].strip()
+                                            s = str(temp_2).strip().replace(" ", "_")
+                                            s_uri = URIRef(EX + s)
+                                            if not any(g.triples((s_uri, RDF.type, CORE.PBFPrintedBuildSupport))):
+                                                g.add((s_uri, RDF.type, CORE.PBFPrintedBuildSupport))
+                                            g.add((m_uri, EB.hasBuildModelPartSupport, s_uri))
+                                        except: pass
+                        except Exception as e:
+                            print(f"Error processing ModelDesign_output: {e}")
+                    # *********************************************************************
                     if attr == "build_model_parts_supports":
                         try:
                             part_names = []
                             support_names = []
-
                             if isinstance(instance, dict) and "build_model_parts_supports" in instance:
                                 for i in instance["build_model_parts_supports"]:
-                                    # your logic here
-                                    # for i in instance["build_model_parts_supports"]:
                                     match = re.search(r"AM Part:\s*(.*?)\s+Get Support:\s*(.*)", i)
                                     if match:
                                         part_name = match.group(1).strip()
@@ -2784,529 +2633,470 @@ class MyApp(QMainWindow):
                                                 g.add((uri, CORE.consistsOf, get_support_uri))
                                             g.add((get_support_uri, CORE.providesSupportFor, part_name_uri))
                                     pass
-                            else:
-                                print("Warning: 'instance' is not a dictionary or missing 'build_model_parts_supports'")
-                        except:
-                            pass
-
+                        except: pass
+                    # *********************************************************************
                     if attr == "printing_medium_material":
                         try:
                             m = instance.get(attr, "").strip().replace(" ", "_")
-                            if m:
-                                m_uri = URIRef(EX + m)
-                                if not any(g.triples((m_uri, None, None))):
-                                    # If it exists, generate a class-specific URI to avoid collision
-                                    m_uri = URIRef(f"{EX}{Printing_Madium_class}/{m.replace(' ', '_')}")
-                                g.add((uri, EB.isManufacturedFrom, m_uri))
-                        except:
-                            pass
-
+                            m_uri = URIRef(EX + m)
+                            if not any(g.triples((m_uri, RDF.type, CORE.PBFPowder))):
+                                g.add((m_uri, RDF.type, CORE.PBFPowder))
+                            g.add((uri, EB.isManufacturedFrom, m_uri))
+                        except: pass
+                    # *********************************************************************
                     if attr == "printing_medium_manufacturer":
                         try:
                             m = instance.get(attr, "").strip().replace(" ", "_")
-                            if m:
-                                m_uri = URIRef(EX + m)
-                                # if not any(g.triples((m_uri, None, None))):
-                                # If it exists, generate a class-specific URI to avoid collision
-                                #    m_uri = URIRef(f"{EX}{Manufacturer_class}/{m.replace(' ', '_')}")
-                                g.add((uri, EB.isManufacturedBy, m_uri))
-                        except Exception as e:
-                            print(f"Error processing printing_medium_material: {e}")
-
+                            m_uri = URIRef(EX + m)
+                            if not any(g.triples((m_uri, RDF.type, EB.Manufacturer))):
+                                g.add((m_uri, RDF.type, EB.Manufacturer))
+                            g.add((uri, EB.isManufacturedBy, m_uri))
+                        except: pass
+                    # *********************************************************************
                     if attr == "build_plate_material":
                         try:
                             m = instance.get(attr, "").strip().replace(" ", "_")
-                            if m:
-                                m_uri = URIRef(EX + m)
-                                if not any(g.triples((m_uri, None, None))):
-                                    # If it exists, generate a class-specific URI to avoid collision
-                                    m_uri = URIRef(f"{EX}{Material_class}/{m.replace(' ', '_')}")
-                                g.add((uri, EB.isManufacturedFrom, m_uri))
-                        except:
-                            pass
-
+                            m_uri = URIRef(EX + m)
+                            if not any(g.triples((m_uri, RDF.type, EB.Material))):
+                                g.add((m_uri, RDF.type, EB.Material))
+                            g.add((uri, EB.isManufacturedFrom, m_uri))
+                        except: pass
+                    # *********************************************************************
                     if attr == "build_plate_manufacturer":
                         try:
                             m = instance.get(attr, "").strip().replace(" ", "_")
-                            if m:
-                                m_uri = URIRef(EX + m)
-                                if not any(g.triples((m_uri, None, None))):
-                                    # If it exists, generate a class-specific URI to avoid collision
-                                    m_uri = URIRef(f"{EX}{Manufacturer_class}/{m.replace(' ', '_')}")
-                                g.add((uri, EB.isManufacturedBy, m_uri))
-                        except:
-                            pass
-
+                            m_uri = URIRef(EX + m)
+                            if not any(g.triples((m_uri, RDF.type, EB.Manufacturer))):
+                                g.add((m_uri, RDF.type, EB.Manufacturer))
+                            g.add((uri, EB.isManufacturedBy, m_uri))
+                        except: pass
+                    # *********************************************************************
                     if attr == "beam_control_slic_strategy_file":
                         try:
                             file_name = instance.get("beam_control_slic_strategy_file")
                             if file_name:
-                                # file_uri = EX[file_name.replace(".", "_")]  # e.g., ex:partA_stl
-                                file_path = pathlib.Path(file_name)
-                                file_uri = URIRef(file_path.as_uri())
+                                file_path = re.sub(r'[^a-zA-Z0-9_]', '_', file_name)
+                                file_uri = EX[file_path]
                                 if (file_uri, RDF.type, CORE.File) not in g:
                                     g.add((file_uri, RDF.type, CORE.File))
                                 g.add((uri, CORE.isRepresentedBy, file_uri))
                                 file_format_name = instance.get("beam_control_slic_strategy_file_format")
                                 if file_format_name:
-                                    file_format_uri = EX[file_format_name.replace(".", "_")]  # e.g., ex:partA_stl
+                                    file_format_uri = EX[file_format_name.replace(".", "_")]
                                     if (file_format_uri, RDF.type, CORE.FileFormat) not in g:
                                         g.add((file_format_uri, RDF.type, CORE.FileFormat))
                                     g.add((file_uri, CORE.hasFileFormat, file_format_uri))
-                        except:
-                            pass
-
-                    if attr == "AM_part_melting_strategy_file":
-                        try:
-                            file_name = instance.get("AM_part_melting_strategy_file")
-                            if file_name:
-
-                                # Convert Windows path to a valid file URI
-                                file_path = pathlib.Path(file_name)
-                                file_uri = URIRef(file_path.as_uri())
-
-                                # file_uri = EX[file_name.replace(".", "_")]  # e.g., ex:partA_stl
-                                if (file_uri, RDF.type, CORE.File) not in g:
-                                    g.add((file_uri, RDF.type, CORE.File))
-                                g.add((uri, CORE.isRepresentedBy, file_uri))
-                                file_format_name = instance.get("AM_part_melting_strategy_file_format")
-                                if file_format_name:
-                                    file_format_uri = EX[file_format_name.replace(".", "_")]  # e.g., ex:partA_stl
-                                    if (file_format_uri, RDF.type, CORE.FileFormat) not in g:
-                                        g.add((file_format_uri, RDF.type, CORE.FileFormat))
-                                    g.add((file_uri, CORE.hasFileFormat, file_format_uri))
-                        except:
-                            pass
-
+                        except: pass
+                    # *********************************************************************
                     if attr == "melting_strategy_file":
                         try:
                             file_name = instance.get("melting_strategy_file")
                             if file_name:
-                                # file_uri = EX[file_name.replace(".", "_")]  # e.g., ex:partA_stl
-                                file_path = pathlib.Path(file_name)
-                                file_uri = URIRef(file_path.as_uri())
+                                file_path = re.sub(r'[^a-zA-Z0-9_]', '_', file_name)
+                                file_uri = EX[file_path]
                                 if (file_uri, RDF.type, CORE.File) not in g:
                                     g.add((file_uri, RDF.type, CORE.File))
                                 g.add((uri, CORE.isRepresentedBy, file_uri))
                                 file_format_name = instance.get("melting_strategy_file_format")
                                 if file_format_name:
-                                    file_format_uri = EX[file_format_name.replace(".", "_")]  # e.g., ex:partA_stl
+                                    file_format_uri = EX[file_format_name.replace(".", "_")]
                                     if (file_format_uri, RDF.type, CORE.FileFormat) not in g:
                                         g.add((file_format_uri, RDF.type, CORE.FileFormat))
                                     g.add((file_uri, CORE.hasFileFormat, file_format_uri))
-                        except:
-                            pass
-
+                        except: pass
+                    # *********************************************************************
+                    if attr == "AM_part_melting_strategy_file":
+                        try:
+                            file_name = instance.get("AM_part_melting_strategy_file")
+                            if file_name:
+                                file_path = re.sub(r'[^a-zA-Z0-9_]', '_', file_name)
+                                file_uri = EX[file_path]
+                                if (file_uri, RDF.type, CORE.File) not in g:
+                                    g.add((file_uri, RDF.type, CORE.File))
+                                g.add((uri, CORE.isRepresentedBy, file_uri))
+                                file_format_name = instance.get("AM_part_melting_strategy_file_format")
+                                if file_format_name:
+                                    file_format_uri = EX[file_format_name.replace(".", "_")]
+                                    if (file_format_uri, RDF.type, CORE.FileFormat) not in g:
+                                        g.add((file_format_uri, RDF.type, CORE.FileFormat))
+                                    g.add((file_uri, CORE.hasFileFormat, file_format_uri))
+                        except: pass
+                    # *********************************************************************
+                    if attr == "melting_strategy_file":
+                        try:
+                            file_name = instance.get("melting_strategy_file")
+                            if file_name:
+                                file_path = re.sub(r'[^a-zA-Z0-9_]', '_', file_name)
+                                file_uri = EX[file_path]
+                                if (file_uri, RDF.type, CORE.File) not in g:
+                                    g.add((file_uri, RDF.type, CORE.File))
+                                g.add((uri, CORE.isRepresentedBy, file_uri))
+                                file_format_name = instance.get("melting_strategy_file_format")
+                                if file_format_name:
+                                    file_format_uri = EX[file_format_name.replace(".", "_")]
+                                    if (file_format_uri, RDF.type, CORE.FileFormat) not in g:
+                                        g.add((file_format_uri, RDF.type, CORE.FileFormat))
+                                    g.add((file_uri, CORE.hasFileFormat, file_format_uri))
+                        except: pass
+                    # *********************************************************************
                     if attr == "post_heat_strategy_file":
                         try:
                             file_name = instance.get("post_heat_strategy_file")
                             if file_name:
-                                # file_uri = EX[file_name.replace(".", "_")]  # e.g., ex:partA_stl
-                                file_path = pathlib.Path(file_name)
-                                file_uri = URIRef(file_path.as_uri())
+                                file_path = re.sub(r'[^a-zA-Z0-9_]', '_', file_name)
+                                file_uri = EX[file_path]
                                 if (file_uri, RDF.type, CORE.File) not in g:
                                     g.add((file_uri, RDF.type, CORE.File))
                                 g.add((uri, CORE.isRepresentedBy, file_uri))
                                 file_format_name = instance.get("post_heat_strategy_file_format")
                                 if file_format_name:
-                                    file_format_uri = EX[file_format_name.replace(".", "_")]  # e.g., ex:partA_stl
+                                    file_format_uri = EX[file_format_name.replace(".", "_")]
                                     if (file_format_uri, RDF.type, CORE.FileFormat) not in g:
                                         g.add((file_format_uri, RDF.type, CORE.FileFormat))
                                     g.add((file_uri, CORE.hasFileFormat, file_format_uri))
-                        except:
-                            pass
-
+                        except: pass
+                    # *********************************************************************
                     if attr == "ppi_file":
                         try:
-                            if isinstance(instance, dict):
-                                file_name = instance.get("ppi_file", "")
-                            else:
-                                file_name = instance  # or handle it differently if needed
-
+                            file_name = instance.get("ppi_file")
                             if file_name:
-                                # file_uri = EX[file_name.replace(".", "_")]  # e.g., ex:partA_stl
-                                file_path = pathlib.Path(file_name)
-                                file_uri = URIRef(file_path.as_uri())
+                                file_path = re.sub(r'[^a-zA-Z0-9_]', '_', file_name)
+                                file_uri = EX[file_path]
                                 if (file_uri, RDF.type, CORE.File) not in g:
                                     g.add((file_uri, RDF.type, CORE.File))
                                 g.add((uri, CORE.isRepresentedBy, file_uri))
-                                if isinstance(instance, dict):
-                                    file_format_name = instance.get("ppi_file_format", "")
-                                else:
-                                    file_format_name = instance  # or handle it differently if needed
-
+                                file_format_name = instance.get("ppi_file_format")
                                 if file_format_name:
-                                    file_format_uri = EX[file_format_name.replace(".", "_")]  # e.g., ex:partA_stl
+                                    file_format_uri = EX[file_format_name.replace(".", "_")]
                                     if (file_format_uri, RDF.type, CORE.FileFormat) not in g:
                                         g.add((file_format_uri, RDF.type, CORE.FileFormat))
                                     g.add((file_uri, CORE.hasFileFormat, file_format_uri))
-                        except:
-                            pass
-
+                        except: pass
+                    # *********************************************************************
                     if attr == "AM_part_pre_heat_strategy_file":
                         try:
                             file_name = instance.get("AM_part_pre_heat_strategy_file")
                             if file_name:
-                                # file_uri = EX[file_name.replace(".", "_")]  # e.g., ex:partA_stl
-                                file_path = pathlib.Path(file_name)
-                                file_uri = URIRef(file_path.as_uri())
+                                file_path = re.sub(r'[^a-zA-Z0-9_]', '_', file_name)
+                                file_uri = EX[file_path]
                                 if (file_uri, RDF.type, CORE.File) not in g:
                                     g.add((file_uri, RDF.type, CORE.File))
                                 g.add((uri, CORE.isRepresentedBy, file_uri))
                                 file_format_name = instance.get("AM_part_pre_heat_strategy_file_format")
                                 if file_format_name:
-                                    file_format_uri = EX[file_format_name.replace(".", "_")]  # e.g., ex:partA_stl
+                                    file_format_uri = EX[file_format_name.replace(".", "_")]
                                     if (file_format_uri, RDF.type, CORE.FileFormat) not in g:
                                         g.add((file_format_uri, RDF.type, CORE.FileFormat))
                                     g.add((file_uri, CORE.hasFileFormat, file_format_uri))
-                        except:
-                            pass
-
+                        except: pass
+                    # *********************************************************************
                     if attr == "pre_heat_strategy_file":
                         try:
                             file_name = instance.get("pre_heat_strategy_file")
                             if file_name:
-                                # file_uri = EX[file_name.replace(".", "_")]  # e.g., ex:partA_stl
-                                file_path = pathlib.Path(file_name)
-                                file_uri = URIRef(file_path.as_uri())
+                                file_path = re.sub(r'[^a-zA-Z0-9_]', '_', file_name)
+                                file_uri = EX[file_path]
                                 if (file_uri, RDF.type, CORE.File) not in g:
                                     g.add((file_uri, RDF.type, CORE.File))
                                 g.add((uri, CORE.isRepresentedBy, file_uri))
                                 file_format_name = instance.get("pre_heat_strategy_file_format")
                                 if file_format_name:
-                                    file_format_uri = EX[file_format_name.replace(".", "_")]  # e.g., ex:partA_stl
+                                    file_format_uri = EX[file_format_name.replace(".", "_")]
                                     if (file_format_uri, RDF.type, CORE.FileFormat) not in g:
                                         g.add((file_format_uri, RDF.type, CORE.FileFormat))
                                     g.add((file_uri, CORE.hasFileFormat, file_format_uri))
-                        except:
-                            pass
-
+                        except: pass
+                    # *********************************************************************
                     if attr == "AM_part_post_heat_strategy_file":
                         try:
                             file_name = instance.get("AM_part_post_heat_strategy_file")
                             if file_name:
-                                # file_uri = EX[file_name.replace(".", "_")]  # e.g., ex:partA_stl
-                                file_path = pathlib.Path(file_name)
-                                file_uri = URIRef(file_path.as_uri())
+                                file_path = re.sub(r'[^a-zA-Z0-9_]', '_', file_name)
+                                file_uri = EX[file_path]
                                 if (file_uri, RDF.type, CORE.File) not in g:
                                     g.add((file_uri, RDF.type, CORE.File))
                                 g.add((uri, CORE.isRepresentedBy, file_uri))
                                 file_format_name = instance.get("AM_part_post_heat_strategy_file_format")
                                 if file_format_name:
-                                    file_format_uri = EX[file_format_name.replace(".", "_")]  # e.g., ex:partA_stl
+                                    file_format_uri = EX[file_format_name.replace(".", "_")]
                                     if (file_format_uri, RDF.type, CORE.FileFormat) not in g:
                                         g.add((file_format_uri, RDF.type, CORE.FileFormat))
                                     g.add((file_uri, CORE.hasFileFormat, file_format_uri))
-                        except:
-                            pass
-
+                        except: pass
+                    # *********************************************************************
                     if attr == "support_file_path":
                         try:
                             file_name = instance.get("support_file_path")
                             if file_name:
-                                # file_uri = EX[file_name.replace(".", "_")]  # e.g., ex:partA_stl
-                                file_path = pathlib.Path(file_name)
-                                file_uri = URIRef(file_path.as_uri())
+                                file_path = re.sub(r'[^a-zA-Z0-9_]', '_', file_name)
+                                file_uri = EX[file_path]
                                 if (file_uri, RDF.type, CORE.File) not in g:
                                     g.add((file_uri, RDF.type, CORE.File))
                                 g.add((uri, CORE.isRepresentedBy, file_uri))
                                 file_format_name = instance.get("support_file_format")
                                 if file_format_name:
-                                    file_format_uri = EX[file_format_name.replace(".", "_")]  # e.g., ex:partA_stl
+                                    file_format_uri = EX[file_format_name.replace(".", "_")]
                                     if (file_format_uri, RDF.type, CORE.FileFormat) not in g:
                                         g.add((file_format_uri, RDF.type, CORE.FileFormat))
                                     g.add((file_uri, CORE.hasFileFormat, file_format_uri))
-                        except:
-                            pass
-
+                        except: pass
+                    # *********************************************************************
                     if attr == "start_heat_file":
                         try:
                             file_name = instance.get("start_heat_file")
                             if file_name:
-                                # file_uri = EX[file_name.replace(".", "_")]  # e.g., ex:partA_stl
-                                file_path = pathlib.Path(file_name)
-                                file_uri = URIRef(file_path.as_uri())
+                                file_path = re.sub(r'[^a-zA-Z0-9_]', '_', file_name)
+                                file_uri = EX[file_path]
                                 if (file_uri, RDF.type, CORE.File) not in g:
                                     g.add((file_uri, RDF.type, CORE.File))
                                 g.add((uri, CORE.isRepresentedBy, file_uri))
                                 file_format_name = instance.get("start_heat_file_format")
                                 if file_format_name:
-                                    file_format_uri = EX[file_format_name.replace(".", "_")]  # e.g., ex:partA_stl
+                                    file_format_uri = EX[file_format_name.replace(".", "_")]
                                     if (file_format_uri, RDF.type, CORE.FileFormat) not in g:
                                         g.add((file_format_uri, RDF.type, CORE.FileFormat))
                                     g.add((file_uri, CORE.hasFileFormat, file_format_uri))
-                        except:
-                            pass
-
+                        except: pass
+                    # *********************************************************************
                     if attr == "layer_of_Build_Model_AM_Part_file":
                         try:
                             file_name = instance.get("layer_of_Build_Model_AM_Part_file")
                             if file_name:
-                                # file_uri = EX[file_name.replace(".", "_")]  # e.g., ex:partA_stl
-                                file_path = pathlib.Path(file_name)
-                                file_uri = URIRef(file_path.as_uri())
+                                file_path = re.sub(r'[^a-zA-Z0-9_]', '_', file_name)
+                                file_uri = EX[file_path]
                                 if (file_uri, RDF.type, CORE.File) not in g:
                                     g.add((file_uri, RDF.type, CORE.File))
                                 g.add((uri, CORE.isRepresentedBy, file_uri))
                                 file_format_name = instance.get("layer_of_Build_Model_AM_Part_file_format")
                                 if file_format_name:
-                                    file_format_uri = EX[file_format_name.replace(".", "_")]  # e.g., ex:partA_stl
+                                    file_format_uri = EX[file_format_name.replace(".", "_")]
                                     if (file_format_uri, RDF.type, CORE.FileFormat) not in g:
                                         g.add((file_format_uri, RDF.type, CORE.FileFormat))
                                     g.add((file_uri, CORE.hasFileFormat, file_format_uri))
-                        except:
-                            pass
-
+                        except: pass
+                    # *********************************************************************
                     if attr == "Layer_Of_Build_Model_file":
                         try:
                             file_name = instance.get("Layer_Of_Build_Model_file")
                             if file_name:
-                                # file_uri = EX[file_name.replace(".", "_")]  # e.g., ex:partA_stl
-                                file_path = pathlib.Path(file_name)
-                                file_uri = URIRef(file_path.as_uri())
+                                file_path = re.sub(r'[^a-zA-Z0-9_]', '_', file_name)
+                                file_uri = EX[file_path]
                                 if (file_uri, RDF.type, CORE.File) not in g:
                                     g.add((file_uri, RDF.type, CORE.File))
                                 g.add((uri, CORE.isRepresentedBy, file_uri))
                                 file_format_name = instance.get("Layer_Of_Build_Model_file_format")
                                 if file_format_name:
-                                    file_format_uri = EX[file_format_name.replace(".", "_")]  # e.g., ex:partA_stl
+                                    file_format_uri = EX[file_format_name.replace(".", "_")]
                                     if (file_format_uri, RDF.type, CORE.FileFormat) not in g:
                                         g.add((file_format_uri, RDF.type, CORE.FileFormat))
                                     g.add((file_uri, CORE.hasFileFormat, file_format_uri))
-                        except:
-                            pass
-
+                        except: pass
+                    # *********************************************************************
                     if attr == "AM_part_post_heat_ppi_file":
                         try:
                             file_name = instance.get("AM_part_post_heat_ppi_file")
                             if file_name:
-                                # file_uri = EX[file_name.replace(".", "_")]  # e.g., ex:partA_stl
-                                file_path = pathlib.Path(file_name)
-                                file_uri = URIRef(file_path.as_uri())
+                                file_path = re.sub(r'[^a-zA-Z0-9_]', '_', file_name)
+                                file_uri = EX[file_path]
                                 if (file_uri, RDF.type, CORE.File) not in g:
                                     g.add((file_uri, RDF.type, CORE.File))
                                 g.add((uri, CORE.isRepresentedBy, file_uri))
                                 file_format_name = instance.get("AM_part_post_heat_ppi_file_format")
                                 if file_format_name:
-                                    file_format_uri = EX[file_format_name.replace(".", "_")]  # e.g., ex:partA_stl
+                                    file_format_uri = EX[file_format_name.replace(".", "_")]
                                     if (file_format_uri, RDF.type, CORE.FileFormat) not in g:
                                         g.add((file_format_uri, RDF.type, CORE.FileFormat))
                                     g.add((file_uri, CORE.hasFileFormat, file_format_uri))
-                        except:
-                            pass
+                        except: pass
+                    # *********************************************************************
                     if attr == "AM_part_melting_ppi_file":
                         try:
                             file_name = instance.get("AM_part_melting_ppi_file")
                             if file_name:
-                                # file_uri = EX[file_name.replace(".", "_")]  # e.g., ex:partA_stl
-                                file_path = pathlib.Path(file_name)
-                                file_uri = URIRef(file_path.as_uri())
+                                file_path = re.sub(r'[^a-zA-Z0-9_]', '_', file_name)
+                                file_uri = EX[file_path]
                                 if (file_uri, RDF.type, CORE.File) not in g:
                                     g.add((file_uri, RDF.type, CORE.File))
                                 g.add((uri, CORE.isRepresentedBy, file_uri))
                                 file_format_name = instance.get("AM_part_melting_ppi_file_format")
                                 if file_format_name:
-                                    file_format_uri = EX[file_format_name.replace(".", "_")]  # e.g., ex:partA_stl
+                                    file_format_uri = EX[file_format_name.replace(".", "_")]
                                     if (file_format_uri, RDF.type, CORE.FileFormat) not in g:
                                         g.add((file_format_uri, RDF.type, CORE.FileFormat))
                                     g.add((file_uri, CORE.hasFileFormat, file_format_uri))
-                        except:
-                            pass
-
+                        except: pass
+                    # *********************************************************************
                     if attr == "melting_ppi_file":
                         try:
                             file_name = instance.get("melting_ppi_file")
                             if file_name:
-                                # file_uri = EX[file_name.replace(".", "_")]  # e.g., ex:partA_stl
-                                file_path = pathlib.Path(file_name)
-                                file_uri = URIRef(file_path.as_uri())
+                                file_path = re.sub(r'[^a-zA-Z0-9_]', '_', file_name)
+                                file_uri = EX[file_path]
                                 if (file_uri, RDF.type, CORE.File) not in g:
                                     g.add((file_uri, RDF.type, CORE.File))
                                 g.add((uri, CORE.isRepresentedBy, file_uri))
                                 file_format_name = instance.get("melting_ppi_file_format")
                                 if file_format_name:
-                                    file_format_uri = EX[file_format_name.replace(".", "_")]  # e.g., ex:partA_stl
+                                    file_format_uri = EX[file_format_name.replace(".", "_")]
                                     if (file_format_uri, RDF.type, CORE.FileFormat) not in g:
                                         g.add((file_format_uri, RDF.type, CORE.FileFormat))
                                     g.add((file_uri, CORE.hasFileFormat, file_format_uri))
-                        except:
-                            pass
-
+                        except: pass
+                    # *********************************************************************
                     if attr == "Machine_powder_s_file":
                         try:
                             file_name = instance.get("Machine_powder_s_file")
                             if file_name:
-                                # file_uri = EX[file_name.replace(".", "_")]  # e.g., ex:partA_stl
-                                file_path = pathlib.Path(file_name)
-                                file_uri = URIRef(file_path.as_uri())
+                                file_path = re.sub(r'[^a-zA-Z0-9_]', '_', file_name)
+                                file_uri = EX[file_path]
                                 if (file_uri, RDF.type, CORE.File) not in g:
                                     g.add((file_uri, RDF.type, CORE.File))
                                 g.add((uri, CORE.isRepresentedBy, file_uri))
                                 file_format_name = instance.get("Machine_powder_s_file_format")
                                 if file_format_name:
-                                    file_format_uri = EX[file_format_name.replace(".", "_")]  # e.g., ex:partA_stl
+                                    file_format_uri = EX[file_format_name.replace(".", "_")]
                                     if (file_format_uri, RDF.type, CORE.FileFormat) not in g:
                                         g.add((file_format_uri, RDF.type, CORE.FileFormat))
                                     g.add((file_uri, CORE.hasFileFormat, file_format_uri))
-                        except:
-                            pass
-
+                        except: pass
+                    # *********************************************************************
                     if attr == "AM_part_pre_heat_ppi_file":
                         try:
                             file_name = instance.get("AM_part_pre_heat_ppi_file")
                             if file_name:
-                                # file_uri = EX[file_name.replace(".", "_")]  # e.g., ex:partA_stl
-                                file_path = pathlib.Path(file_name)
-                                file_uri = URIRef(file_path.as_uri())
+                                file_path = re.sub(r'[^a-zA-Z0-9_]', '_', file_name)
+                                file_uri = EX[file_path]
                                 if (file_uri, RDF.type, CORE.File) not in g:
                                     g.add((file_uri, RDF.type, CORE.File))
                                 g.add((uri, CORE.isRepresentedBy, file_uri))
                                 file_format_name = instance.get("AM_part_pre_heat_ppi_file_format")
                                 if file_format_name:
-                                    file_format_uri = EX[file_format_name.replace(".", "_")]  # e.g., ex:partA_stl
+                                    file_format_uri = EX[file_format_name.replace(".", "_")]
                                     if (file_format_uri, RDF.type, CORE.FileFormat) not in g:
                                         g.add((file_format_uri, RDF.type, CORE.FileFormat))
                                     g.add((file_uri, CORE.hasFileFormat, file_format_uri))
-                        except:
-                            pass
-
+                        except: pass
+                    # *********************************************************************
                     if attr == "post_heat_ppi_file":
                         try:
                             file_name = instance.get("post_heat_ppi_file")
                             if file_name:
-                                # file_uri = EX[file_name.replace(".", "_")]  # e.g., ex:partA_stl
-                                file_path = pathlib.Path(file_name)
-                                file_uri = URIRef(file_path.as_uri())
+                                file_path = re.sub(r'[^a-zA-Z0-9_]', '_', file_name)
+                                file_uri = EX[file_path]
                                 if (file_uri, RDF.type, CORE.File) not in g:
                                     g.add((file_uri, RDF.type, CORE.File))
                                 g.add((uri, CORE.isRepresentedBy, file_uri))
                                 file_format_name = instance.get("post_heat_ppi_file_format")
                                 if file_format_name:
-                                    file_format_uri = EX[file_format_name.replace(".", "_")]  # e.g., ex:partA_stl
+                                    file_format_uri = EX[file_format_name.replace(".", "_")]
                                     if (file_format_uri, RDF.type, CORE.FileFormat) not in g:
                                         g.add((file_format_uri, RDF.type, CORE.FileFormat))
                                     g.add((file_uri, CORE.hasFileFormat, file_format_uri))
-                        except:
-                            pass
-
+                        except: pass
+                    # *********************************************************************
                     if attr == "build_model_file_path":
                         try:
-                            if isinstance(instance, dict):
-                                file_name = instance.get("build_model_file_path", "")
-                            else:
-                                file_name = instance  # or handle it differently if needed
-
+                            file_name = instance.get("build_model_file_path")
                             if file_name:
-                                # file_uri = EX[file_name.replace(".", "_")]  # e.g., ex:partA_stl
-                                file_path = pathlib.Path(file_name)
-                                file_uri = URIRef(file_path.as_uri())
+                                file_path = re.sub(r'[^a-zA-Z0-9_]', '_', file_name)
+                                file_uri = EX[file_path]
                                 if (file_uri, RDF.type, CORE.File) not in g:
                                     g.add((file_uri, RDF.type, CORE.File))
                                 g.add((uri, CORE.isRepresentedBy, file_uri))
-                                if isinstance(instance, dict):
-                                    file_format_name = instance.get("build_model_file_format", "")
-                                else:
-                                    file_format_name = instance  # or handle it differently if needed
-
+                                file_format_name = instance.get("build_model_file_format")
                                 if file_format_name:
-                                    file_format_uri = EX[file_format_name.replace(".", "_")]  # e.g., ex:partA_stl
+                                    file_format_uri = EX[file_format_name.replace(".", "_")]
                                     if (file_format_uri, RDF.type, CORE.FileFormat) not in g:
                                         g.add((file_format_uri, RDF.type, CORE.FileFormat))
                                     g.add((file_uri, CORE.hasFileFormat, file_format_uri))
-                        except:
-                            pass
-
+                        except: pass
+                    # *********************************************************************
                     if attr == "pre_heat_ppi_file":
                         try:
                             file_name = instance.get("pre_heat_ppi_file")
                             if file_name:
-                                # file_uri = EX[file_name.replace(".", "_")]  # e.g., ex:partA_stl
-                                file_path = pathlib.Path(file_name)
-                                file_uri = URIRef(file_path.as_uri())
+                                file_path = re.sub(r'[^a-zA-Z0-9_]', '_', file_name)
+                                file_uri = EX[file_path]
                                 if (file_uri, RDF.type, CORE.File) not in g:
                                     g.add((file_uri, RDF.type, CORE.File))
                                 g.add((uri, CORE.isRepresentedBy, file_uri))
                                 file_format_name = instance.get("pre_heat_ppi_file_format")
                                 if file_format_name:
-                                    file_format_uri = EX[file_format_name.replace(".", "_")]  # e.g., ex:partA_stl
+                                    file_format_uri = EX[file_format_name.replace(".", "_")]
                                     if (file_format_uri, RDF.type, CORE.FileFormat) not in g:
                                         g.add((file_format_uri, RDF.type, CORE.FileFormat))
                                     g.add((file_uri, CORE.hasFileFormat, file_format_uri))
-                        except:
-                            pass
-
+                        except: pass
+                    # *********************************************************************
                     if attr == "Machine_powder_s_PPI_file":
                         try:
                             file_name = instance.get("Machine_powder_s_PPI_file")
                             if file_name:
-                                # file_uri = EX[file_name.replace(".", "_")]  # e.g., ex:partA_stl
-                                file_path = pathlib.Path(file_name)
-                                file_uri = URIRef(file_path.as_uri())
+                                file_path = re.sub(r'[^a-zA-Z0-9_]', '_', file_name)
+                                file_uri = EX[file_path]
                                 if (file_uri, RDF.type, CORE.File) not in g:
                                     g.add((file_uri, RDF.type, CORE.File))
                                 g.add((uri, CORE.isRepresentedBy, file_uri))
                                 file_format_name = instance.get("Machine_powder_s_PPI_file_format")
                                 if file_format_name:
-                                    file_format_uri = EX[file_format_name.replace(".", "_")]  # e.g., ex:partA_stl
+                                    file_format_uri = EX[file_format_name.replace(".", "_")]
                                     if (file_format_uri, RDF.type, CORE.FileFormat) not in g:
                                         g.add((file_format_uri, RDF.type, CORE.FileFormat))
                                     g.add((file_uri, CORE.hasFileFormat, file_format_uri))
-                        except:
-                            pass
-
+                        except: pass
+                    # *********************************************************************
                     if attr == "start_heat_ppi_file":
                         try:
                             file_name = instance.get("start_heat_ppi_file")
                             if file_name:
-                                # file_uri = EX[file_name.replace(".", "_")]  # e.g., ex:partA_stl
-                                file_path = pathlib.Path(file_name)
-                                file_uri = URIRef(file_path.as_uri())
+                                file_path = re.sub(r'[^a-zA-Z0-9_]', '_', file_name)
+                                file_uri = EX[file_path]
                                 if (file_uri, RDF.type, CORE.File) not in g:
                                     g.add((file_uri, RDF.type, CORE.File))
                                 g.add((uri, CORE.isRepresentedBy, file_uri))
                                 file_format_name = instance.get("start_heat_ppi_file_format")
                                 if file_format_name:
-                                    file_format_uri = EX[file_format_name.replace(".", "_")]  # e.g., ex:partA_stl
+                                    file_format_uri = EX[file_format_name.replace(".", "_")]
                                     if (file_format_uri, RDF.type, CORE.FileFormat) not in g:
                                         g.add((file_format_uri, RDF.type, CORE.FileFormat))
                                     g.add((file_uri, CORE.hasFileFormat, file_format_uri))
-                        except:
-                            pass
-
+                        except: pass
+                    # *********************************************************************
                     if attr == "am_part_file_path":
                         try:
                             file_name = instance.get("am_part_file_path")
                             if file_name:
-                                # file_uri = EX[file_name.replace(".", "_")]  # e.g., ex:partA_stl
-                                file_path = pathlib.Path(file_name)
-                                file_uri = URIRef(file_path.as_uri())
+                                file_path = re.sub(r'[^a-zA-Z0-9_]', '_', file_name)
+                                file_uri = EX[file_path]
                                 if (file_uri, RDF.type, CORE.File) not in g:
                                     g.add((file_uri, RDF.type, CORE.File))
                                 g.add((uri, CORE.isRepresentedBy, file_uri))
                                 file_format_name = instance.get("am_part_file_format")
                                 if file_format_name:
-                                    file_format_uri = EX[file_format_name.replace(".", "_")]  # e.g., ex:partA_stl
+                                    file_format_uri = EX[file_format_name.replace(".", "_")]
                                     if (file_format_uri, RDF.type, CORE.FileFormat) not in g:
                                         g.add((file_format_uri, RDF.type, CORE.FileFormat))
                                     g.add((file_uri, CORE.hasFileFormat, file_format_uri))
-                        except:
-                            pass
-
+                        except: pass
+                    # *********************************************************************
                     if isinstance(instance, dict):
                         value = instance.get(attr, "")
                     elif hasattr(instance, attr):
                         value = getattr(instance, attr)
                     else:
                         value = instance  # fallback: treat instance as the value itself
-                    if value and value != "2025-01-01 00:00:00":
+
+                    namespace_1, local_name_1 = split_uri(predicate)
+
+                    if value and value != "2025-01-01 00:00:00" and local_name_1 != 'label':
                         g.add((uri, predicate, Literal(value)))
-                # ------------------------------------------------------------------------------------------
+                #======================================================================================
                 if isinstance(instance, Monitoring_Process_class):
                     try:
                         for i in instance["monitoring_process_receives_data_from"]:
                             i_name = i.strip().replace(" ", "_")
                             i_uri = URIRef(EX + i_name)
-                            i_uri_2 = URIRef(f"{EX}{Sensor_class}/{i_name.replace(' ', '_')}")
+                            i_uri_2 = URIRef(f"{EX}Sensor_class/{i_name.replace(' ', '_')}")
                             if (i_uri, RDF.type, CORE.PBFPrintingMachineSensor) not in g:
                                 if (i_uri_2, RDF.type, CORE.PBFPrintingMachineSensor) not in g:
                                     g.add((i_uri, RDF.type, OWL.NamedIndividual))
@@ -3316,15 +3106,14 @@ class MyApp(QMainWindow):
                                     i_uri = i_uri_2
                             if (uri, CORE.receivesDataFrom, i_uri) not in g:
                                 g.add((uri, CORE.receivesDataFrom, i_uri))
-
-                    except:
-                        pass
+                    except: pass
+                # ======================================================================================
                 if isinstance(instance, Beam_Control_Slicing_Strategy_class):
                     try:
                         for i in instance["beam_control_start_heating_strategy"]:
                             i_name = i.strip().replace(" ", "_")
                             i_uri = URIRef(EX + i_name)
-                            i_uri_2 = URIRef(f"{EX}{Start_Heating_Strategy_class}/{i_name.replace(' ', '_')}")
+                            i_uri_2 = URIRef(f"{EX}Start_Heating_Strategy_class/{i_name.replace(' ', '_')}")
                             if (i_uri, RDF.type, EB["EB-PBFStartHeatingStrategy"]) not in g:
                                 if (i_uri_2, RDF.type, EB["EB-PBFStartHeatingStrategy"]) not in g:
                                     g.add((i_uri, RDF.type, OWL.NamedIndividual))
@@ -3334,10 +3123,8 @@ class MyApp(QMainWindow):
                                     i_uri = i_uri_2
                             if (i_uri, EB.isSubStrategyOf, uri) not in g:
                                 g.add((i_uri, EB.isSubStrategyOf, uri))
-
-                    except:
-                        pass
-
+                    except: pass
+                # ======================================================================================
                     try:
                         for i in instance["beam_control_pre_heating"]:
                             i_name = i.strip().replace(" ", "_")
@@ -3347,9 +3134,7 @@ class MyApp(QMainWindow):
                                 g.add((i_uri, RDF.type, EB["EB-PBFLayerPre-HeatingStrategy"]))
                             if (i_uri, EB.isSubStrategyOf, uri) not in g:
                                 g.add((i_uri, EB.isSubStrategyOf, uri))
-
-                    except:
-                        pass
+                    except: pass
 
                     try:
                         for i in instance["beam_control_slic_strategy_post_heating"]:
@@ -3361,8 +3146,7 @@ class MyApp(QMainWindow):
                             if (i_uri, EB.isSubStrategyOf, uri) not in g:
                                 g.add((i_uri, EB.isSubStrategyOf, uri))
 
-                    except:
-                        pass
+                    except: pass
 
                     try:
                         for i in instance["beam_control_slic_strategy_melting"]:
@@ -3373,8 +3157,8 @@ class MyApp(QMainWindow):
                                 g.add((i_uri, RDF.type, EB[EB["EB-PBFLayerMeltingStrategy"]]))
                             if (i_uri, EB.isSubStrategyOf, uri) not in g:
                                 g.add((i_uri, EB.isSubStrategyOf, uri))
-                    except:
-                        pass
+                    except: pass
+
                 if isinstance(instance, Layer_Melting_Strategy_class):
                     try:
                         for i in instance["melting_strategy_composed_of_AM_Parts"]:
@@ -3385,11 +3169,9 @@ class MyApp(QMainWindow):
                                 g.add((i_uri, RDF.type, EB["EB-PBFAMPartLayerMeltingStrategy"]))
                             if (uri, CORE.isComposedOf, i_uri) not in g:
                                 g.add((uri, CORE.isComposedOf, i_uri))
-                    except:
-                        pass
+                    except: pass
 
                 if isinstance(instance, Layer_Post_Heating_Strategy_class):
-                    # if Layer_Post_Heating_Strategy_class in instance:
                     try:
                         for i in instance["post_heat_strategy_composed_of_AM_Parts"]:
                             i_name = i.strip().replace(" ", "_")
@@ -3399,11 +3181,9 @@ class MyApp(QMainWindow):
                                 g.add((i_uri, RDF.type, EB["EB-PBFAMPartLayerPost-HeatingStrategy"]))
                             if (uri, CORE.isComposedOf, i_uri) not in g:
                                 g.add((uri, CORE.isComposedOf, i_uri))
-                    except:
-                        pass
+                    except: pass
 
                 if isinstance(instance, Layer_Pre_Heating_Strategy_class):
-                    # if Layer_Pre_Heating_Strategy_class in instance:
                     try:
                         for i in instance["pre_heat_strategy_composed_of_AM_Parts"]:
                             i_name = i.strip().replace(" ", "_")
@@ -3413,20 +3193,18 @@ class MyApp(QMainWindow):
                                 g.add((i_uri, RDF.type, EB["EB-PBFAMPartLayerPre-HeatingStrategy"]))
                             if (uri, CORE.isComposedOf, i_uri) not in g:
                                 g.add((uri, CORE.isComposedOf, i_uri))
-                    except:
-                        pass
+                    except: pass
+
                 if isinstance(instance, Post_Printing_Process_class):
-                    # if Post_Printing_Process_class in instance:
                     try:
                         for i in instance["post_printing_process_used_methods"]:
                             i_name = i.strip().replace(" ", "_")
                             i_uri = URIRef(EX + i_name)
                             if (uri, CORE.usesPostPrintingMethod, i_uri) not in g:
                                 g.add((uri, CORE.usesPostPrintingMethod, i_uri))
-                    except:
-                        pass
+                    except: pass
+
                 if isinstance(instance, Layer_Of_Build_Model_class):
-                    # if Layer_Of_Build_Model_class in instance:
                     try:
                         for i in instance["Layer_Of_Build_Model_consists_of_am_part_layer"]:
                             i_name = i.strip().replace(" ", "_")
@@ -3436,11 +3214,9 @@ class MyApp(QMainWindow):
                                 g.add((i_uri, RDF.type, CORE.LayerOfPBFBuildModelAMPart))
                             if (uri, CORE.consistsOf, i_uri) not in g:
                                 g.add((uri, CORE.consistsOf, i_uri))
-                    except:
-                        pass
+                    except: pass
 
                 if isinstance(instance, Testing_Process_class):
-                    # if Testing_Process_class in instance:
                     try:
                         for i in instance["TestingProcess_testing_data"]:
                             i_name = i.strip().replace(" ", "_")
@@ -3450,8 +3226,8 @@ class MyApp(QMainWindow):
                                 g.add((i_uri, RDF.type, CORE.PBFTestingData))
                             if (uri, CORE.outputsTestingData, i_uri) not in g:
                                 g.add((uri, CORE.outputsTestingData, i_uri))
-                    except:
-                        pass
+                    except: pass
+
                     try:
                         for i in instance["TestingProcess_testing_method"]:
                             i_name = i.strip().replace(" ", "_")
@@ -3461,8 +3237,7 @@ class MyApp(QMainWindow):
                                 g.add((i_uri, RDF.type, CORE.PBFTestingMethod))
                             if (uri, CORE.hasTestingMethod, i_uri) not in g:
                                 g.add((uri, CORE.hasTestingMethod, i_uri))
-                    except:
-                        pass
+                    except: pass
 
                     try:
                         for i in instance["TestingProcess_hasInputPrintedBuildAMPart"]:
@@ -3471,11 +3246,9 @@ class MyApp(QMainWindow):
                             if (i_uri, RDF.type, CORE.PBFPrintedBuildAMPart) not in g:
                                 g.add((i_uri, RDF.type, OWL.NamedIndividual))
                                 g.add((i_uri, RDF.type, CORE.PBFPrintedBuildAMPart))
-
                             if (uri, CORE.hasInputPrintedBuildAMPart, i_uri) not in g:
                                 g.add((uri, CORE.hasInputPrintedBuildAMPart, i_uri))
-                    except:
-                        pass
+                    except: pass
 
                     try:
                         for i in instance["TestingProcess_hasInputPrintedBuildSupport"]:
@@ -3486,38 +3259,46 @@ class MyApp(QMainWindow):
                                 g.add((i_uri, RDF.type, CORE.PBFPrintedBuildSupport))
                             if (uri, CORE.hasInputPrintedBuildSupport, i_uri) not in g:
                                 g.add((uri, CORE.hasInputPrintedBuildSupport, i_uri))
-                    except:
-                        pass
+                    except: pass
 
                 if "Layer_Melting_PPI_class" in instance:
                     try:
                         for part_ppi in instance["melting_ppi_composed_AM_part_Layer_melting_ppi"]:
                             part_ppi_name = part_ppi.strip().replace(" ", "_")
                             part_ppi_uri = URIRef(EX + part_ppi_name)
-                            g.add((uri, CORE.isComposedOf, part_ppi_uri))
-                    except:
-                        pass
-
+                            if (i_uri, RDF.type, EB["EB-PBFAMPartLayerMeltingPrintingProcessInstructions"]) not in g:
+                                g.add((i_uri, RDF.type, OWL.NamedIndividual))
+                                g.add((i_uri, RDF.type, EB["EB-PBFAMPartLayerMeltingPrintingProcessInstructions"]))
+                            if (uri, CORE.isComposedOf, i_uri) not in g:
+                                g.add((uri, CORE.isComposedOf, part_ppi_uri))
+                    except: pass
+                # *********************************************************************
                 if "Layer_Pre_Heating_PPI_class" in instance:
                     try:
                         for part_ppi in instance["pre_heat_ppi_composed_AM_part_Layer_pre_heat_ppi"]:
                             part_ppi_name = part_ppi.strip().replace(" ", "_")
                             part_ppi_uri = URIRef(EX + part_ppi_name)
-                            g.add((uri, CORE.isComposedOf, part_ppi_uri))
-                    except:
-                        pass
-
+                            if (i_uri, RDF.type, EB["EB-PBFAMPartLayerPre-HeatingPrintingProcessInstructions"]) not in g:
+                                g.add((i_uri, RDF.type, OWL.NamedIndividual))
+                                g.add((i_uri, RDF.type, EB["EB-PBFAMPartLayerPre-HeatingPrintingProcessInstructions"]))
+                            if (uri, CORE.isComposedOf, i_uri) not in g:
+                                g.add((uri, CORE.isComposedOf, part_ppi_uri))
+                    except: pass
+                # *********************************************************************
                 if "Layer_Post_Heating_PPI_class" in instance:
                     try:
                         for part_ppi in instance["post_heat_ppi_composed_AM_part_Layer_post_heat_ppi"]:
                             part_ppi_name = part_ppi.strip().replace(" ", "_")
                             part_ppi_uri = URIRef(EX + part_ppi_name)
-                            g.add((uri, CORE.isComposedOf, part_ppi_uri))
-                    except:
-                        pass
+                            if (i_uri, RDF.type, EB["EB-PBFAMPartLayerPost-HeatingPrintingProcessInstructions"]) not in g:
+                                g.add((i_uri, RDF.type, OWL.NamedIndividual))
+                                g.add((i_uri, RDF.type, EB["EB-PBFAMPartLayerPost-HeatingPrintingProcessInstructions"]))
+                            if (uri, CORE.isComposedOf, i_uri) not in g:
+                                g.add((uri, CORE.isComposedOf, part_ppi_uri))
+                    except: pass
+                # *********************************************************************
                 try:
                     if "project_selected_supervisors" in instance:
-                        # isinstance(instance, PBF_AM_Process_Chain_class) and "project_selected_supervisors" in instance:
                         instance["project_selected_supervisors"] = instance.get("project_selected_supervisors", [])
                         if instance["project_selected_supervisors"]:
                             for supervisor in instance["project_selected_supervisors"]:
@@ -3536,9 +3317,7 @@ class MyApp(QMainWindow):
                                 g.add((uri, CORE.isSupervisedBy, supervisor_uri))
                         else:
                             print("Warning: 'instance' is not a dictionary or missing 'project_selected_supervisors'")
-                except:
-                    pass
-
+                except: pass
                 # ----------------------------------------------------------------------------------------------------------------
                 if "Printing_Process_Instructions_class" in instance:
                     try:
@@ -3562,8 +3341,7 @@ class MyApp(QMainWindow):
                             i_name = i.strip().replace(" ", "_")
                             i_uri = URIRef(EX + i_name)
                             g.add((uri, EB.contains, i_uri))
-                    except:
-                        pass
+                    except: pass
 
                 if "printing_machine_sensor_info" in instance:
                     try:
@@ -3577,8 +3355,7 @@ class MyApp(QMainWindow):
                                 g.add((i_uri, CORE.hasSensorType, Literal(i.get("sensor_type", ""))))
                                 g.add((i_uri, CORE.hasRecordedData, Literal(i.get("recorded_data_path", ""))))
                             g.add((uri, CORE.hasSensor, i_uri))
-                    except:
-                        pass
+                    except: pass
 
                 if attr == "Printed_Build_AM_Parts_and_supports" in instance:
                     try:
@@ -3586,7 +3363,6 @@ class MyApp(QMainWindow):
                         support_names = []
                         for i in instance["Printed_Build_AM_Parts_and_supports"]:
                             match = re.search(r"Printed Build AM Part:\s*(.*?)\s+Get Support:\s*(.*)", i)
-
                             if match:
                                 part_name = match.group(1).strip()
                                 get_support = match.group(2).strip()
@@ -3594,7 +3370,6 @@ class MyApp(QMainWindow):
                                     part_names.append(part_name)
                                     part_name_name = part_name.strip().replace(" ", "_")
                                     part_name_uri = URIRef(EX + part_name_name)
-
                                     part_name_uri_2 = URIRef(
                                         f"{EX}Printed_Build_AM_Part_class/{part_name_name.replace(' ', '_')}")
                                     if (part_name_uri, RDF.type, CORE.PBFPrintedBuildAMPart) not in g:
@@ -3610,10 +3385,8 @@ class MyApp(QMainWindow):
                                     support_names.append(get_support)
                                     get_support_name = get_support.strip().replace(" ", "_")
                                     get_support_uri = URIRef(EX + get_support_name)
-
                                     get_support_uri_2 = URIRef(
                                         f"{EX}Printed_Build_Support_class/{get_support_name.replace(' ', '_')}")
-
                                     if (get_support_uri, RDF.type, CORE.PBFPrintedBuildSupport) not in g:
                                         if (get_support_uri_2, RDF.type, CORE.PBFPrintedBuildSupport) not in g:
                                             g.add((get_support_uri, RDF.type, CORE.PBFPrintedBuildSupport))
@@ -3624,7 +3397,6 @@ class MyApp(QMainWindow):
                                             get_support_uri = get_support_uri_2
                                             break
                                     g.add((get_support_uri, CORE.isSupportFor, part_name_uri))
-
                         for i in part_names:
                             i_name = i.strip().replace(" ", "_")
                             i_uri = URIRef(EX + i_name)
@@ -3633,46 +3405,37 @@ class MyApp(QMainWindow):
                             i_name = i.strip().replace(" ", "_")
                             i_uri = URIRef(EX + i_name)
                             g.add((uri, CORE.isComposedOf, i_uri))
-                    except:
-                        pass
+                    except: pass
                 # ----------------------------------------------------------------------------------------------------------------
-        # ✅ Save as RDF/XML to get <owl:NamedIndividual>
-
         # Ask user where to save the RDF output
         rdf_filename, _ = QFileDialog.getSaveFileName(self, "Save RDF Output", "", "RDF files (*.rdf)")
         if not rdf_filename:
             QMessageBox.warning(self, "No Save Location", "No save location was selected.")
             return
-
         # Ensure the file ends with .rdf
         if not rdf_filename.endswith(".rdf"):
             rdf_filename += ".rdf"
-
         # Serialize RDF graph
         g.serialize(rdf_filename, format="pretty-xml")
         QMessageBox.information(self, "Success", f"RDF file saved as '{rdf_filename}'")
-        # g.serialize("output8.rdf", format="pretty-xml")
-        # g.serialize("output4.ttl", format="turtle")
-
     # =======================================================================
     def save_project_as_json(self):
         def deep_serialize(obj):
-            # Ensure obj is a list
             if not isinstance(obj, list):
                 obj = [obj]
-
+            #------------------------------
             def serialize_item(item):
                 if isinstance(item, list):
                     return [serialize_item(subitem) for subitem in item]
                 elif isinstance(item, dict):
                     return {key: serialize_item(value) for key, value in item.items()}
                 elif hasattr(item, '__dict__'):
-                    return serialize_item(vars(item))  # safer than item.__dict__
+                    return serialize_item(vars(item))
                 elif isinstance(item, (str, int, float, bool)) or item is None:
                     return item
                 else:
-                    return str(item)  # fallback for unsupported types
-
+                    return str(item)
+            #------------------------------
             return [serialize_item(item) for item in obj]
 
         filename, _ = QFileDialog.getSaveFileName(self, "Save As New Project", "", "JSON files (*.json)")
@@ -3680,8 +3443,8 @@ class MyApp(QMainWindow):
             self.current_project_path = filename
             if not filename.endswith(".json"):
                 filename += ".json"
-            output = filename.rsplit("/", 1)[-1]  # e.g. "project.pkl"
-            filename_name = output.replace(".json", "")  # e.g. "project"
+            output = filename.rsplit("/", 1)[-1]
+            filename_name = output.replace(".json", "")
             dictionary2 = {}
             # Add all entries using deep serialization
             dictionary2["Sensor_class"] = deep_serialize(sensors_list)
@@ -3689,30 +3452,22 @@ class MyApp(QMainWindow):
             dictionary2["PBF_AM_Process_Chain_class"] = deep_serialize(PBF_AM_Process_Chain)
             dictionary2["Build_Model_Design_Process_class"] = deep_serialize(Build_Model_Design_Process_process)
             dictionary2["output_Build_Model_Design_Process_class"] = deep_serialize(build_model_parts)
-            # dictionary2["build_model_support_for_part"] = deep_serialize(build_model_support_for_part)
             dictionary2["output_Build_Model_Design_Process_class"] = deep_serialize(Build_model)
             dictionary2["Machine_Powder_Feed_Control_Strategy_class"] = deep_serialize(machine_powder_strategy)
             dictionary2["Machine_Powder_Feed_Control_PPI_class"] = deep_serialize(machine_powder_strategy_PPI)
             dictionary2["Slicing_Process_class"] = deep_serialize(Slicing_process)
             dictionary2["Printing_Process_Instructions_class"] = deep_serialize(Printing_Process_Instructions_output)
             dictionary2["Layer_Of_Build_Model_class"] = deep_serialize(Layer_Of_Build_Models_Layer_decomposition)
-            # dictionary2["Layer_Of_Build_Model_AM_Parts_Layer_decomposition"] = deep_serialize(Layer_Of_Build_Model_AM_Parts_Layer_decomposition)
             dictionary2["Beam_Control_Slicing_Strategy_class"] = deep_serialize(Beam_control_slicing_strategy)
             dictionary2["Start_Heating_PPI_class"] = deep_serialize(start_heating_PPIs_in_project)
             dictionary2["start_heating_strategies_in_project"] = deep_serialize(start_heating_strategies_in_project)
-            dictionary2["Start_Heating_Strategy_class"] = deep_serialize(
-                Layer_Pre_Heating_Strategies_list_used_in_project)
-            dictionary2["Layer_Post_Heating_Strategy_class"] = deep_serialize(
-                Layer_Post_Heating_Strategies_list_used_in_project)
-            dictionary2["Layer_Pre_Heating_PPI_class"] = deep_serialize(
-                Layer_Pre_Heating_PPI_list_used_in_project)
-            dictionary2["Layer_Post_Heating_PPI_list_used_in_project"] = deep_serialize(
-                Layer_Post_Heating_PPI_list_used_in_project)
+            dictionary2["Start_Heating_Strategy_class"] = deep_serialize(Layer_Pre_Heating_Strategies_list_used_in_project)
+            dictionary2["Layer_Post_Heating_Strategy_class"] = deep_serialize(Layer_Post_Heating_Strategies_list_used_in_project)
+            dictionary2["Layer_Pre_Heating_PPI_class"] = deep_serialize(Layer_Pre_Heating_PPI_list_used_in_project)
+            dictionary2["Layer_Post_Heating_PPI_list_used_in_project"] = deep_serialize(Layer_Post_Heating_PPI_list_used_in_project)
             dictionary2["Layer_Post_Heating_PPI_class"] = deep_serialize(Layer_Post_Heating_PPI_list)
-            dictionary2["Layer_Melting_Strategy_class"] = deep_serialize(
-                Layer_Melting_Strategies_list_used_in_project)
-            dictionary2["Layer_Melting_PPI_class"] = deep_serialize(
-                Layer_Melting_PPI_list_used_in_project)
+            dictionary2["Layer_Melting_Strategy_class"] = deep_serialize(Layer_Melting_Strategies_list_used_in_project)
+            dictionary2["Layer_Melting_PPI_class"] = deep_serialize(Layer_Melting_PPI_list_used_in_project)
             dictionary2["Printing_Process_class"] = deep_serialize(Printing_Process)
             dictionary2["Printed_Build_class"] = deep_serialize(printed_build)
             dictionary2["Monitoring_Process_class"] = deep_serialize(Monitoring_Process)
@@ -3727,19 +3482,15 @@ class MyApp(QMainWindow):
             dictionary2["Printing_Process_Instructions_class"] = deep_serialize(defined_Printing_Process_Instructions)
             dictionary2["Layer_Of_Build_Model_class"] = deep_serialize(Layer_Of_Build_Models_list)
             dictionary2["layer_of_Build_Model_AM_Part_class"] = deep_serialize(Layer_Of_Build_Model_AM_Parts_list)
-            dictionary2["Machine_Powder_Feed_Control_Strategy_class"] = deep_serialize(
-                Machine_Powder_Feed_Control_Strategies_list)
-            dictionary2["Machine_Powder_Feed_Control_PPI_class"] = deep_serialize(
-                Machine_Powder_Feed_Control_Strategy_PPIs_list)
+            dictionary2["Machine_Powder_Feed_Control_Strategy_class"] = deep_serialize(Machine_Powder_Feed_Control_Strategies_list)
+            dictionary2["Machine_Powder_Feed_Control_PPI_class"] = deep_serialize(Machine_Powder_Feed_Control_Strategy_PPIs_list)
             dictionary2["Scan_Strategy_class"] = deep_serialize(Scan_Strategies_list)
             dictionary2["Start_Heating_PPI_class"] = deep_serialize(Start_Heating_PPI_list)
             dictionary2["Start_Heating_Strategy_class"] = deep_serialize(Start_Heating_Strategy_list)
-            dictionary2["AM_Part_Layer_Pre_Heating_Strategy_class"] = deep_serialize(
-                AM_Part_Layer_Pre_Heating_Strategies_list)
+            dictionary2["AM_Part_Layer_Pre_Heating_Strategy_class"] = deep_serialize(AM_Part_Layer_Pre_Heating_Strategies_list)
             dictionary2["Layer_Pre_Heating_Strategy_class"] = deep_serialize(Layer_Pre_Heating_Strategies_list)
             dictionary2["AM_Part_Layer_Pre_Heating_PPI_class"] = deep_serialize(AM_Part_Layer_Pre_Heating_PPI_list)
-            dictionary2["AM_Part_Layer_Post_Heating_Strategy_class"] = deep_serialize(
-                AM_Part_Layer_Post_Heating_Strategies_list)
+            dictionary2["AM_Part_Layer_Post_Heating_Strategy_class"] = deep_serialize(AM_Part_Layer_Post_Heating_Strategies_list)
             dictionary2["Layer_Post_Heating_Strategy_class"] = deep_serialize(Layer_Post_Heating_Strategies_list)
             dictionary2["AM_Part_Layer_Post_Heating_PPI_class"] = deep_serialize(AM_Part_Layer_Post_Heating_PPI_list)
             dictionary2["Layer_Pre_Heating_PPI_class"] = deep_serialize(Layer_Pre_Heating_PPI_list)
@@ -3748,7 +3499,7 @@ class MyApp(QMainWindow):
             dictionary2["AM_Part_Layer_Melting_PPI_class"] = deep_serialize(AM_Part_Layer_Melting_PPI_list)
             dictionary2["Layer_Melting_PPI_class"] = deep_serialize(Layer_Melting_PPI_list)
             dictionary2["Material_class"] = deep_serialize(defined_Materials)
-            dictionary2["Printing_Madium_class"] = deep_serialize(defined_Printing_mediums)
+            dictionary2["Printing_Medium_class"] = deep_serialize(defined_Printing_mediums)
             dictionary2["Build_Plate_class"] = deep_serialize(defined_Build_Plates)
             dictionary2["Printing_Machine_class"] = deep_serialize(defined_printing_machines)
             dictionary2["Printed_Build_class"] = deep_serialize(printed_build_list)
@@ -3758,7 +3509,6 @@ class MyApp(QMainWindow):
             dictionary2["Testing_Method_class"] = deep_serialize(Testing_Methods_list)
             dictionary2["Sensor_class"] = deep_serialize(sensors_list)
             dictionary2["Manufacturer_class"] = deep_serialize(defined_Manufacturers)
-
             # Save to JSON
             try:
                 with open(filename, 'w') as f:
@@ -3766,19 +3516,16 @@ class MyApp(QMainWindow):
                 QMessageBox.information(self, "Success", f"Project saved successfully as '{filename_name}'")
             except Exception as e:
                 QMessageBox.critical(self, "Error", f"Failed to save project: {str(e)}")
-
     # =======================================================================
     def save_changes_to_current_project(self):
         try:
             printer = Printing_Process.printing_process_printing_machine
             sensor_info = printer.printing_machine_sensor_info
             Monitoring_Process.monitoring_process_receives_data_from = sensor_info
-        except:
-            pass
+        except:pass
         try:
             Monitoring_Process.monitoring_process_printing_process = Printing_Process
-        except:
-            pass
+        except:pass
         try:
             index = next((i for i, cls in enumerate(PBF_AM_Process_Chains_list) if
                           cls.project_name == PBF_AM_Process_Chain.project_name), -1)
@@ -3799,24 +3546,19 @@ class MyApp(QMainWindow):
                 Printing_Process_Instructions_output.ppi_layer_pre_heating_ppi = Layer_Pre_Heating_PPI_list_used_in_project
                 Printing_Process_Instructions_output.ppi_layer_post_heating_ppi = Layer_Post_Heating_PPI_list_used_in_project
                 Printing_Process_Instructions_output.ppi_layer_melting_heating_ppi = Layer_Melting_PPI_list_used_in_project
-            except:
-                pass
+            except:pass
             try:
                 Printing_Process.printing_process_output = printed_build
-            except:
-                pass
+            except:pass
             try:
                 machine_powder_strategy_PPI.Machine_powder_s_PPI_correspond_strategy = machine_powder_strategy
-            except:
-                pass
+            except:pass
             try:
                 Slicing_process.SlicingProcess_input = Build_model
-            except:
-                pass
+            except:pass
             try:
                 Slicing_process.SlicingProcess_output = Printing_Process_Instructions_output
-            except:
-                pass
+            except:pass
             try:
                 if start_heating_strategies_in_project:
                     Beam_control_slicing_strategy.beam_control_start_heating_strategy = start_heating_strategies_in_project
@@ -3826,8 +3568,7 @@ class MyApp(QMainWindow):
                     Beam_control_slicing_strategy.beam_control_slic_strategy_post_heating = Layer_Post_Heating_Strategies_list_used_in_project
                 if Layer_Melting_Strategies_list_used_in_project:
                     Beam_control_slicing_strategy.beam_control_slic_strategy_melting = Layer_Melting_Strategies_list_used_in_project
-            except:
-                pass
+            except:pass
             if Testing_process_applied_testing_methods:
                 Testing_Process.TestingProcess_testing_data = Testing_process_applied_testing_methods
                 methods = []
@@ -3861,17 +3602,14 @@ class MyApp(QMainWindow):
             dictionary["Slicing_process"] = Slicing_process
             dictionary["Printing_Process_Instructions_output"] = Printing_Process_Instructions_output
             dictionary["Layer_Of_Build_Models_Layer_decomposition"] = Layer_Of_Build_Models_Layer_decomposition
-            dictionary[
-                "Layer_Of_Build_Model_AM_Parts_Layer_decomposition"] = Layer_Of_Build_Model_AM_Parts_Layer_decomposition
+            dictionary["Layer_Of_Build_Model_AM_Parts_Layer_decomposition"] = Layer_Of_Build_Model_AM_Parts_Layer_decomposition
             dictionary["machine_powder_strategy"] = machine_powder_strategy
             dictionary["machine_powder_strategy_PPI"] = machine_powder_strategy_PPI
             dictionary["Beam_control_slicing_strategy"] = Beam_control_slicing_strategy
             dictionary["start_heating_PPIs_in_project"] = start_heating_PPIs_in_project
             dictionary["start_heating_strategies_in_project"] = start_heating_strategies_in_project
-            dictionary[
-                "Layer_Pre_Heating_Strategies_list_used_in_project"] = Layer_Pre_Heating_Strategies_list_used_in_project
-            dictionary[
-                "Layer_Post_Heating_Strategies_list_used_in_project"] = Layer_Post_Heating_Strategies_list_used_in_project
+            dictionary["Layer_Pre_Heating_Strategies_list_used_in_project"] = Layer_Pre_Heating_Strategies_list_used_in_project
+            dictionary["Layer_Post_Heating_Strategies_list_used_in_project"] = Layer_Post_Heating_Strategies_list_used_in_project
             dictionary["Layer_Pre_Heating_PPI_list_used_in_project"] = Layer_Pre_Heating_PPI_list_used_in_project
             dictionary["Layer_Post_Heating_PPI_list_used_in_project"] = Layer_Post_Heating_PPI_list_used_in_project
             dictionary["Layer_Post_Heating_PPI_list"] = Layer_Post_Heating_PPI_list
@@ -3887,50 +3625,40 @@ class MyApp(QMainWindow):
             with open(self.current_project_path, 'wb') as f:
                 pickle.dump(dictionary, f)
             QMessageBox.information(self, "Success", f"Changes saved to '{self.current_project_path}'")
-            # Save to JSON
         except Exception as e:
             QMessageBox.critical(self, "Error", f"Failed to save current project: {str(e)}")
-
     # =======================================================================
     def save_as_new_project(self):
         try:
             printer = Printing_Process.printing_process_printing_machine
             sensor_info = printer.printing_machine_sensor_info
             Monitoring_Process.monitoring_process_receives_data_from = sensor_info
-        except:
-            pass
+        except:pass
         try:
             Monitoring_Process.monitoring_process_printing_process = Printing_Process
-        except:
-            pass
+        except:pass
         try:
             PBF_AM_Process_Chains_list.append(PBF_AM_Process_Chain)
-        except:
-            pass
+        except:pass
         try:
             Printing_Process_Instructions_output.ppi_machine_powder_feed = machine_powder_strategy_PPI
             Printing_Process_Instructions_output.ppi_start_heating_ppi = start_heating_PPIs_in_project
             Printing_Process_Instructions_output.ppi_layer_pre_heating_ppi = Layer_Pre_Heating_PPI_list_used_in_project
             Printing_Process_Instructions_output.ppi_layer_post_heating_ppi = Layer_Post_Heating_PPI_list_used_in_project
             Printing_Process_Instructions_output.ppi_layer_melting_heating_ppi = Layer_Melting_PPI_list_used_in_project
-        except:
-            pass
+        except:pass
         try:
             machine_powder_strategy_PPI.Machine_powder_s_PPI_correspond_strategy = machine_powder_strategy
-        except:
-            pass
+        except:pass
         try:
             Printing_Process.printing_process_output = printed_build
-        except:
-            pass
+        except:pass
         try:
             Slicing_process.SlicingProcess_input = Build_model
-        except:
-            pass
+        except:pass
         try:
             Slicing_process.SlicingProcess_output = Printing_Process_Instructions_output
-        except:
-            pass
+        except:pass
         try:
             if Testing_process_applied_testing_methods:
                 Testing_Process.TestingProcess_testing_data = Testing_process_applied_testing_methods
@@ -3955,8 +3683,7 @@ class MyApp(QMainWindow):
                 if parts: Testing_Process.TestingProcess_hasInputPrintedBuildAMPart = parts
                 if supports:
                     Testing_Process.TestingProcess_hasInputPrintedBuildSupport = supports
-        except:
-            pass
+        except:pass
         try:
             if start_heating_strategies_in_project:
                 Beam_control_slicing_strategy.beam_control_start_heating_strategy = start_heating_strategies_in_project
@@ -3973,8 +3700,8 @@ class MyApp(QMainWindow):
             self.current_project_path = filename
             if not filename.endswith(".pkl"):
                 filename += ".pkl"
-            output = filename.rsplit("/", 1)[-1]  # e.g. "project.pkl"
-            filename_name = output.replace(".pkl", "")  # e.g. "project"
+            output = filename.rsplit("/", 1)[-1]
+            filename_name = output.replace(".pkl", "")
             dictionary = {}
             dictionary["PBF_AM_Process_Chain"] = PBF_AM_Process_Chain
             dictionary["Build_Model_Design_Process_process"] = Build_Model_Design_Process_process
@@ -3984,17 +3711,14 @@ class MyApp(QMainWindow):
             dictionary["Slicing_process"] = Slicing_process
             dictionary["Printing_Process_Instructions_output"] = Printing_Process_Instructions_output
             dictionary["Layer_Of_Build_Models_Layer_decomposition"] = Layer_Of_Build_Models_Layer_decomposition
-            dictionary[
-                "Layer_Of_Build_Model_AM_Parts_Layer_decomposition"] = Layer_Of_Build_Model_AM_Parts_Layer_decomposition
+            dictionary[ "Layer_Of_Build_Model_AM_Parts_Layer_decomposition"] = Layer_Of_Build_Model_AM_Parts_Layer_decomposition
             dictionary["machine_powder_strategy"] = machine_powder_strategy
             dictionary["machine_powder_strategy_PPI"] = machine_powder_strategy_PPI
             dictionary["Beam_control_slicing_strategy"] = Beam_control_slicing_strategy
             dictionary["start_heating_PPIs_in_project"] = start_heating_PPIs_in_project
             dictionary["start_heating_strategies_in_project"] = start_heating_strategies_in_project
-            dictionary[
-                "Layer_Pre_Heating_Strategies_list_used_in_project"] = Layer_Pre_Heating_Strategies_list_used_in_project
-            dictionary[
-                "Layer_Post_Heating_Strategies_list_used_in_project"] = Layer_Post_Heating_Strategies_list_used_in_project
+            dictionary["Layer_Pre_Heating_Strategies_list_used_in_project"] = Layer_Pre_Heating_Strategies_list_used_in_project
+            dictionary["Layer_Post_Heating_Strategies_list_used_in_project"] = Layer_Post_Heating_Strategies_list_used_in_project
             dictionary["Layer_Pre_Heating_PPI_list_used_in_project"] = Layer_Pre_Heating_PPI_list_used_in_project
             dictionary["Layer_Post_Heating_PPI_list_used_in_project"] = Layer_Post_Heating_PPI_list_used_in_project
             dictionary["Layer_Post_Heating_PPI_list"] = Layer_Post_Heating_PPI_list
@@ -4012,13 +3736,12 @@ class MyApp(QMainWindow):
                 QMessageBox.information(self, "Success", f"Project saved successfully as '{filename_name}'")
             except Exception as e:
                 QMessageBox.critical(self, "Error", f"Failed to save project: {str(e)}")
-
     # =======================================================================
     def defined_printed_build_AM_part_listWidget_menu(self, position):
         list_widget = self.ui.defined_printed_build_AM_part_listWidget
         item = list_widget.itemAt(position)
         if item is None:
-            return  # No item under cursor
+            return
         menu = QMenu()
         delete_action = menu.addAction("Delete")
         edit_action = menu.addAction("Edit")
@@ -4051,13 +3774,12 @@ class MyApp(QMainWindow):
                                                m.Printed_Build_AM_Part_name != item_text]
                 self.remove_combobox_item_by_text(self.ui.printed_build_PB_AM_part_comboBox, item_text)
             list_widget.takeItem(list_widget.row(item))
-
     # =======================================================================
     def defined_printed_build_support_listWidget_menu(self, position):
         list_widget = self.ui.defined_printed_build_support_listWidget
         item = list_widget.itemAt(position)
         if item is None:
-            return  # No item under cursor
+            return
         menu = QMenu()
         delete_action = menu.addAction("Delete")
         edit_action = menu.addAction("Edit")
@@ -4090,13 +3812,12 @@ class MyApp(QMainWindow):
                                                m.Printed_Build_Support_name != item_text]
                 self.remove_combobox_item_by_text(self.ui.printed_build_PB_AM_part_support_comboBox, item_text)
             list_widget.takeItem(list_widget.row(item))
-
     # =======================================================================
     def defined_Printed_Builds_listWidget_menu(self, position):
         list_widget = self.ui.defined_Printed_Builds_listWidget
         item = list_widget.itemAt(position)
         if item is None:
-            return  # No item under cursor
+            return
         menu = QMenu()
         delete_action = menu.addAction("Delete")
         edit_action = menu.addAction("View and Edit")
@@ -4128,13 +3849,12 @@ class MyApp(QMainWindow):
                 index = self.ui.printing_process_output_printe_build.findText(item_text)
                 if index != -1: self.ui.printing_process_output_printe_build.removeItem(index)
             list_widget.takeItem(list_widget.row(item))
-
     # =======================================================================
     def defined_printing_machines_listWidget_menu(self, position):
         list_widget = self.ui.defined_printing_machines_listWidget
         item = list_widget.itemAt(position)
         if item is None:
-            return  # No item under cursor
+            return
         menu = QMenu()
         delete_action = menu.addAction("Delete")
         edit_action = menu.addAction("Edit")
@@ -4170,20 +3890,18 @@ class MyApp(QMainWindow):
                                              m.printing_machine_name != item_text]
                 self.remove_combobox_item_by_text(self.ui.printing_process_printing_machine, item_text)
             list_widget.takeItem(list_widget.row(item))
-
     # =======================================================================
     def remove_combobox_item_by_text(self, combo_box, target_text):
         for i in range(combo_box.count()):
             if combo_box.itemText(i) == target_text:
                 combo_box.removeItem(i)
                 break
-
     # =======================================================================
     def defined_printing_medium_listWidget_menu(self, position):
         list_widget = self.ui.defined_printing_medium_listWidget
         item = list_widget.itemAt(position)
         if item is None:
-            return  # No item under cursor
+            return
         menu = QMenu()
         delete_action = menu.addAction("Delete")
         edit_action = menu.addAction("Edit")
@@ -4226,13 +3944,12 @@ class MyApp(QMainWindow):
                 index = self.ui.printing_process_printing_medium.findText(item_text)
                 if index != -1: self.ui.printing_process_printing_medium.removeItem(index)
             list_widget.takeItem(list_widget.row(item))
-
     # =======================================================================
     def existing_sensors_listWidget_menu(self, position):
         list_widget = self.ui.existing_sensors_listWidget
         item = list_widget.itemAt(position)
         if item is None:
-            return  # No item under cursor
+            return
         menu = QMenu()
         global sensors_list
         delete_action = menu.addAction("Delete")
@@ -4273,13 +3990,12 @@ class MyApp(QMainWindow):
                         del removed
                         break
             list_widget.takeItem(list_widget.row(item))
-
     # =======================================================================
     def defined_sensors_listWidget_menu(self, position):
         list_widget = self.ui.defined_sensors_listWidget
         item = list_widget.itemAt(position)
         if item is None:
-            return  # No item under cursor
+            return
         menu = QMenu()
         delete_action = menu.addAction("Delete")
         action = menu.exec(list_widget.mapToGlobal(position))
@@ -4291,13 +4007,12 @@ class MyApp(QMainWindow):
             if reply == QMessageBox.StandardButton.Yes:
                 item = list_widget.currentItem()
                 list_widget.takeItem(list_widget.row(item))
-
     # =======================================================================
     def defined_build_plate_listWidget_menu(self, position):
         list_widget = self.ui.defined_build_plate_listWidget
         item = list_widget.itemAt(position)
         if item is None:
-            return  # No item under cursor
+            return
         menu = QMenu()
         delete_action = menu.addAction("Delete")
         edit_action = menu.addAction("Edit")
@@ -4335,12 +4050,11 @@ class MyApp(QMainWindow):
                 index = self.ui.printing_process_buildplate.findText(item_text)
                 if index != -1: self.ui.printing_process_buildplate.removeItem(index)
             list_widget.takeItem(list_widget.row(item))
-
     # =======================================================================
     def list_defined_AM_part_layer_melting_strategy_ppi_listwidget_menu(self, position):
         list_widget = self.ui.list_defined_AM_part_layer_melting_strategy_ppi_listwidget
         item = list_widget.itemAt(position)
-        if item is None: return  # No item under cursor
+        if item is None: return
         menu = QMenu()
         delete_action = menu.addAction("Delete")
         edit_action = menu.addAction("Edit")
@@ -4385,12 +4099,11 @@ class MyApp(QMainWindow):
                 index = self.ui.composed_of_am_part_melting_ppi_combobox.findText(item_text)
                 if index != -1: self.ui.composed_of_am_part_melting_ppi_combobox.removeItem(index)
             list_widget.takeItem(list_widget.row(item))
-
     # =======================================================================
     def list_defined_AM_part_layer_post_heating_strategy_ppi_listwidget_menu(self, position):
         list_widget = self.ui.list_defined_AM_part_layer_post_heating_strategy_ppi_listwidget
         item = list_widget.itemAt(position)
-        if item is None: return  # No item under cursor
+        if item is None: return
         menu = QMenu()
         delete_action = menu.addAction("Delete")
         edit_action = menu.addAction("Edit")
@@ -4436,12 +4149,11 @@ class MyApp(QMainWindow):
                 index = self.ui.composed_of_am_part_post_heating_ppi_combobox.findText(item_text)
                 if index != -1: self.ui.composed_of_am_part_post_heating_ppi_combobox.removeItem(index)
             list_widget.takeItem(list_widget.row(item))
-
     # =======================================================================
     def list_defined_AM_part_layer_pre_heating_strategy_ppi_listwidget_menu(self, position):
         list_widget = self.ui.list_defined_AM_part_layer_pre_heating_strategy_ppi_listwidget
         item = list_widget.itemAt(position)
-        if item is None: return  # No item under cursor
+        if item is None: return
         menu = QMenu()
         delete_action = menu.addAction("Delete")
         edit_action = menu.addAction("Edit")
@@ -4484,12 +4196,11 @@ class MyApp(QMainWindow):
                 AM_Part_Layer_Pre_Heating_PPI_list = [m for m in AM_Part_Layer_Pre_Heating_PPI_list if
                                                       m.AM_part_pre_heat_ppi_name != item_text]
             list_widget.takeItem(list_widget.row(item))
-
     # =======================================================================.
     def list_defined_A_part_layer_melting_strategy_listwidget_menu(self, position):
         list_widget = self.ui.list_defined_A_part_layer_melting_strategy_listwidget
         item = list_widget.itemAt(position)
-        if item is None: return  # No item under cursor
+        if item is None: return
         menu = QMenu()
         delete_action = menu.addAction("Delete")
         edit_action = menu.addAction("Edit")
@@ -4545,12 +4256,11 @@ class MyApp(QMainWindow):
                 index = self.ui.am_part_layer_melting_strategy_ppi_related_am_part_comboBox.findText(item_text)
                 if index != -1: self.ui.am_part_layer_melting_strategy_ppi_related_am_part_comboBox.removeItem(index)
             list_widget.takeItem(list_widget.row(item))
-
     # =======================================================================.
     def list_defined_A_part_layer_post_heating_strategy_listwidget_menu(self, position):
         list_widget = self.ui.list_defined_A_part_layer_post_heating_strategy_listwidget
         item = list_widget.itemAt(position)
-        if item is None: return  # No item under cursor
+        if item is None: return
         menu = QMenu()
         delete_action = menu.addAction("Delete")
         edit_action = menu.addAction("Edit")
@@ -4599,12 +4309,11 @@ class MyApp(QMainWindow):
                 index = self.ui.am_part_layer_post_heating_ppi_related_am_part_comboBox.findText(item_text)
                 if index != -1: self.ui.am_part_layer_post_heating_ppi_related_am_part_comboBox.removeItem(index)
             list_widget.takeItem(list_widget.row(item))
-
     # =======================================================================
     def list_defined_A_part_layer_pre_heating_strategy_listwidget_menu(self, position):
         list_widget = self.ui.list_defined_A_part_layer_pre_heating_strategy_listwidget
         item = list_widget.itemAt(position)
-        if item is None: return  # No item under cursor
+        if item is None: return
         menu = QMenu()
         delete_action = menu.addAction("Delete")
         edit_action = menu.addAction("Edit")
@@ -4664,12 +4373,11 @@ class MyApp(QMainWindow):
                         del removed
                         break
             list_widget.takeItem(list_widget.row(item))
-
     # =======================================================================
     def list_of_layer_melting_strategy_used_in_beam_control_listwidget_menu(self, position):
         list_widget = self.ui.list_of_layer_melting_strategy_used_in_beam_control_listwidget
         item = list_widget.itemAt(position)
-        if item is None: return  # No item under cursor
+        if item is None: return
         menu = QMenu()
         delete_action = menu.addAction("Delete")
         action = menu.exec(list_widget.mapToGlobal(position))
@@ -4689,7 +4397,6 @@ class MyApp(QMainWindow):
                     index = self.ui.correspond_layer_melting_strategy_combobox.findText(item_text)
                     if index != -1: self.ui.correspond_layer_melting_strategy_combobox.removeItem(index)
                 list_widget.takeItem(list_widget.row(item))
-
     # =======================================================================
     def list_layer_post_heating_in_beam_control_listWidget_menu(self, position):
         list_widget = self.ui.list_layer_post_heating_in_beam_control_listWidget
@@ -4714,12 +4421,11 @@ class MyApp(QMainWindow):
                     index = self.ui.correspond_layer_post_heating_combobox.findText(item_text)
                     if index != -1: self.ui.correspond_layer_post_heating_combobox.removeItem(index)
                 list_widget.takeItem(list_widget.row(item))
-
     # =======================================================================
     def list_layer_pre_heating_in_beam_control_listWidget_menu(self, position):
         list_widget = self.ui.list_layer_pre_heating_in_beam_control_listWidget
         item = list_widget.itemAt(position)
-        if item is None: return  # No item under cursor
+        if item is None: return
         menu = QMenu()
         delete_action = menu.addAction("Delete")
         action = menu.exec(list_widget.mapToGlobal(position))
@@ -4739,12 +4445,11 @@ class MyApp(QMainWindow):
                     index = self.ui.correspond_to_layer_pre_heating_combobox.findText(item_text)
                     if index != -1: self.ui.correspond_to_layer_pre_heating_combobox.removeItem(index)
                 list_widget.takeItem(list_widget.row(item))
-
     # =======================================================================
     def composed_of_am_part_layer_melting_ppi_listWidget_menu(self, position):
         list_widget = self.ui.composed_of_am_part_layer_melting_ppi_listWidget
         item = list_widget.itemAt(position)
-        if item is None: return  # No item under cursor
+        if item is None: return
         menu = QMenu()
         delete_action = menu.addAction("Delete")
         action = menu.exec(list_widget.mapToGlobal(position))
@@ -4756,12 +4461,11 @@ class MyApp(QMainWindow):
             if reply == QMessageBox.StandardButton.Yes:
                 item = list_widget.currentItem()
                 list_widget.takeItem(list_widget.row(item))
-
     # =======================================================================
     def composed_of_am_part_layer_post_heating_ppi_listWidget_menu(self, position):
         list_widget = self.ui.composed_of_am_part_layer_post_heating_ppi_listWidget
         item = list_widget.itemAt(position)
-        if item is None: return  # No item under cursor
+        if item is None: return
         menu = QMenu()
         delete_action = menu.addAction("Delete")
         action = menu.exec(list_widget.mapToGlobal(position))
@@ -4774,12 +4478,11 @@ class MyApp(QMainWindow):
             if reply == QMessageBox.StandardButton.Yes:
                 item = list_widget.currentItem()
                 list_widget.takeItem(list_widget.row(item))
-
     # =======================================================================
     def composed_of_am_part_layer_melting_strategy_listWidget_menu(self, position):
         list_widget = self.ui.composed_of_am_part_layer_melting_strategy_listWidget
         item = list_widget.itemAt(position)
-        if item is None: return  # No item under cursor
+        if item is None: return
         menu = QMenu()
         delete_action = menu.addAction("Delete")
         action = menu.exec(list_widget.mapToGlobal(position))
@@ -4794,12 +4497,11 @@ class MyApp(QMainWindow):
                 if item is not None:
                     item_text = item.text()
                 list_widget.takeItem(list_widget.row(item))
-
     # =======================================================================
     def composed_of_am_part_layer_post_heating_strategy_listWidget_menu(self, position):
         list_widget = self.ui.composed_of_am_part_layer_post_heating_strategy_listWidget
         item = list_widget.itemAt(position)
-        if item is None: return  # No item under cursor
+        if item is None: return
         menu = QMenu()
         delete_action = menu.addAction("Delete")
         action = menu.exec(list_widget.mapToGlobal(position))
@@ -4814,12 +4516,11 @@ class MyApp(QMainWindow):
                 if item is not None:
                     item_text = item.text()
                 list_widget.takeItem(list_widget.row(item))
-
     # =======================================================================
     def composed_of_am_part_layer_pre_heating_strategy_listWidget_menu(self, position):
         list_widget = self.ui.composed_of_am_part_layer_pre_heating_strategy_listWidget
         item = list_widget.itemAt(position)
-        if item is None: return  # No item under cursor
+        if item is None: return
         menu = QMenu()
         delete_action = menu.addAction("Delete")
         action = menu.exec(list_widget.mapToGlobal(position))
@@ -4834,12 +4535,11 @@ class MyApp(QMainWindow):
                 if item is not None:
                     item_text = item.text()
                 list_widget.takeItem(list_widget.row(item))
-
     # =======================================================================
     def composed_of_am_part_layer_pre_heating_ppi_listWidget_menu(self, position):
         list_widget = self.ui.composed_of_am_part_layer_pre_heating_ppi_listWidget
         item = list_widget.itemAt(position)
-        if item is None: return  # No item under cursor
+        if item is None: return
         menu = QMenu()
         delete_action = menu.addAction("Delete")
         action = menu.exec(list_widget.mapToGlobal(position))
@@ -4854,12 +4554,11 @@ class MyApp(QMainWindow):
                 if item is not None:
                     item_text = item.text()
                 list_widget.takeItem(list_widget.row(item))
-
     # =======================================================================
     def layer_melting_ppi_used_beam_control_listwidget_menu(self, position):
         list_widget = self.ui.layer_melting_ppi_used_beam_control_listwidget
         item = list_widget.itemAt(position)
-        if item is None: return  # No item under cursor
+        if item is None: return
         menu = QMenu()
         delete_action = menu.addAction("Delete")
         action = menu.exec(list_widget.mapToGlobal(position))
@@ -4876,12 +4575,11 @@ class MyApp(QMainWindow):
                     Layer_Melting_PPI_list_used_in_project = [s for s in Layer_Melting_PPI_list_used_in_project if
                                                               s.melting_ppi_name != item_text]
                 list_widget.takeItem(list_widget.row(item))
-
     # =======================================================================
     def layer_post_heating_ppi_used_beam_control_listwidget_menu(self, position):
         list_widget = self.ui.layer_post_heating_ppi_used_beam_control_listwidget
         item = list_widget.itemAt(position)
-        if item is None: return  # No item under cursor
+        if item is None: return
         menu = QMenu()
         delete_action = menu.addAction("Delete")
         edit_action = menu.addAction("Edit")
@@ -4920,11 +4618,9 @@ class MyApp(QMainWindow):
                     Layer_Post_Heating_PPI_list[index].post_heat_ppi_comment)
                 self.ui.composed_of_am_part_layer_post_heating_ppi_listWidget.clear()
                 try:
-                    for item_text in Layer_Post_Heating_PPI_list[
-                        index].post_heat_ppi_composed_AM_part_Layer_post_heat_ppi:
+                    for item_text in Layer_Post_Heating_PPI_list[index].post_heat_ppi_composed_AM_part_Layer_post_heat_ppi:
                         self.ui.composed_of_am_part_layer_post_heating_ppi_listWidget.addItem(item_text)
-                except:
-                    pass
+                except:pass
                 Layer_Post_Heating_PPI_list = [s for s in Layer_Post_Heating_PPI_list if
                                                s.post_heat_ppi_name != item_text]
                 Layer_Post_Heating_PPI_list_used_in_project = [s for s in Layer_Post_Heating_PPI_list_used_in_project if
@@ -4938,12 +4634,11 @@ class MyApp(QMainWindow):
                 index = self.ui.load_an_existing_layer_post_heating_ppi_combobox.findText(item_text)
                 if index != -1: self.ui.load_an_existing_layer_post_heating_ppi_combobox.removeItem(index)
             list_widget.takeItem(list_widget.row(item))
-
     # =======================================================================
     def list_pre_heating_ppi_in_beam_control_menu(self, position):
         list_widget = self.ui.list_pre_heating_ppi_in_beam_control
         item = list_widget.itemAt(position)
-        if item is None: return  # No item under cursor
+        if item is None: return
         menu = QMenu()
         delete_action = menu.addAction("Delete")
         edit_action = menu.addAction("Edit")
@@ -4998,12 +4693,11 @@ class MyApp(QMainWindow):
                 index = self.ui.load_an_existing_layer_pr_heating_ppi_combobox.findText(item_text)
                 if index != -1: self.ui.load_an_existing_layer_pr_heating_ppi_combobox.removeItem(index)
             list_widget.takeItem(list_widget.row(item))
-
     # =======================================================================
     def composed_of_am_part_layer_melting_ppi_listWidget_2_menu(self, position):
         list_widget = self.ui.composed_of_am_part_layer_melting_ppi_listWidget_2
         item = list_widget.itemAt(position)
-        if item is None: return  # No item under cursor
+        if item is None: return
         menu = QMenu()
         delete_action = menu.addAction("Delete")
         edit_action = menu.addAction("Edit")
@@ -5059,7 +4753,6 @@ class MyApp(QMainWindow):
                 index = self.ui.load_an_existing_layer_melting_ppi_combobox.findText(item_text)
                 if index != -1: self.ui.load_an_existing_layer_melting_ppi_combobox.removeItem(index)
             list_widget.takeItem(list_widget.row(item))
-
     # =======================================================================
     def composed_of_am_part_layer_post_heating_ppi_listWidget_2_menu(self, position):
         list_widget = self.ui.composed_of_am_part_layer_post_heating_ppi_listWidget_2
@@ -5130,7 +4823,6 @@ class MyApp(QMainWindow):
                 index = self.ui.load_an_existing_layer_post_heating_ppi_combobox.findText(item_text)
                 if index != -1: self.ui.load_an_existing_layer_post_heating_ppi_combobox.removeItem(index)
             list_widget.takeItem(list_widget.row(item))
-
     # =======================================================================
     def composed_of_am_part_layer_pre_heating_ppi_listWidget_2_menu(self, position):
         list_widget = self.ui.composed_of_am_part_layer_pre_heating_ppi_listWidget_2
@@ -5194,12 +4886,11 @@ class MyApp(QMainWindow):
                 index = self.ui.load_an_existing_layer_pr_heating_ppi_combobox.findText(item_text)
                 if index != -1: self.ui.load_an_existing_layer_pr_heating_ppi_combobox.removeItem(index)
             list_widget.takeItem(list_widget.row(item))
-
     # =======================================================================
     def list_defined_A_part_layer_melting_strategy_listwidget_2_menu(self, position):
         list_widget = self.ui.list_defined_A_part_layer_melting_strategy_listwidget_2
         item = list_widget.itemAt(position)
-        if item is None: return  # No item under cursor
+        if item is None: return
         menu = QMenu()
         delete_action = menu.addAction("Delete")
         edit_action = menu.addAction("Edit")
@@ -5267,12 +4958,11 @@ class MyApp(QMainWindow):
                         del removed
                         break
             list_widget.takeItem(list_widget.row(item))
-
     # =======================================================================
     def list_defined_layer_post_heating_strategy_listwidget_menu(self, position):
         list_widget = self.ui.list_defined_layer_post_heating_strategy_listwidget
         item = list_widget.itemAt(position)
-        if item is None: return  # No item under cursor
+        if item is None: return
         menu = QMenu()
         delete_action = menu.addAction("Delete")
         edit_action = menu.addAction("Edit")
@@ -5339,12 +5029,11 @@ class MyApp(QMainWindow):
                         del removed
                         break
             list_widget.takeItem(list_widget.row(item))
-
     # =======================================================================
     def list_defined_layer_pre_heating_strategy_listwidget_menu(self, position):
         list_widget = self.ui.list_defined_layer_pre_heating_strategy_listwidget
         item = list_widget.itemAt(position)
-        if item is None: return  # No item under cursor
+        if item is None: return
         menu = QMenu()
         delete_action = menu.addAction("Delete")
         edit_action = menu.addAction("Edit")
@@ -5392,8 +5081,7 @@ class MyApp(QMainWindow):
                 try:
                     for item_text in Layer_Pre_Heating_PPI_list[index].pre_heat_ppi_composed_AM_part_Layer_pre_heat_ppi:
                         self.ui.composed_of_am_part_layer_pre_heating_ppi_listWidget.addItem(item_text)
-                except:
-                    pass
+                except:pass
                 Layer_Pre_Heating_Strategies_list = [s for s in Layer_Pre_Heating_Strategies_list if
                                                      s.pre_heat_strategy_name != item_text]
                 Layer_Pre_Heating_Strategies_list_used_in_project = [s for s in
@@ -5410,12 +5098,11 @@ class MyApp(QMainWindow):
                         del removed
                         break
             list_widget.takeItem(list_widget.row(item))
-
     # =======================================================================
     def defined_scan_strategy_listWidget_menu(self, position):
         list_widget = self.ui.defined_scan_strategy_listWidget
         item = list_widget.itemAt(position)
-        if item is None: return  # No item under cursor
+        if item is None: return
         menu = QMenu()
         delete_action = menu.addAction("Delete")
         edit_action = menu.addAction("Edit")
@@ -5450,8 +5137,7 @@ class MyApp(QMainWindow):
             item = list_widget.currentItem()
             if item is not None:
                 item_text = item.text()
-                index = next((i for i, cls in enumerate(Scan_Strategies_list) if cls.scan_strategy_name == item_text),
-                             -1)
+                index = next((i for i, cls in enumerate(Scan_Strategies_list) if cls.scan_strategy_name == item_text),-1)
                 self.ui.scan_strategy_name.setPlainText(Scan_Strategies_list[index].scan_strategy_name)
                 self.ui.scan_strategy_spot_size.setPlainText(Scan_Strategies_list[index].scan_strategy_beam_spot_size)
                 self.ui.scan_strategy_dwell_time.setPlainText(Scan_Strategies_list[index].scan_strategy_dwell_time)
@@ -5478,14 +5164,13 @@ class MyApp(QMainWindow):
                 index = self.ui.am_part_layer_melting_strategy_scan_strategy.findText(item_text)
                 if index != -1: self.ui.am_part_layer_melting_strategy_scan_strategy.removeItem(index)
             list_widget.takeItem(list_widget.row(item))
-
     # =======================================================================
     def defined_start_heating_listWidget_menu(self, position):
         global start_heating_strategies_in_project, Start_Heating_Strategy_list
         list_widget = self.ui.defined_start_heating_listWidget
         item = list_widget.itemAt(position)
         if item is None:
-            return  # No item under cursor
+            return
         menu = QMenu()
         delete_action = menu.addAction("Delete")
         edit_action = menu.addAction("Edit")
@@ -5503,10 +5188,8 @@ class MyApp(QMainWindow):
                                                    s.start_heat_name != item_text]
                 index = self.ui.load_start_heat_startegy_comboBox.findText(item_text)
                 if index != -1: self.ui.load_start_heat_startegy_comboBox.removeItem(index)
-
                 index = self.ui.strat_heating_pp_correspond_strategy.findText(item_text)
                 if index != -1: self.ui.strat_heating_pp_correspond_strategy.removeItem(index)
-
                 for i in range(self.ui.selected_start_heating_listWidget.count()):
                     if self.ui.selected_start_heating_listWidget.item(i).text() == item_text:
                         removed = self.ui.selected_start_heating_listWidget.takeItem(i)
@@ -5542,14 +5225,13 @@ class MyApp(QMainWindow):
                     del removed
                     break
             list_widget.takeItem(list_widget.row(item))
-
     # =======================================================================
     def defined_start_heat_ppi_listWidget_menu(self, position):
         global Start_Heating_PPI_list, start_heating_PPIs_in_project
         list_widget = self.ui.defined_start_heat_ppi_listWidget
         item = list_widget.itemAt(position)
         if item is None:
-            return  # No item under cursor
+            return
         menu = QMenu()
         delete_action = menu.addAction("Delete")
         edit_action = menu.addAction("Edit")
@@ -5591,31 +5273,23 @@ class MyApp(QMainWindow):
                         Start_Heating_PPI_list[index].start_heat_ppi_correspond_start_heat_strategy)
                     if index_combo != -1:
                         self.ui.strat_heating_pp_correspond_strategy.setCurrentIndex(index_combo)
-                except:
-                    pass
-                '''
-                index = self.ui.printing_process_buildplate.findText(Printing_Process.printing_process_build_plate)
-                if index != -1:
-                    self.ui.printing_process_buildplate.setCurrentIndex(index)
-                '''
+                except:pass
             Start_Heating_PPI_list = [m for m in Start_Heating_PPI_list if m.start_heat_ppi_name != item_text]
             index = self.ui.load_start_heat_ppi_comboBox.findText(item_text)
             if index != -1: self.ui.load_start_heat_ppi_comboBox.removeItem(index)
             for i in range(self.ui.selected_start_heat_ppi_listWidget.count()):
                 if self.ui.selected_start_heat_ppi_listWidget.item(i).text() == item_text:
                     removed = self.ui.selected_start_heat_ppi_listWidget.takeItem(i)
-                    self.start_heating_PPIs_in_project = [s for s in start_heating_PPIs_in_project if
-                                                          s.start_heat_ppi_name != item_text]
+                    self.start_heating_PPIs_in_project = [s for s in start_heating_PPIs_in_project if s.start_heat_ppi_name != item_text]
                     del removed
                     break
             list_widget.takeItem(list_widget.row(item))
-
     # =======================================================================
     def defined_machine_control_ppi_listwidget_menu(self, position):
         list_widget = self.ui.defined_machine_control_ppi_listwidget
         item = list_widget.itemAt(position)
         if item is None:
-            return  # No item under cursor
+            return
         menu = QMenu()
         delete_action = menu.addAction("Delete")
         edit_action = menu.addAction("Edit")
@@ -5665,13 +5339,12 @@ class MyApp(QMainWindow):
                     del removed
                     break
             list_widget.takeItem(list_widget.row(item))
-
     # =======================================================================
     def defined_machine_powder_control_strategies_listwidget_menu(self, position):
         list_widget = self.ui.defined_machine_powder_control_strategies_listwidget
         item = list_widget.itemAt(position)
         if item is None:
-            return  # No item under cursor
+            return
         menu = QMenu()
         delete_action = menu.addAction("Delete")
         edit_action = menu.addAction("Edit")
@@ -5724,8 +5397,7 @@ class MyApp(QMainWindow):
                     Machine_Powder_Feed_Control_Strategies_list[index].Machine_powder_s_recoater_build_repeats)
                 self.ui.machine_feed_strategy_comment.setPlainText(
                     Machine_Powder_Feed_Control_Strategies_list[index].Machine_powder_s_comment)
-                Machine_Powder_Feed_Control_Strategies_list = [m for m in Machine_Powder_Feed_Control_Strategies_list if
-                                                               m.Machine_powder_s_name != item_text]
+                Machine_Powder_Feed_Control_Strategies_list = [m for m in Machine_Powder_Feed_Control_Strategies_list if m.Machine_powder_s_name != item_text]
                 if machine_powder_strategy_PPI:
                     self.ui.machine_feed_instructions_name.setPlainText(
                         machine_powder_strategy_PPI.Machine_powder_s_PPI_name)
@@ -5744,12 +5416,11 @@ class MyApp(QMainWindow):
                     del removed
                     break
             list_widget.takeItem(list_widget.row(item))
-
     # =======================================================================
     def list_output_part_layer_decomposition_menu(self, position):
         list_widget = self.ui.list_output_part_layer_decomposition
         item = list_widget.itemAt(position)
-        if item is None: return  # No item under cursor
+        if item is None: return
         menu = QMenu()
         delete_action = menu.addAction("Delete")
         action = menu.exec(list_widget.mapToGlobal(position))
@@ -5776,14 +5447,12 @@ class MyApp(QMainWindow):
                                 temp = []
                             temp = temp.remove(part)
                             Layer_Of_Build_Models_list[index].Layer_Of_Build_Model_consists_of_am_part_layer = temp
-                    except:
-                        pass
-
+                    except:pass
     # =======================================================================
     def list_output_layer_decomposition_menu(self, position):
         list_widget = self.ui.list_output_layer_decomposition
         item = list_widget.itemAt(position)
-        if item is None: return  # No item under cursor
+        if item is None: return
         menu = QMenu()
         delete_action = menu.addAction("Delete")
         action = menu.exec(list_widget.mapToGlobal(position))
@@ -5793,13 +5462,12 @@ class MyApp(QMainWindow):
                                          QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No,
                                          QMessageBox.StandardButton.No)
             if reply == QMessageBox.StandardButton.Yes: list_widget.takeItem(list_widget.row(item))
-
     # =======================================================================
     def existing_ppi_listwidget_menu(self, position):
         list_widget = self.ui.existing_ppi_listwidget
         item = list_widget.itemAt(position)
         if item is None:
-            return  # No item under cursor
+            return
         menu = QMenu()
         delete_action = menu.addAction("Delete")
         edit_action = menu.addAction("Edit")
@@ -5852,16 +5520,14 @@ class MyApp(QMainWindow):
                     self.ui.input_printing_ppi_name.removeItem(index)
                 try:
                     self.ui.selected_ppi_slicing_process.takeItem(item_text)
-                except:
-                    pass
+                except:pass
             list_widget.takeItem(list_widget.row(item))
-
     # =======================================================================
     def list_existing_model_layers_menu(self, position):
         list_widget = self.ui.list_existing_model_layers
         item = list_widget.itemAt(position)
         if item is None:
-            return  # No item under cursor
+            return
         menu = QMenu()
         delete_action = menu.addAction("Delete")
         edit_action = menu.addAction("Edit")
@@ -5913,12 +5579,11 @@ class MyApp(QMainWindow):
             index = self.ui.load_layer_comboBox_2.findText(item_text)
             if index != -1: self.ui.load_layer_comboBox_2.removeItem(index)
             list_widget.takeItem(list_widget.row(item))
-
     # =======================================================================
     def list_existing_part_model_layers_menu(self, position):
         list_widget = self.ui.list_existing_part_model_layers
         item = list_widget.itemAt(position)
-        if item is None: return  # No item under cursor
+        if item is None: return
         menu = QMenu()
         delete_action = menu.addAction("Delete")
         edit_action = menu.addAction("Edit")
@@ -5947,8 +5612,7 @@ class MyApp(QMainWindow):
             item = list_widget.currentItem()
             try:
                 item_text = item.text()
-            except:
-                pass
+            except:pass
             if item is not None:
                 item_text = item.text()
                 index = next((i for i, cls in enumerate(Layer_Of_Build_Model_AM_Parts_list) if
@@ -5969,13 +5633,12 @@ class MyApp(QMainWindow):
             if index != -1:
                 self.ui.layer_part_comboBox.removeItem(index)
             list_widget.takeItem(list_widget.row(item))
-
     # =======================================================================
     def defined_manufactures_listWidget_menu(self, position):
         list_widget = self.ui.defined_manufactures_listWidget
         item = list_widget.itemAt(position)
         if item is None:
-            return  # No item under cursor
+            return
         menu = QMenu()
         delete_action = menu.addAction("Delete")
         edit_action = menu.addAction("Edit")
@@ -6011,13 +5674,12 @@ class MyApp(QMainWindow):
                 index = self.ui.build_plate_manufacturer_comboBox.findText(item_text)
                 if index != -1: self.ui.build_plate_manufacturer_comboBox.removeItem(index)
             list_widget.takeItem(list_widget.row(item))
-
     # =======================================================================
     def defined_materials_listWidget_menu(self, position):
         list_widget = self.ui.defined_materials_listWidget
         item = list_widget.itemAt(position)
         if item is None:
-            return  # No item under cursor
+            return
         menu = QMenu()
         delete_action = menu.addAction("Delete")
         view_action = menu.addAction("View")
@@ -6071,7 +5733,6 @@ class MyApp(QMainWindow):
                 index = self.ui.printing_medium_material_comboBox.findText(item_text)
                 if index != -1: self.ui.printing_medium_material_comboBox.removeItem(index)
             list_widget.takeItem(list_widget.row(item))
-
     # =======================================================================
     def open_edit_material_window(self, item_text):
         global defined_Materials
@@ -6108,13 +5769,12 @@ class MyApp(QMainWindow):
         self.materialview_window.ui.material_comment.setPlainText(defined_Materials[index].material_comment)
         self.materialview_window.ui.material_comment.setReadOnly(True)
         self.materialview_window.show()
-
     # =======================================================================
     def selected_digital_build_model_menu(self, position):
         list_widget = self.ui.selected_digital_build_model
         item = list_widget.itemAt(position)
         if item is None:
-            return  # No item under cursor
+            return
         menu = QMenu()
         delete_action = menu.addAction("Delete")
         action = menu.exec(list_widget.mapToGlobal(position))
@@ -6141,13 +5801,12 @@ class MyApp(QMainWindow):
                                                               "    padding: 4px; ")
                 if self.ui.load_build_model_checkBox.isChecked():
                     self.ui.add_buil_model_button_2.setEnabled(True)
-
     # =======================================================================
     def existing_digital_build_model_listwidget_menu(self, position):
         list_widget = self.ui.existing_digital_build_model_listwidget
         item = list_widget.itemAt(position)
         if item is None:
-            return  # No item under cursor
+            return
         menu = QMenu()
         delete_action = menu.addAction("Delete")
         edit_action = menu.addAction("View and Edit")
@@ -6178,41 +5837,36 @@ class MyApp(QMainWindow):
                 item_text = item.text()
                 self.open_edit_build_model_window(item_text)
             list_widget.takeItem(list_widget.row(item))
-
     # =======================================================================
     def toggle_composed_of_am_part_layer_melting_strategy_combobox_2(self, state):
         if self.ui.composed_of_am_part_layer_melting_strategy_checkbox.isChecked():
             self.ui.composed_of_am_part_layer_melting_strategy_combobox_2.setEnabled(True)
         else:
             self.ui.composed_of_am_part_layer_melting_strategy_combobox_2.setEnabled(False)
-
     # =======================================================================
     def toggle_composed_of_am_part_melting_ppi_combobox(self, state):
         if self.ui.composed_of_am_part_melting_ppi_checkBox.isChecked():
             self.ui.composed_of_am_part_melting_ppi_combobox.setEnabled(True)
         else:
             self.ui.composed_of_am_part_melting_ppi_combobox.setEnabled(False)
-
     # =======================================================================
     def toggle_load_an_existing_layer_melting_ppi_combobox(self, state):
         if self.ui.load_an_existing_layer_melting_ppi_checkBox.isChecked():
             self.ui.load_an_existing_layer_melting_ppi_combobox.setEnabled(True)
         else:
             self.ui.load_an_existing_layer_melting_ppi_combobox.setEnabled(False)
-
     # =======================================================================
     def toggle_choose_support_edit_window(self, state):
         if self.edit_window.ui.has_support_checkBox.isChecked():
             self.edit_window.ui.choose_support.setEnabled(True)
         else:
             self.edit_window.ui.choose_support.setEnabled(False)
-
     # =======================================================================
     def part_support_in_model_list_menu_edit_window(self, position):
         list_widget = self.edit_window.ui.part_support_in_model_list
         item = list_widget.itemAt(position)
         if item is None:
-            return  # No item under cursor
+            return
         menu = QMenu()
         delete_action = menu.addAction("Delete")
         action = menu.exec(list_widget.mapToGlobal(position))
@@ -6228,7 +5882,6 @@ class MyApp(QMainWindow):
                     global supervisors_list
                     supervisors_list = [s for s in supervisors_list if s.supervisor_name != item_text]
                 list_widget.takeItem(list_widget.row(item))
-
     # =======================================================================
     def on_ok_clicked_2(self):
         global Build_model
@@ -6278,7 +5931,6 @@ class MyApp(QMainWindow):
                     print(f"Error: {e}")
         else:
             QMessageBox.critical(self, "Input Error", "The name of Build Model cannot be empty or just spaces.")
-
     # =======================================================================
     def on_ok_clicked(self):
         global Build_model
@@ -6314,20 +5966,20 @@ class MyApp(QMainWindow):
                 QMessageBox.critical(self, "Input Error", "The name of Build Model should be unique.")
         else:
             QMessageBox.critical(self, "Input Error", "The name of Build Model cannot be empty or just spaces.")
-
     # =======================================================================
     def display_concepts_definitions(self):
         global concept_names_definition
         self.concepts_definitions_window = ConceptsDefinitionsWindow(self)
         if concept_names_definition:
             for concept in concept_names_definition:
-                if concept['label'].startswith("N"):
-                    continue  # Skip auto-generated or unlabeled concepts
+                try:
+                    if concept['label'].startswith("N"):
+                        continue  # Skip auto-generated or unlabeled concepts
+                except: pass
                 text = f"Concept: {concept['label']} ---> Definition: {concept['comment']}"
                 self.concepts_definitions_window.ui.listWidget.addItem(text)
                 self.concepts_definitions_window.ui.listWidget.addItem('')
             self.concepts_definitions_window.show()
-
     # =======================================================================
     def load_buildmodel_combobox_on_selection(self):
         if self.ui.load_build_model_checkBox.isChecked():
@@ -6363,11 +6015,10 @@ class MyApp(QMainWindow):
             self.edit_window.ui.build_model_comment.setEnabled(False)
             self.edit_window.ui.build_model_comment.setEnabled(False)
             self.edit_window.ui.buttonBox.setEnabled(False)
-            self.edit_window.ui.part_support_in_model_list.clear()  # Clear existing items
+            self.edit_window.ui.part_support_in_model_list.clear()
             self.edit_window.ui.part_support_in_model_list.addItems(
                 Defined_Build_models[index].build_model_parts_supports)
             self.edit_window.show()
-
     # =======================================================================
     def open_edit_build_model_window(self, item_text):
         self.edit_window = EditWindow(self)
@@ -6388,16 +6039,15 @@ class MyApp(QMainWindow):
         self.edit_window.ui.build_model_file_path.setPlainText(Defined_Build_models[index].build_model_file_path)
         self.edit_window.ui.build_model_file_format.setPlainText(Defined_Build_models[index].build_model_file_format)
         self.edit_window.ui.build_model_comment.setPlainText(Defined_Build_models[index].build_model_comment)
-        self.edit_window.ui.part_support_in_model_list.clear()  # Clear existing items
+        self.edit_window.ui.part_support_in_model_list.clear()
         self.edit_window.ui.part_support_in_model_list.addItems(Defined_Build_models[index].build_model_parts_supports)
         self.edit_window.show()
-
     # =======================================================================
     def parts_list_menu(self, position):
         list_widget = self.ui.parts_list
         item = list_widget.itemAt(position)
         if item is None:
-            return  # No item under cursor
+            return
         menu = QMenu()
         delete_action = menu.addAction("Delete")
         edit_action = menu.addAction("Edit")
@@ -6430,13 +6080,12 @@ class MyApp(QMainWindow):
                 index = self.ui.choose_part.findText(item_text)
                 if index != -1: self.ui.choose_part.removeItem(index)
             list_widget.takeItem(list_widget.row(item))
-
     # =======================================================================
     def Testin_process_applied_methods_list_menu(self, position):
         list_widget = self.ui.Testin_process_applied_methods_list
         item = list_widget.itemAt(position)
         if item is None:
-            return  # No item under cursor
+            return
         menu = QMenu()
         edit_action = menu.addAction("Edit")
         delete_action = menu.addAction("Delete")
@@ -6478,13 +6127,12 @@ class MyApp(QMainWindow):
                         Testing_process_applied_testing_methods[index].applied_testing_method_comment)
                     del Testing_process_applied_testing_methods[index]
                     list_widget.takeItem(list_widget.row(item))
-
     # =======================================================================
     def defined_testing_methods_listwidget_menu(self, position):
         list_widget = self.ui.defined_testing_methods_listwidget
         item = list_widget.itemAt(position)
         if item is None:
-            return  # No item under cursor
+            return
         menu = QMenu()
         edit_action = menu.addAction("Edit")
         delete_action = menu.addAction("Delete")
@@ -6526,13 +6174,12 @@ class MyApp(QMainWindow):
                 except:
                     pass
             list_widget.takeItem(list_widget.row(item))
-
     # =======================================================================
     def used_POstPrinting_methods_listWidget_menu(self, position):
         list_widget = self.ui.used_POstPrinting_methods_listWidget
         item = list_widget.itemAt(position)
         if item is None:
-            return  # No item under cursor
+            return
         menu = QMenu()
         delete_action = menu.addAction("Delete")
         action = menu.exec(list_widget.mapToGlobal(position))
@@ -6550,16 +6197,14 @@ class MyApp(QMainWindow):
                         Post_printing_Proces.post_printing_process_used_methods = [s for s in
                                                                                    Post_printing_Proces.post_printing_process_used_methods
                                                                                    if s != item_text]
-                    except:
-                        pass
+                    except:pass
                 list_widget.takeItem(list_widget.row(item))
-
     # =======================================================================
     def defined_PostPrinting_methods_listWidget_menu(self, position):
         list_widget = self.ui.defined_PostPrinting_methods_listWidget
         item = list_widget.itemAt(position)
         if item is None:
-            return  # No item under cursor
+            return
         menu = QMenu()
         delete_action = menu.addAction("Delete")
         edit_action = menu.addAction("Edit")
@@ -6602,12 +6247,11 @@ class MyApp(QMainWindow):
                 index = self.ui.Post_Printing_method_comboBox.findText(item_text)
                 if index != -1: self.ui.Post_Printing_method_comboBox.removeItem(index)
             list_widget.takeItem(list_widget.row(item))
-
     # =======================================================================
     def supports_list_menu(self, position):
         list_widget = self.ui.supports_list
         item = list_widget.itemAt(position)
-        if item is None: return  # No item under cursor
+        if item is None: return
         menu = QMenu()
         delete_action = menu.addAction("Delete")
         edit_action = menu.addAction("Edit")
@@ -6635,18 +6279,16 @@ class MyApp(QMainWindow):
                 self.ui.support_file_path.setPlainText(Build_Model_Support_list[index].support_file_path)
                 self.ui.support_file_format.setPlainText(Build_Model_Support_list[index].support_file_format)
                 self.ui.support_comment.setPlainText(Build_Model_Support_list[index].support_comment)
-
                 Build_Model_Support_list = [s for s in Build_Model_Support_list if s.support_name != item_text]
                 index = self.ui.choose_support.findText(item_text)
                 if index != -1: self.ui.choose_support.removeItem(index)
             list_widget.takeItem(list_widget.row(item))
-
     # =======================================================================
     def part_support_in_model_list_menu(self, position):
         list_widget = self.ui.part_support_in_model_list
         item = list_widget.itemAt(position)
         if item is None:
-            return  # No item under cursor
+            return
         menu = QMenu()
         delete_action = menu.addAction("Delete")
         action = menu.exec(list_widget.mapToGlobal(position))
@@ -6658,7 +6300,6 @@ class MyApp(QMainWindow):
             if reply == QMessageBox.StandardButton.Yes:
                 item = list_widget.currentItem()
                 list_widget.takeItem(list_widget.row(item))
-
     # =======================================================================
     def setup_button_reset_on_groupbox_change_2(self, button, groupbox, exclude_groupbox=None):
         # Step 1: Change button color when clicked
@@ -6670,7 +6311,6 @@ class MyApp(QMainWindow):
                     button.setStyleSheet("")
             except Exception as e:
                 print(f"Error: {e}")
-
         button.clicked.connect(on_button_clicked)
         # Step 2: Reset button color when any child widget changes
         for widget in groupbox.findChildren((QPlainTextEdit, QLineEdit, QDateTimeEdit, QRadioButton, QListWidget)):
@@ -6678,7 +6318,6 @@ class MyApp(QMainWindow):
             def reset_and_log(w=widget):
                 name = w.objectName() or w.__class__.__name__
                 button.setStyleSheet("")
-
             if exclude_groupbox and exclude_groupbox.isAncestorOf(widget):
                 continue
             if isinstance(widget, QPlainTextEdit) or isinstance(widget, QLineEdit):
@@ -6690,13 +6329,12 @@ class MyApp(QMainWindow):
             elif isinstance(widget, QListWidget):
                 widget.model().rowsInserted.connect(lambda *args, w=widget: reset_and_log(w))
                 widget.model().rowsRemoved.connect(lambda *args, w=widget: reset_and_log(w))
-
     # =======================================================================
     def defined_supervisors_list_menu(self, position):
         list_widget = self.ui.defined_supervisors_list
         item = list_widget.itemAt(position)
         if item is None:
-            return  # No item under cursor
+            return
         menu = QMenu()
         delete_action = menu.addAction("Delete")
         edit_action = menu.addAction("Edit")
@@ -6749,14 +6387,13 @@ class MyApp(QMainWindow):
                 index = next((i for i, cls in enumerate(supervisors_list) if cls.supervisor_name == item_text), -1)
                 self.ui.supervisor_name.setPlainText(supervisors_list[index].supervisor_name)
                 self.ui.supervisor_name_comment.setPlainText(supervisors_list[index].supervisor_comment)
-
     # =======================================================================
     def selected_start_heating_listWidget_menu(self, position):
         list_widget = self.ui.selected_start_heating_listWidget
         item = list_widget.itemAt(position)
         global start_heating_strategies_in_project
         if item is None:
-            return  # No item under cursor
+            return
         menu = QMenu()
         delete_action = menu.addAction("Delete")
         action = menu.exec(list_widget.mapToGlobal(position))
@@ -6767,14 +6404,13 @@ class MyApp(QMainWindow):
                 start_heating_strategies_in_project = [s for s in start_heating_strategies_in_project if
                                                        s.start_heat_name != item.text()]
             list_widget.takeItem(list_widget.row(item))
-
     # =======================================================================
     def selected_start_heat_ppi_listWidget_menu(self, position):
         list_widget = self.ui.selected_start_heat_ppi_listWidget
         global start_heating_PPIs_in_project
         item = list_widget.itemAt(position)
         if item is None:
-            return  # No item under cursor
+            return
         menu = QMenu()
         delete_action = menu.addAction("Delete")
         action = menu.exec(list_widget.mapToGlobal(position))
@@ -6782,75 +6418,69 @@ class MyApp(QMainWindow):
             start_heating_PPIs_in_project = [s for s in start_heating_PPIs_in_project if
                                              s.start_heat_ppi_name != item.text()]
             list_widget.takeItem(list_widget.row(item))
-
     # =======================================================================
     def selected_machine_control_ppi_menu(self, position):
         list_widget = self.ui.selected_machine_control_ppi
         item = list_widget.itemAt(position)
         if item is None:
-            return  # No item under cursor
+            return
         menu = QMenu()
         delete_action = menu.addAction("Delete")
         action = menu.exec(list_widget.mapToGlobal(position))
         if action == delete_action:
             self.machine_powder_strategy_PPI = None
             list_widget.takeItem(list_widget.row(item))
-
     # =======================================================================
     def selected_machine_control_strategy_menu(self, position):
         list_widget = self.ui.selected_machine_control_strategy
         item = list_widget.itemAt(position)
         if item is None:
-            return  # No item under cursor
+            return
         menu = QMenu()
         delete_action = menu.addAction("Delete")
         action = menu.exec(list_widget.mapToGlobal(position))
         if action == delete_action:
             self.machine_powder_strategy = None
             list_widget.takeItem(list_widget.row(item))
-
     # =======================================================================
     def selected_ppi_slicing_process_menu(self, position):
         list_widget = self.ui.selected_ppi_slicing_process
         item = list_widget.itemAt(position)
         if item is None:
-            return  # No item under cursor
+            return
         menu = QMenu()
         delete_action = menu.addAction("Delete")
         action = menu.exec(list_widget.mapToGlobal(position))
         if action == delete_action:
             list_widget.takeItem(list_widget.row(item))
-
     # =======================================================================
     def composed_of_printed_build_PB_AM_partlistWidget_menu(self, position):
         list_widget = self.ui.composed_of_printed_build_PB_AM_partlistWidget
         item = list_widget.itemAt(position)
         if item is None:
-            return  # No item under cursor
+            return
         menu = QMenu()
         delete_action = menu.addAction("Delete")
         action = menu.exec(list_widget.mapToGlobal(position))
         if action == delete_action:
             list_widget.takeItem(list_widget.row(item))
-
     # =======================================================================
     def set_as_input_printing_process_listWidget_menu(self, position):
         list_widget = self.ui.set_as_input_printing_process_listWidget
         item = list_widget.itemAt(position)
         if item is None:
-            return  # No item under cursor
+            return
         menu = QMenu()
         delete_action = menu.addAction("Delete")
         action = menu.exec(list_widget.mapToGlobal(position))
         if action == delete_action:
             list_widget.takeItem(list_widget.row(item))
-
     # =======================================================================
     def supervisor_project_list_menu(self, position):
         list_widget = self.ui.supervisor_project_list
         item = list_widget.itemAt(position)
         if item is None:
-            return  # No item under cursor
+            return
         menu = QMenu()
         delete_action = menu.addAction("Delete")
         action = menu.exec(list_widget.mapToGlobal(position))
@@ -6862,7 +6492,6 @@ class MyApp(QMainWindow):
                      range(self.ui.supervisor_project_list.count())]
             if index != -1:
                 PBF_AM_Process_Chains_list[index].project_selected_supervisors = items
-
     # =======================================================================
     def add_layer_melting_strategy_func(self):
         global Layer_Melting_Strategies_list, Layer_Melting_Strategies_list_used_in_project
@@ -6925,8 +6554,7 @@ class MyApp(QMainWindow):
                         self.ui.layer_melting_strategy_name.clear()
                         try:
                             self.ui.layer_melting_strategy_scan_strategy.setCurrentIndex(0)
-                        except:
-                            pass
+                        except:pass
                         try:
                             self.ui.composed_of_am_part_layer_melting_strategy_combobox_2.clear()
                         except:
@@ -6945,11 +6573,8 @@ class MyApp(QMainWindow):
                             msg.setText("Info: The Layer Melting Strategy has been defined successfully.")
                             msg.show()
                             QTimer.singleShot(1500, msg.close)
-                        except Exception as e:
-                            print(f"Error: {e}")
-            else:
-                QMessageBox.critical(self, "Input Error", "There is a missing field.")
-
+                        except Exception as e:print(f"Error: {e}")
+            else:QMessageBox.critical(self, "Input Error", "There is a missing field.")
     # =======================================================================
     def define_am_part_melting_strategy_func(self):
         if self.ui.am_part_layer_melting_strategy_name.toPlainText().strip():
@@ -6989,9 +6614,7 @@ class MyApp(QMainWindow):
                     QTimer.singleShot(1500, msg.close)
                 except Exception as e:
                     print(f"Error: {e}")
-        else:
-            QMessageBox.critical(self, "Input Error", "There is a missing field.")
-
+        else:QMessageBox.critical(self, "Input Error", "There is a missing field.")
     # =======================================================================
     def correspond_layer_melting_ppi_func(self):
         global Layer_Melting_PPI_list, Layer_Melting_PPI_list_used_in_project
@@ -7029,8 +6652,7 @@ class MyApp(QMainWindow):
                     QTimer.singleShot(1500, msg.close)
                 except Exception as e:
                     print(f"Error: {e}")
-            else:
-                QMessageBox.critical(self, "Input Error", "There is an error.")
+            else:QMessageBox.critical(self, "Input Error", "There is an error.")
         else:
             if self.ui.layer_melting_ppi_name.toPlainText().strip():
                 text = self.ui.layer_melting_ppi_name.toPlainText().strip()
@@ -7065,9 +6687,7 @@ class MyApp(QMainWindow):
                         QTimer.singleShot(1500, msg.close)
                     except Exception as e:
                         print(f"Error: {e}")
-            else:
-                QMessageBox.critical(self, "Input Error", "There is a missing field.")
-
+            else:QMessageBox.critical(self, "Input Error", "There is a missing field.")
     # =======================================================================
     def addam_part_layer_melting_ppi_to_layer_melting_ppi_func(self):
         if self.ui.am_part_layer_melting_ppi_name.toPlainText().strip():
@@ -7103,9 +6723,7 @@ class MyApp(QMainWindow):
             else:
                 QMessageBox.critical(self, "Input Error",
                                      "The name of AM Part Layer Melting Printing Process Instructions already exists.")
-        else:
-            QMessageBox.critical(self, "Input Error", "There is a missing field.")
-
+        else:QMessageBox.critical(self, "Input Error", "There is a missing field.")
     # =======================================================================
     def layer_pre_heating_strategy_okay_func(self):
         global Layer_Pre_Heating_Strategies_list, Layer_Pre_Heating_Strategies_list_used_in_project
@@ -7187,7 +6805,6 @@ class MyApp(QMainWindow):
                         print(f"Error: {e}")
             else:
                 QMessageBox.critical(self, "Input Error", "There is a missing field.")
-
     # =======================================================================
     def add_am_part_layer_pre_heating_strategy_to_layer_pre_strategy_func(self):
         if self.ui.am_part_layer_pre_heating_strategy_name.toPlainText().strip():
@@ -7228,7 +6845,6 @@ class MyApp(QMainWindow):
                                      "The name of AM Part Layer Pre-Heating Strategy already exists.")
         else:
             QMessageBox.critical(self, "Input Error", "There is a missing field.")
-
     # =======================================================================
     def correspond_layer_pre_heating_ppi_to_layer_pre_strategy_func(self):
         global Layer_Pre_Heating_PPI_list, Layer_Pre_Heating_PPI_list_used_in_project
@@ -7302,7 +6918,6 @@ class MyApp(QMainWindow):
                         print(f"Error: {e}")
             else:
                 QMessageBox.critical(self, "Input Error", "There is a missing field.")
-
     # =======================================================================
     def addam_part_layer_pre_heating_ppi_to_layer_pre_ppi_func(self):
         if self.ui.am_part_layer_pre_heating_ppi_name.toPlainText().strip():
@@ -7310,8 +6925,7 @@ class MyApp(QMainWindow):
             if not (any(cls.AM_part_pre_heat_ppi_name == text for cls in AM_Part_Layer_Pre_Heating_PPI_list)):
                 am = AM_Part_Layer_Pre_Heating_PPI_class()
                 am.AM_part_pre_heat_ppi_name = self.ui.am_part_layer_pre_heating_ppi_name.toPlainText()
-                if (
-                        self.ui.am_part_layer_pre_heating_ppi_related_am_part_comboBox.currentText() != "-- Select an option --"):
+                if (self.ui.am_part_layer_pre_heating_ppi_related_am_part_comboBox.currentText() != "-- Select an option --"):
                     am.AM_part_pre_heat_ppi_related_am_part = self.ui.am_part_layer_pre_heating_ppi_related_am_part_comboBox.currentText()
                 if (self.ui.correspond_am_part_layer_pre_heating.currentText() != "-- Select an option --"):
                     am.AM_part_pre_heat_ppi_correspond_AM_part_pre_heat_strategy = self.ui.correspond_am_part_layer_pre_heating.currentText()
@@ -7345,7 +6959,6 @@ class MyApp(QMainWindow):
                                      "The name of AM Part Layer Pre-Heating Printing Process Instructions already exists.")
         else:
             QMessageBox.critical(self, "Input Error", "There is a missing field.")
-
     # =======================================================================
     def layer_post_heating_strategy_okay_func(self):
         global Layer_Post_Heating_Strategies_list, Layer_Post_Heating_Strategies_list_used_in_project
@@ -7382,8 +6995,7 @@ class MyApp(QMainWindow):
                     QTimer.singleShot(1500, msg.close)
                 except Exception as e:
                     print(f"Error: {e}")
-            else:
-                QMessageBox.critical(self, "Input Error", "There is an error.")
+            else:QMessageBox.critical(self, "Input Error", "There is an error.")
         else:
             if self.ui.layer_post_heating_strategy_name.toPlainText().strip():
                 text = self.ui.layer_post_heating_strategy_name.toPlainText().strip()
@@ -7396,8 +7008,7 @@ class MyApp(QMainWindow):
                         l.post_heat_strategy_file = self.ui.layer_post_heating_strategy_file.toPlainText()
                         l.post_heat_strategy_file_format = self.ui.layer_post_heating_strategy_file_format.toPlainText()
                         items = [self.ui.composed_of_am_part_layer_post_heating_strategy_listWidget.item(i).text() for i
-                                 in
-                                 range(self.ui.composed_of_am_part_layer_post_heating_strategy_listWidget.count())]
+                                 in range(self.ui.composed_of_am_part_layer_post_heating_strategy_listWidget.count())]
                         l.post_heat_strategy_composed_of_AM_Parts = items
                         l.post_heat_strategy_comment = self.ui.layer_post_heating_strategy_comment.toPlainText()
                         Layer_Post_Heating_Strategies_list.append(l)
@@ -7409,14 +7020,12 @@ class MyApp(QMainWindow):
                         self.ui.layer_post_heating_strategy_name.clear()
                         try:
                             self.ui.layer_post_heating_strategy_scan_strategy.setCurrentIndex(0)
-                        except:
-                            pass
+                        except:pass
                         self.ui.layer_post_heating_strategy_file.clear()
                         self.ui.layer_post_heating_strategy_file_format.clear()
                         try:
                             self.ui.composed_of_am_part_post_startegies_combobox.setCurrentIndex(0)
-                        except:
-                            pass
+                        except:pass
                         self.ui.layer_post_heating_strategy_comment.clear()
                         try:
                             msg = QMessageBox(self)
@@ -7424,8 +7033,7 @@ class MyApp(QMainWindow):
                             msg.setText("Info: The Layer Post-Heating Strategy has been defined successfully.")
                             msg.show()
                             QTimer.singleShot(1500, msg.close)
-                        except Exception as e:
-                            print(f"Error: {e}")
+                        except Exception as e:print(f"Error: {e}")
             else:
                 QMessageBox.critical(self, "Input Error", "There is a missing field.")
 
@@ -7477,35 +7085,28 @@ class MyApp(QMainWindow):
         if self.ui.composed_of_am_part_melting_ppi_combobox.currentText() and self.ui.composed_of_am_part_melting_ppi_combobox.currentText() != "-- Select an option --":
             if self.ui.composed_of_am_part_melting_ppi_checkBox.isChecked():
                 text = self.ui.composed_of_am_part_melting_ppi_combobox.currentText()
-                if not self.ui.composed_of_am_part_layer_melting_ppi_listWidget.findItems(text,
-                                                                                          Qt.MatchFlag.MatchExactly):
+                if not self.ui.composed_of_am_part_layer_melting_ppi_listWidget.findItems(text,Qt.MatchFlag.MatchExactly):
                     self.ui.composed_of_am_part_layer_melting_ppi_listWidget.addItem(text)
-
     # =======================================================================
     def add_to_suppervisor_list_pushbutton_func(self):
         if self.ui.selectSupervisor.currentText() and self.ui.selectSupervisor.currentText() != "-- Select an option --":
             text = self.ui.selectSupervisor.currentText()
             if not self.ui.supervisor_project_list.findItems(text, Qt.MatchFlag.MatchExactly):
                 self.ui.supervisor_project_list.addItem(text)
-
     # =======================================================================
     def add_am_part_post_heat_strategy_to_list_pushbutton_func(self):
         if self.ui.composed_of_am_part_layer_melting_strategy_combobox_2.currentText() and self.ui.composed_of_am_part_layer_melting_strategy_combobox_2.currentText() != "-- Select an option --":
             if self.ui.composed_of_am_part_layer_melting_strategy_checkbox.isChecked():
                 text = self.ui.composed_of_am_part_layer_melting_strategy_combobox_2.currentText()
-                if not self.ui.composed_of_am_part_layer_melting_strategy_listWidget.findItems(text,
-                                                                                               Qt.MatchFlag.MatchExactly):
+                if not self.ui.composed_of_am_part_layer_melting_strategy_listWidget.findItems(text,Qt.MatchFlag.MatchExactly):
                     self.ui.composed_of_am_part_layer_melting_strategy_listWidget.addItem(text)
-
     # =======================================================================
     def add_am_part_post_heat_strategy_to_list_pushbutton_func(self):
         if self.ui.layer_post_heating_strategy_combobox.currentText() and self.ui.layer_post_heating_strategy_combobox.currentText() != "-- Select an option --":
             if self.ui.layer_post_heating_strategy_checkbox.isChecked():
                 text = self.ui.layer_post_heating_strategy_combobox.currentText()
-                if not self.ui.composed_of_am_part_layer_post_heating_strategy_listWidget.findItems(text,
-                                                                                                    Qt.MatchFlag.MatchExactly):
+                if not self.ui.composed_of_am_part_layer_post_heating_strategy_listWidget.findItems(text,Qt.MatchFlag.MatchExactly):
                     self.ui.composed_of_am_part_layer_post_heating_strategy_listWidget.addItem(text)
-
     # =======================================================================
     def add_am_part_pre_heat_strategy_to_list_pushbutton_func(self):
         if self.ui.composed_of_am_part_pre_startegies_combobox.currentText() and self.ui.composed_of_am_part_pre_startegies_combobox.currentText() != "-- Select an option --":
@@ -7514,7 +7115,6 @@ class MyApp(QMainWindow):
                 if not self.ui.composed_of_am_part_layer_pre_heating_strategy_listWidget.findItems(text,
                                                                                                    Qt.MatchFlag.MatchExactly):
                     self.ui.composed_of_am_part_layer_pre_heating_strategy_listWidget.addItem(text)
-
     # =======================================================================
     def add_am_part_melting_strategy_to_list_pushbutton_func(self):
         if self.ui.composed_of_am_part_layer_melting_strategy_combobox_2.currentText() and self.ui.composed_of_am_part_layer_melting_strategy_combobox_2.currentText() != "-- Select an option --":
@@ -7523,25 +7123,20 @@ class MyApp(QMainWindow):
                 if not self.ui.composed_of_am_part_layer_melting_strategy_listWidget.findItems(text,
                                                                                                Qt.MatchFlag.MatchExactly):
                     self.ui.composed_of_am_part_layer_melting_strategy_listWidget.addItem(text)
-
     # =======================================================================
     def add_am_part_pre_heat_ppi_to_list_pushbutton_func(self):
         if self.ui.composed_of_am_part_pre_heating_ppi_combobox.currentText() and self.ui.composed_of_am_part_pre_heating_ppi_combobox.currentText() != "-- Select an option --":
             if self.ui.composed_of_am_part_pre_heating_ppi_checkBox.isChecked():
                 text = self.ui.composed_of_am_part_pre_heating_ppi_combobox.currentText()
-                if not self.ui.composed_of_am_part_layer_pre_heating_ppi_listWidget.findItems(text,
-                                                                                              Qt.MatchFlag.MatchExactly):
+                if not self.ui.composed_of_am_part_layer_pre_heating_ppi_listWidget.findItems(text, Qt.MatchFlag.MatchExactly):
                     self.ui.composed_of_am_part_layer_pre_heating_ppi_listWidget.addItem(text)
-
     # =======================================================================
     def add_am_part_post_heat_ppi_to_list_pushbutton_func(self):
         if self.ui.composed_of_am_part_post_heating_ppi_combobox.currentText() and self.ui.composed_of_am_part_post_heating_ppi_combobox.currentText() != "-- Select an option --":
             if self.ui.composed_of_am_part_post_heating_ppi_checkBox.isChecked():
                 text = self.ui.composed_of_am_part_post_heating_ppi_combobox.currentText()
-                if not self.ui.composed_of_am_part_layer_post_heating_ppi_listWidget.findItems(text,
-                                                                                               Qt.MatchFlag.MatchExactly):
+                if not self.ui.composed_of_am_part_layer_post_heating_ppi_listWidget.findItems(text, Qt.MatchFlag.MatchExactly):
                     self.ui.composed_of_am_part_layer_post_heating_ppi_listWidget.addItem(text)
-
     # =======================================================================
     def correspond_layer_post_heating_ppi_func(self):
         global Layer_Post_Heating_PPI_list, Layer_Post_Heating_PPI_list_used_in_project
@@ -7620,7 +7215,6 @@ class MyApp(QMainWindow):
                         print(f"Error: {e}")
             else:
                 QMessageBox.critical(self, "Input Error", "There is a missing field.")
-
     # =======================================================================
     def addam_part_layer_post_heating_ppi_to_layer_post_ppi_func(self):
         if self.ui.am_part_layer_post_heating_ppi_name.toPlainText().strip():
@@ -7628,11 +7222,9 @@ class MyApp(QMainWindow):
             if not (any(cls.AM_part_post_heat_ppi_name == text for cls in AM_Part_Layer_Post_Heating_PPI_list)):
                 am = AM_Part_Layer_Post_Heating_PPI_class()
                 am.AM_part_post_heat_ppi_name = self.ui.am_part_layer_post_heating_ppi_name.toPlainText()
-                if (
-                        self.ui.am_part_layer_post_heating_ppi_related_am_part_comboBox.currentText() != "-- Select an option --"):
+                if (self.ui.am_part_layer_post_heating_ppi_related_am_part_comboBox.currentText() != "-- Select an option --"):
                     am.AM_part_post_heat_ppi_related_am_part = self.ui.am_part_layer_post_heating_ppi_related_am_part_comboBox.currentText()
-                if (
-                        self.ui.am_part_layer_post_heating_ppi_related_am_part_comboBox.currentText() != "-- Select an option --"):
+                if (self.ui.am_part_layer_post_heating_ppi_related_am_part_comboBox.currentText() != "-- Select an option --"):
                     am.AM_part_post_heat_ppi_correspond_AM_part_post_heat_strategy = self.ui.am_part_layer_post_heating_ppi_related_am_part_comboBox.currentText()
                 am.AM_part_post_heat_ppi_file = self.ui.am_part_layer_post_heating_ppi_file.toPlainText()
                 if (self.ui.correspond_layer_build_model_am_part_conbobox.currentText() != "-- Select an option --"):
@@ -7664,7 +7256,6 @@ class MyApp(QMainWindow):
                                      "The name of AM Part Layer Post-Heating Printing Process Instructions already exists.")
         else:
             QMessageBox.critical(self, "Input Error", "There is a missing field.")
-
     # =======================================================================
     def define_start_heating_func(self):
         global start_heating_strategies_in_project, Start_Heating_Strategy_list
@@ -7698,9 +7289,7 @@ class MyApp(QMainWindow):
                 if index != -1: self.ui.load_start_heat_startegy_comboBox.removeItem(index)
                 self.ui.load_start_heat_startegy_comboBox.addItem(selected_start_strategy)
                 self.ui.strat_heating_pp_correspond_strategy.addItem(selected_start_strategy)
-
                 self.ui.load_start_heat_startegy_checkbox.setChecked(False)
-
                 self.ui.start_heating_name.clear()
                 self.ui.start_heating_size.clear()
                 self.ui.start_heating_timeout.clear()
@@ -7711,7 +7300,6 @@ class MyApp(QMainWindow):
                 self.ui.start_heating_file_format.clear()
                 self.ui.start_heating_target_tmprature.clear()
                 self.ui.start_heating_comment.clear()
-
                 try:
                     msg = QMessageBox(self)
                     msg.setWindowTitle("Success")
@@ -7763,7 +7351,6 @@ class MyApp(QMainWindow):
                     self.ui.start_heating_file_format.clear()
                     self.ui.start_heating_target_tmprature.clear()
                     self.ui.start_heating_comment.clear()
-
                     try:
                         msg = QMessageBox(self)
                         msg.setWindowTitle("Success")
@@ -7774,9 +7361,7 @@ class MyApp(QMainWindow):
                         print(f"Error: {e}")
                 else:
                     QMessageBox.critical(self, "Input Error", "The name fo Start Heating Strategy already exists.")
-            else:
-                QMessageBox.critical(self, "Input Error", "There is a missing field.")
-
+            else:QMessageBox.critical(self, "Input Error", "There is a missing field.")
     # =======================================================================
     def define_scan_strategy_func(self):
         if self.ui.scan_strategy_name.toPlainText().strip():
@@ -7820,7 +7405,6 @@ class MyApp(QMainWindow):
                 QMessageBox.critical(self, "Input Error", "The name of scan strategy is redundant.")
         else:
             QMessageBox.critical(self, "Input Error", "There is a missing field.")
-
     # =======================================================================
     def define_start_heating_pushButton_2_func(self):
         global Start_Heating_PPI_list, start_heating_PPIs_in_project
@@ -7842,11 +7426,9 @@ class MyApp(QMainWindow):
                     Start_Heating_PPI_list[index].start_heat_ppi_file)
                 self.ui.strat_heating_printing_process_instruct_file_format.setPlainText(
                     Start_Heating_PPI_list[index].start_heat_ppi_file_format)
-
                 self.ui.strat_heating_printing_process_instruct_name.clear()
                 self.ui.strat_heating_printing_process_instruct_file.clear()
                 self.ui.strat_heating_printing_process_instruct_file_format.clear()
-
                 try:
                     msg = QMessageBox(self)
                     msg.setWindowTitle("Success")
@@ -7856,8 +7438,7 @@ class MyApp(QMainWindow):
                     QTimer.singleShot(1500, msg.close)
                 except Exception as e:
                     print(f"Error: {e}")
-            else:
-                QMessageBox.critical(self, "Input Error", "There is an error.")
+            else:QMessageBox.critical(self, "Input Error", "There is an error.")
         else:
             if self.ui.strat_heating_printing_process_instruct_name.toPlainText().strip():
                 text = self.ui.strat_heating_printing_process_instruct_name.toPlainText().strip()
@@ -7877,12 +7458,10 @@ class MyApp(QMainWindow):
                             self.ui.selected_start_heat_ppi_listWidget.addItem(s_ppi.start_heat_ppi_name)
                         self.ui.defined_start_heat_ppi_listWidget.addItem(s_ppi.start_heat_ppi_name)
                         self.ui.load_start_heat_ppi_comboBox.addItem(s_ppi.start_heat_ppi_name)
-
                         self.ui.strat_heating_printing_process_instruct_name.clear()
                         self.ui.strat_heating_printing_process_instruct_file.clear()
                         self.ui.strat_heating_printing_process_instruct_file_format.clear()
                         self.ui.strat_heating_pp_correspond_strategy.setCurrentIndex(0)
-
                         try:
                             msg = QMessageBox(self)
                             msg.setWindowTitle("Success")
@@ -7912,11 +7491,8 @@ class MyApp(QMainWindow):
                             QTimer.singleShot(1500, msg.close)
                         except Exception as e:
                             print(f"Error: {e}")
-                else:
-                    QMessageBox.critical(self, "Input Error", "The name of Start Heating PPI already exists.")
-            else:
-                QMessageBox.critical(self, "Input Error", "There is a missing field.")
-
+                else: QMessageBox.critical(self, "Input Error", "The name of Start Heating PPI already exists.")
+            else: QMessageBox.critical(self, "Input Error", "There is a missing field.")
     # =======================================================================
     def add_machine_feed_strategy_pushButton_2_func(self):
         global Machine_Powder_Feed_Control_Strategy_PPIs_list
@@ -8002,7 +7578,6 @@ class MyApp(QMainWindow):
                                          "The name of  Machine Powder Feed Control PPI already exists.")
             else:
                 QMessageBox.critical(self, "Input Error", "There is a missing field.")
-
     # =======================================================================
     def add_machine_feed_strategy_func(self):
         global machine_powder_strategy_index
@@ -8115,16 +7690,13 @@ class MyApp(QMainWindow):
                 else:
                     QMessageBox.critical(self, "Input Error",
                                          "The name of machine powder feed control strategy already exists.")
-            else:
-                QMessageBox.critical(self, "Input Error", "There is a missing field.")
-
+            else:QMessageBox.critical(self, "Input Error", "There is a missing field.")
     # =======================================================================
     def toggle_consist_layer_partcheckBox(self, state):
         if self.ui.consist_layer_partcheckBox.isChecked():
             self.ui.layer_part_comboBox.setEnabled(True)
         else:
             self.ui.layer_part_comboBox.setEnabled(False)
-
     # =======================================================================
     def define_PartLayerBuildModel_func(self):
         if self.ui.PartLayerBuildModel_name.toPlainText().strip():
@@ -8158,7 +7730,6 @@ class MyApp(QMainWindow):
         else:
             QMessageBox.critical(self, "Input Error",
                                  "The name of the Layer of Build Model AM Part cannot be empty or just spaces.")
-
     # =======================================================================
     def add_outpu_layer_decomposition_func(self):
         l = self.ui.load_layer_comboBox.currentText()
@@ -8181,8 +7752,7 @@ class MyApp(QMainWindow):
                                 temp = []
                             temp = temp.append(part)
                             Layer_Of_Build_Models_list[index].Layer_Of_Build_Model_consists_of_am_part_layer = temp
-                    except:
-                        pass
+                    except:pass
                     try:
                         msg = QMessageBox(self)
                         msg.setWindowTitle("Success")
@@ -8190,8 +7760,7 @@ class MyApp(QMainWindow):
                             "Info: The Layer of Build Model AM Part has been added to Layer Decomposition Process successfully.")
                         msg.show()
                         QTimer.singleShot(1500, msg.close)
-                    except Exception as e:
-                        print(f"Error: {e}")
+                    except Exception as e:print(f"Error: {e}")
             else:
                 existing_items = [self.ui.list_output_part_layer_decomposition.item(i).text() for i in
                                   range(self.ui.list_output_part_layer_decomposition.count())]
@@ -8206,9 +7775,7 @@ class MyApp(QMainWindow):
                             "Info: The Layer of Build Model AM Part has been added to Layer Decomposition Process successfully.")
                         msg.show()
                         QTimer.singleShot(1500, msg.close)
-                    except Exception as e:
-                        print(f"Error: {e}")
-
+                    except Exception as e:print(f"Error: {e}")
     # =======================================================================
     def add_outpu_layer_decomposition_2_func(self):
         l = self.ui.load_layer_comboBox_2.currentText()
@@ -8217,12 +7784,9 @@ class MyApp(QMainWindow):
         if l not in existing_items and l and l != "-- Select an option --":
             self.ui.list_output_layer_decomposition.addItem(l)
             Layer_Of_Build_Models_Layer_decomposition.append(l)
-
-            # ===========================
             self.ui.layer_pre_heating_ppi_correspond_layer_build_model_comboBox.addItem(l)
             self.ui.correspond_layer_build_model_combobox.addItem(l)
             self.ui.correspond_layer_build_model_combobox_2.addItem(l)
-            # ===========================
             try:
                 msg = QMessageBox(self)
                 msg.setWindowTitle("Success")
@@ -8232,7 +7796,6 @@ class MyApp(QMainWindow):
                 QTimer.singleShot(1500, msg.close)
             except Exception as e:
                 print(f"Error: {e}")
-
     # =======================================================================
     def LayerBuildModel_define_func(self):
         if self.ui.LayerBuildModel_name.toPlainText().strip():
@@ -8268,7 +7831,6 @@ class MyApp(QMainWindow):
         else:
             QMessageBox.critical(self, "Input Error",
                                  "The name of the Layer of Build Model cannot be empty or just spaces.")
-
     # =======================================================================
     def eventFilter(self, obj, event):
         if event.type() == QEvent.Type.KeyPress:
@@ -8282,7 +7844,6 @@ class MyApp(QMainWindow):
                 self.focusNextChild()
                 return True
         return super().eventFilter(obj, event)
-
     # =======================================================================
     def define_material_func(self):
         if self.ui.material_name.toPlainText().strip():
@@ -8331,7 +7892,6 @@ class MyApp(QMainWindow):
                 QMessageBox.critical(self, "Input Error", "The name of the Material already exists.")
         else:
             QMessageBox.critical(self, "Input Error", "The name of the Material cannot be empty or just spaces.")
-
     # =======================================================================
     def define_manufacturer_func(self):
         if self.ui.manufacturer_name.toPlainText().strip():
@@ -8362,20 +7922,18 @@ class MyApp(QMainWindow):
                 QMessageBox.critical(self, "Input Error", "The name of the Manufacturer already exists.")
         else:
             QMessageBox.critical(self, "Input Error", "The name of the Manufacturer cannot be empty or just spaces.")
-
     # =======================================================================
     def item_exists(self, list_widget, text):
         for i in range(list_widget.count()):
             if list_widget.item(i).text() == text:
                 return True
         return False
-
     # =======================================================================
     def define_printing_medium_func(self):
         if self.ui.printing_medium_name.toPlainText().strip():
             text = self.ui.printing_medium_name.toPlainText().strip()
             if not (any(cls.printing_medium_name == text for cls in defined_Printing_mediums)):
-                m = Printing_Madium_class()
+                m = Printing_Medium_class()
                 m.printing_medium_name = self.ui.printing_medium_name.toPlainText()
                 m.printing_medium_status = self.ui.printing_medium_status.toPlainText()
                 if self.ui.metal_powder_checkBox.isChecked():
@@ -8410,7 +7968,6 @@ class MyApp(QMainWindow):
                 QMessageBox.critical(self, "Input Error", "The name of the Printing Medium already exists.")
         else:
             QMessageBox.critical(self, "Input Error", "The name of the Printing Medium cannot be empty or just spaces.")
-
     # =======================================================================
     def define_build_plate_func(self):
         if self.ui.build_plate_name.toPlainText().strip():
@@ -8450,7 +8007,6 @@ class MyApp(QMainWindow):
                 QMessageBox.critical(self, "Input Error", "The name of the Build Plate already exists.")
         else:
             QMessageBox.critical(self, "Input Error", "The name of the Build Plate cannot be empty or just spaces.")
-
     # =======================================================================
     def add_printed_build_PB_AM_part_func(self):
         part_name = self.ui.printed_build_PB_AM_part_comboBox.currentText()
@@ -8469,7 +8025,6 @@ class MyApp(QMainWindow):
             self.ui.printed_build_PB_AM_part_has_support_checkBox.setAutoExclusive(False)
             self.ui.printed_build_PB_AM_part_has_support_checkBox.setChecked(False)
             self.ui.printed_build_PB_AM_part_has_support_checkBox.setAutoExclusive(True)
-
     # =======================================================================
     def define_printed_build_support_func(self):
         if self.ui.printed_build_support_name.toPlainText().strip():
@@ -8492,7 +8047,6 @@ class MyApp(QMainWindow):
         else:
             QMessageBox.critical(self, "Input Error",
                                  "The name of Printed Build Support cannot be empty or just spaces.")
-
     # =======================================================================
     def define_printed_build_AM_part_func(self):
         if self.ui.printed_build_AM_part_name.toPlainText().strip():
@@ -8515,7 +8069,6 @@ class MyApp(QMainWindow):
         else:
             QMessageBox.critical(self, "Input Error",
                                  "The name of Printed Build AM Part cannot be empty or just spaces.")
-
     # =======================================================================
     def define_printed_build_func(self):
         if self.ui.printed_build_name.toPlainText().strip():
@@ -8553,7 +8106,6 @@ class MyApp(QMainWindow):
                         break
                 self.ui.defined_Printed_Builds_listWidget.addItem(printed_build.Printed_Build_name)
                 self.ui.printing_process_output_printe_build.addItem(printed_build.Printed_Build_name)
-
                 try:
                     msg = QMessageBox(self)
                     msg.setWindowTitle("Success")
@@ -8564,7 +8116,6 @@ class MyApp(QMainWindow):
                     print(f"Error: {e}")
         else:
             QMessageBox.critical(self, "Input Error", "The name of Printed Build cannot be empty or just spaces.")
-
     # =======================================================================
     def define_printing_machine_func(self):
         if self.ui.printing_machine_name.toPlainText().strip():
@@ -8596,7 +8147,6 @@ class MyApp(QMainWindow):
                 QMessageBox.critical(self, "Input Error", "The name of Printing Machine already exists.")
         else:
             QMessageBox.critical(self, "Input Error", "The name of Printing Machine cannot be empty or just spaces.")
-
     # =======================================================================
     def add_sensor_to_printing_machine_func(self):
         if self.ui.load_sensor_checkBox.isChecked() and self.ui.load_sensor_comboBox.currentText() != "-- Select an option --":
@@ -8624,13 +8174,11 @@ class MyApp(QMainWindow):
                     print(f"Error: {e}")
             else:
                 QMessageBox.critical(self, "Input Error", "There is an error.")
-
         else:
             if self.ui.sensor_name.toPlainText().strip():
                 text = self.ui.sensor_name.toPlainText().strip()
                 index = next((i for i, cls in enumerate(sensors_list) if cls.sensor_name == text), -1)
                 if index == -1:
-
                     s = Sensor_class()
                     s.sensor_name = self.ui.sensor_name.toPlainText()
                     s.sensor_type = self.ui.sensor_type.toPlainText()
@@ -8652,16 +8200,13 @@ class MyApp(QMainWindow):
                         print(f"Error: {e}")
                 else:
                     QMessageBox.critical(self, "Input Error", "The sensor name already exists.")
-
             else:
                 QMessageBox.critical(self, "Input Error", "The Sensor name cannot be empty or just spaces.")
-
     # =======================================================================
     def set_as_input_printing_process_pushButton_func(self):
         text = self.ui.input_printing_ppi_name.currentText().strip()
         if text and text != "-- Select an option --":
             self.ui.set_as_input_printing_process_listWidget.addItem(text)
-
     # =======================================================================
     def define_printing_process_func(self):
         if self.ui.printing_process_name.toPlainText().strip():
@@ -8679,7 +8224,7 @@ class MyApp(QMainWindow):
             if (self.ui.printing_process_buildplate.currentText() != "-- Select an option --"):
                 Printing_Process.printing_process_build_plate = self.ui.printing_process_buildplate.currentText()
             if (self.ui.printing_process_printing_medium.currentText() != "-- Select an option --"):
-                Printing_Process.printing_process_printing_meduim = self.ui.printing_process_printing_medium.currentText()
+                Printing_Process.printing_process_printing_medium = self.ui.printing_process_printing_medium.currentText()
             if (self.ui.printing_process_printing_machine.currentText() != "-- Select an option --"):
                 Printing_Process.printing_process_printing_machine = self.ui.printing_process_printing_machine.currentText()
             Printing_Process.printing_process_instructions = [
@@ -8687,8 +8232,6 @@ class MyApp(QMainWindow):
                 range(self.ui.set_as_input_printing_process_listWidget.count())]
             if (self.ui.printing_process_output_printe_build.currentText() != "-- Select an option --"):
                 Printing_Process.printing_process_output = self.ui.printing_process_output_printe_build.currentText()
-            # Printing_Process.printing_process_output
-            # self.printing_process_output = printing_process_output
             try:
                 msg = QMessageBox(self)
                 msg.setWindowTitle("Success")
@@ -8701,7 +8244,6 @@ class MyApp(QMainWindow):
                 print(f"Error: {e}")
         else:
             QMessageBox.critical(self, "Input Error", "The name of Printing Process cannot be empty or just spaces.")
-
     # =======================================================================
     def add_buil_model_2_func(self):
         global Build_model
@@ -8731,7 +8273,6 @@ class MyApp(QMainWindow):
                     print(f"Error: {e}")
             else:
                 QMessageBox.critical(self, "Input Error", "There is an error.")
-
     # =======================================================================
     def add_buil_model_func(self):
         global Build_model
@@ -8808,7 +8349,6 @@ class MyApp(QMainWindow):
                     print(f"Error: {e}")
         else:
             QMessageBox.critical(self, "Input Error", "The name of Build Model cannot be empty or just spaces.")
-
     # =======================================================================
     def Add_Testing_Method_func(self):
         method = applied_testing_method_class()
@@ -8832,9 +8372,7 @@ class MyApp(QMainWindow):
                     QTimer.singleShot(1500, msg.close)
                 except Exception as e:
                     print(f"Error: {e}")
-        else:
-            QMessageBox.critical(self, "Input Error", "Please choose a Testing Method.")
-
+        else:QMessageBox.critical(self, "Input Error", "Please choose a Testing Method.")
     # =======================================================================
     def Testing_Method_Okay_func(self):
         if self.ui.Testing_Process_name.toPlainText().strip():
@@ -8863,7 +8401,6 @@ class MyApp(QMainWindow):
                 print(f"Error: {e}")
         else:
             QMessageBox.critical(self, "Input Error", "The name of Testing Process cannot be empty or just spaces.")
-
     # =======================================================================
     def define_testing_method_func(self):
         testing_method = Testing_Method_class()
@@ -8897,13 +8434,11 @@ class MyApp(QMainWindow):
                 QMessageBox.critical(self, "Input Error", "The name of Testing Method already exists.")
         else:
             QMessageBox.critical(self, "Input Error", "The name of Testing Method cannot be empty or just spaces.")
-
     # =======================================================================
     def add_postprinting_methods_to_process_func(self):
         selected_value = self.ui.Post_Printing_method_comboBox.currentText()
         if (selected_value != "-- Select an option --"):
             self.ui.used_POstPrinting_methods_listWidget.addItem(selected_value)
-
     # =======================================================================
     def define_postPrinting_process_func(self):
         if self.ui.PostPrinting_Process_name.toPlainText().strip():
@@ -8933,7 +8468,6 @@ class MyApp(QMainWindow):
         else:
             QMessageBox.critical(self, "Input Error",
                                  "The name of Post-Printing Process cannot be empty or just spaces.")
-
     # =======================================================================
     def define_post_printing_method_func(self):
         if self.ui.post_printing_method_name.toPlainText().strip():
@@ -8980,7 +8514,6 @@ class MyApp(QMainWindow):
         else:
             QMessageBox.critical(self, "Input Error",
                                  "The name of Post-Printing Method cannot be empty or just spaces.")
-
     # =======================================================================
     def setup_button_reset_on_groupbox_change_4(self, button, groupbox, exclude_groupboxs):
         # Step 1: Change button color when clicked
@@ -9000,7 +8533,6 @@ class MyApp(QMainWindow):
             def reset_and_log(w=widget):
                 name = w.objectName() or w.__class__.__name__
                 button.setStyleSheet("")
-
             if any(groupbox.isAncestorOf(widget) for groupbox in exclude_groupboxs):
                 continue
             if isinstance(widget, QPlainTextEdit) or isinstance(widget, QLineEdit):
@@ -9011,7 +8543,6 @@ class MyApp(QMainWindow):
                 widget.toggled.connect(lambda: button.setStyleSheet(""))
             elif isinstance(widget, QListWidget):
                 widget.model().rowsInserted.connect(lambda *args, w=widget: reset_and_log(w))
-
     # =======================================================================
     def setup_button_reset_on_groupbox_change_3(self, button, groupbox, exclude_groupboxs):
         # Step 1: Change button color when clicked
@@ -9023,7 +8554,6 @@ class MyApp(QMainWindow):
                     button.setStyleSheet("")
             except Exception as e:
                 print(f"Error: {e}")
-
         button.clicked.connect(on_button_clicked)
         # Step 2: Reset button color when any child widget changes
         for widget in groupbox.findChildren((QPlainTextEdit, QLineEdit, QDateTimeEdit, QRadioButton, QListWidget)):
@@ -9031,7 +8561,6 @@ class MyApp(QMainWindow):
             def reset_and_log(w=widget):
                 name = w.objectName() or w.__class__.__name__
                 button.setStyleSheet("")
-
             if any(groupbox.isAncestorOf(widget) for groupbox in exclude_groupboxs):
                 continue
             if isinstance(widget, QPlainTextEdit) or isinstance(widget, QLineEdit):
@@ -9042,7 +8571,6 @@ class MyApp(QMainWindow):
                 widget.toggled.connect(lambda: button.setStyleSheet(""))
             elif isinstance(widget, QListWidget):
                 widget.model().rowsInserted.connect(lambda *args, w=widget: reset_and_log(w))
-
     # =======================================================================
     def setup_button_reset_on_groupbox_change_2(self, button, groupbox, exclude_groupbox=None):
         # Step 1: Change button color when clicked
@@ -9054,7 +8582,6 @@ class MyApp(QMainWindow):
                     button.setStyleSheet("")
             except Exception as e:
                 print(f"Error: {e}")
-
         button.clicked.connect(on_button_clicked)
         # Step 2: Reset button color when any child widget changes
         for widget in groupbox.findChildren((QPlainTextEdit, QLineEdit, QDateTimeEdit, QRadioButton, QListWidget)):
@@ -9062,7 +8589,6 @@ class MyApp(QMainWindow):
             def reset_and_log(w=widget):
                 name = w.objectName() or w.__class__.__name__
                 button.setStyleSheet("")
-
             if exclude_groupbox and exclude_groupbox.isAncestorOf(widget):
                 continue
             if isinstance(widget, QPlainTextEdit) or isinstance(widget, QLineEdit):
@@ -9073,7 +8599,6 @@ class MyApp(QMainWindow):
                 widget.toggled.connect(lambda: button.setStyleSheet(""))
             elif isinstance(widget, QListWidget):
                 widget.model().rowsInserted.connect(lambda *args, w=widget: reset_and_log(w))
-
     # =======================================================================
     def setup_button_reset_on_groupbox_change(self, button, groupbox):
         # Step 1: Change button color when clicked
@@ -9095,12 +8620,10 @@ class MyApp(QMainWindow):
             elif isinstance(widget, QComboBox):
                 widget.currentIndexChanged.connect(lambda: button.setStyleSheet(""))
                 widget.currentIndexChanged.connect(lambda: button.setEnabled(True))
-
     # =======================================================================
     def change_button_color_if_name_entered(self, button):
         name = self.ui.ProjectName.toPlainText().strip()
         if name: button.setStyleSheet("background-color: green; color: white;")
-
     # =======================================================================
     def setup_button_reset_on_groupbox_change_9(self, button, groupbox):
         # Step 1: Change button color when clicked
@@ -9122,7 +8645,6 @@ class MyApp(QMainWindow):
             elif isinstance(widget, QComboBox):
                 widget.currentIndexChanged.connect(lambda: button.setStyleSheet(""))
                 widget.currentIndexChanged.connect(lambda: button.setEnabled(True))
-
     # =======================================================================
     def setup_button_reset_on_groupbox_change_10(self, button, groupbox):
         # Step 1: Change button color when clicked
@@ -9144,7 +8666,6 @@ class MyApp(QMainWindow):
             elif isinstance(widget, QComboBox):
                 widget.currentIndexChanged.connect(lambda: button.setStyleSheet(""))
                 widget.currentIndexChanged.connect(lambda: button.setEnabled(True))
-
     # =======================================================================
     def setup_button_reset_on_groupbox_change_11(self, button, groupbox, exclude_groupboxs=None):
         # Step 1: Change button color when clicked
@@ -9158,7 +8679,6 @@ class MyApp(QMainWindow):
                                      "    border-radius: 4px;         \n"
                                      "    padding: 4px; ")
                 button.setEnabled(True)
-
             try:
                 if any(groupbox.isAncestorOf(widget) for groupbox in exclude_groupboxs): continue
             except:
@@ -9185,7 +8705,6 @@ class MyApp(QMainWindow):
             elif isinstance(widget, QListWidget):
                 widget.model().rowsInserted.connect(lambda *args, w=widget: reset_and_log(w))
                 widget.model().rowsRemoved.connect(lambda *args, w=widget: reset_and_log(w))
-
     # =======================================================================
     def change_button_color_if_name_entered_2(self, button):
         if button == self.ui.add_buil_model_button_2:
@@ -9344,7 +8863,6 @@ class MyApp(QMainWindow):
                     }
                 """)
                 button.setEnabled(False)
-
     # =======================================================================
     def setup_button_reset_on_groupbox_change_6(self, button, groupbox):
         # Step 1: Change button color when clicked
@@ -9356,7 +8874,6 @@ class MyApp(QMainWindow):
                     button.setStyleSheet("")
             except Exception as e:
                 print(f"Error: {e}")
-
         button.clicked.connect(on_button_clicked)
         # Step 2: Reset button color when any child widget changes
         for widget in groupbox.findChildren((QPlainTextEdit, QLineEdit, QDateTimeEdit, QRadioButton, QListWidget)):
@@ -9365,7 +8882,6 @@ class MyApp(QMainWindow):
                 name = w.objectName() or w.__class__.__name__
                 button.setStyleSheet("")
                 button.setEnabled(True)
-
             if isinstance(widget, QPlainTextEdit) or isinstance(widget, QLineEdit):
                 widget.textChanged.connect(lambda: button.setStyleSheet(""))
                 widget.textChanged.connect(lambda: button.setEnabled(True))
@@ -9377,7 +8893,6 @@ class MyApp(QMainWindow):
                 widget.toggled.connect(lambda: button.setEnabled(True))
             elif isinstance(widget, QListWidget):
                 widget.model().rowsInserted.connect(lambda *args, w=widget: reset_and_log(w))
-
     # =======================================================================
     def setup_button_reset_on_groupbox_change_7(self, button, groupbox):
         # Step 1: Change button color when clicked
@@ -9391,7 +8906,6 @@ class MyApp(QMainWindow):
                     button.setStyleSheet("")
             except Exception as e:
                 print(f"Error: {e}")
-
         button.clicked.connect(on_button_clicked)
         # Step 2: Reset button color when any child widget changes
         for widget in groupbox.findChildren((QPlainTextEdit, QLineEdit, QDateTimeEdit, QRadioButton, QListWidget)):
@@ -9399,7 +8913,6 @@ class MyApp(QMainWindow):
             def reset_and_log(w=widget):
                 name = w.objectName() or w.__class__.__name__
                 button.setStyleSheet("")
-
             if isinstance(widget, QPlainTextEdit) or isinstance(widget, QLineEdit):
                 widget.textChanged.connect(lambda: button.setStyleSheet(""))
             elif isinstance(widget, QDateTimeEdit):
@@ -9408,7 +8921,6 @@ class MyApp(QMainWindow):
                 widget.toggled.connect(lambda: button.setStyleSheet(""))
             elif isinstance(widget, QListWidget):
                 widget.model().rowsInserted.connect(lambda *args, w=widget: reset_and_log(w))
-
     # =======================================================================
     def define_monitoring_process_func(self):
         if self.ui.monitoring_process_name.toPlainText().strip():
@@ -9437,15 +8949,12 @@ class MyApp(QMainWindow):
                 print(f"Error: {e}")
         else:
             QMessageBox.critical(self, "Input Error", "Monitoring process name cannot be empty or just spaces.")
-
     # =======================================================================
-    # toggle_load_sensor_comboBox
     def toggle_load_sensor_comboBox(self, state):
         if self.ui.load_sensor_checkBox.isChecked():
             self.ui.load_sensor_comboBox.setEnabled(True)
         else:
             self.ui.load_sensor_comboBox.setEnabled(False)
-
     # =======================================================================
     def toggle_load_machine_feed_strategy_comboBox(self, state):
         if self.ui.machine_feed_strategy_checkBox.isChecked():
@@ -9457,7 +8966,6 @@ class MyApp(QMainWindow):
                                                                        "    padding: 4px; ")
         else:
             self.ui.load_machine_feed_strategy_comboBox.setEnabled(False)
-
     # =======================================================================
     def toggle_load_exist_printing_instructions_comboBox(self, state):
         if self.ui.load_layer_checkbox_3.isChecked():
@@ -9469,84 +8977,72 @@ class MyApp(QMainWindow):
                                                                           "    padding: 4px; ")
         else:
             self.ui.load_exist_printing_instructions_comboBox.setEnabled(False)
-
     # =======================================================================
     def toggle_load_existing_layer_melting_startegy_combobox(self, state):
         if self.ui.load_existing_layer_melting_startegy_checkbox.isChecked():
             self.ui.load_existing_layer_melting_startegy_combobox.setEnabled(True)
         else:
             self.ui.load_existing_layer_melting_startegy_combobox.setEnabled(False)
-
     # =======================================================================
     def toggle_load_existing_post_heating_combobox(self, state):
         if self.ui.load_existing_post_heating_checkbox.isChecked():
             self.ui.load_existing_post_heating_combobox.setEnabled(True)
         else:
             self.ui.load_existing_post_heating_combobox.setEnabled(False)
-
     # =======================================================================
     def toggle_layer_post_heating_strategy_combobox(self, state):
         if self.ui.layer_post_heating_strategy_checkbox.isChecked():
             self.ui.layer_post_heating_strategy_combobox.setEnabled(True)
         else:
             self.ui.layer_post_heating_strategy_combobox.setEnabled(False)
-
     # =======================================================================
     def toggle_load_an_existing_layer_post_heating_ppi_combobox(self, state):
         if self.ui.load_an_existing_layer_post_heating_ppi_checkBox.isChecked():
             self.ui.load_an_existing_layer_post_heating_ppi_combobox.setEnabled(True)
         else:
             self.ui.load_an_existing_layer_post_heating_ppi_combobox.setEnabled(False)
-
     # =======================================================================
     def toggle_composed_of_am_part_post_heating_ppi_combobox(self, state):
         if self.ui.composed_of_am_part_post_heating_ppi_checkBox.isChecked():
             self.ui.composed_of_am_part_post_heating_ppi_combobox.setEnabled(True)
         else:
             self.ui.composed_of_am_part_post_heating_ppi_combobox.setEnabled(False)
-
     # =======================================================================
     def toggle_load_an_existing_layer_pr_heating_ppi_combobox(self, state):
         if self.ui.load_an_existing_layer_pr_heating_ppi_checkBox.isChecked():
             self.ui.load_an_existing_layer_pr_heating_ppi_combobox.setEnabled(True)
         else:
             self.ui.load_an_existing_layer_pr_heating_ppi_combobox.setEnabled(False)
-
     # =======================================================================
     def toggle_load_an_existing_layer_pr_heating(self, state):
         if self.ui.load_an_existing_layer_pr_heating_checkBox.isChecked():
             self.ui.load_an_existing_layer_pr_heating.setEnabled(True)
         else:
             self.ui.load_an_existing_layer_pr_heating.setEnabled(False)
-
     # =======================================================================
     def toggle_composed_of_am_part_pre_startegies_combobox(self, state):
         if self.ui.composed_of_am_part_pre_startegies_checkBox.isChecked():
             self.ui.composed_of_am_part_pre_startegies_combobox.setEnabled(True)
         else:
             self.ui.composed_of_am_part_pre_startegies_combobox.setEnabled(False)
-
     # =======================================================================
     def toggle_load_start_heat_ppi_comboBox(self, state):
         if self.ui.load_start_heat_ppi_checkbox.isChecked():
             self.ui.load_start_heat_ppi_comboBox.setEnabled(True)
         else:
             self.ui.load_start_heat_ppi_comboBox.setEnabled(False)
-
     # =======================================================================
     def toggle_load_start_heat_startegy_comboBox(self, state):
         if self.ui.load_start_heat_startegy_checkbox.isChecked():
             self.ui.load_start_heat_startegy_comboBox.setEnabled(True)
         else:
             self.ui.load_start_heat_startegy_comboBox.setEnabled(False)
-
     # =======================================================================
     def toggle_load_machine_feed_instructions_comboBox(self, state):
         if self.ui.load_machine_feed_instructions_checkBox.isChecked():
             self.ui.load_machine_feed_instructions_comboBox.setEnabled(True)
         else:
             self.ui.load_machine_feed_instructions_comboBox.setEnabled(False)
-
     # =======================================================================
     def define_printing_instructions_func(self):
         if self.ui.load_layer_checkbox_3.isChecked() and self.ui.load_exist_printing_instructions_comboBox.currentText() != "-- Select an option --":
@@ -9651,7 +9147,6 @@ class MyApp(QMainWindow):
             else:
                 QMessageBox.critical(self, "Input Error",
                                      "Printing Process Instructions name cannot be empty or just spaces.")
-
     # =======================================================================
     def okay_beam_control_strategy_func(self):
         if self.ui.beam_control_strategy_name.toPlainText().strip():
@@ -9688,7 +9183,6 @@ class MyApp(QMainWindow):
         else:
             QMessageBox.critical(self, "Input Error",
                                  "The name of Beam Control Slicing Strategy cannot be empty or just spaces.")
-
     # =======================================================================
     def define_slicing_process_func(self):
         if self.ui.slicing_process_name.toPlainText().strip():
@@ -9714,21 +9208,18 @@ class MyApp(QMainWindow):
                 print(f"Error: {e}")
         else:
             QMessageBox.critical(self, "Input Error", "Slicing process name cannot be empty or just spaces.")
-
     # =======================================================================
     def toggle_choose_support(self, state):
         if self.ui.has_support_checkBox.isChecked():
             self.ui.choose_support.setEnabled(True)
         else:
             self.ui.choose_support.setEnabled(False)
-
     # =======================================================================
     def toggle_choose_support_printing_process(self, state):
         if self.ui.printed_build_PB_AM_part_has_support_checkBox.isChecked():
             self.ui.printed_build_PB_AM_part_support_comboBox.setEnabled(True)
         else:
             self.ui.printed_build_PB_AM_part_support_comboBox.setEnabled(False)
-
     # =======================================================================
     def add_part_to_build_model_func_edit_window(self):
         part_name = self.edit_window.ui.choose_part.currentText()
@@ -9748,7 +9239,6 @@ class MyApp(QMainWindow):
             self.edit_window.ui.has_support_checkBox.setAutoExclusive(False)
             self.edit_window.ui.has_support_checkBox.setChecked(False)
             self.edit_window.ui.has_support_checkBox.setAutoExclusive(True)
-
     # =======================================================================
     def add_part_to_build_model_func(self):
         part_name = self.ui.choose_part.currentText()
@@ -9768,7 +9258,6 @@ class MyApp(QMainWindow):
             self.ui.has_support_checkBox.setAutoExclusive(False)
             self.ui.has_support_checkBox.setChecked(False)
             self.ui.has_support_checkBox.setAutoExclusive(True)
-
     # =======================================================================
     def define_support_func(self):
         if self.ui.support_name.toPlainText().strip():
@@ -9798,7 +9287,6 @@ class MyApp(QMainWindow):
                 QMessageBox.critical(self, "Input Error", "Support name should be unique.")
         else:
             QMessageBox.critical(self, "Input Error", "Support name cannot be empty or just spaces.")
-
     # =======================================================================
     def define_am_part_func(self):
         if self.ui.am_part_name.toPlainText().strip():
@@ -9830,7 +9318,6 @@ class MyApp(QMainWindow):
                 QMessageBox.critical(self, "Input Error", "AM Part name should be unique.")
         else:
             QMessageBox.critical(self, "Input Error", "AM Part name cannot be empty or just spaces.")
-
     # =======================================================================
     def toggle_load_buildmodel_combobox(self, state):
         if self.ui.load_build_model_checkBox.isChecked():
@@ -9840,7 +9327,6 @@ class MyApp(QMainWindow):
             self.ui.load_buildmodel_combobox.setEnabled(False)
             self.ui.add_buil_model_button_2.setEnabled(False)
         self.ui.define_build_model.setChecked(state != 2)
-
     # =======================================================================
     def add_model_design_process_func(self):
         if self.ui.ModelDesign_name.toPlainText().strip():
@@ -9870,7 +9356,6 @@ class MyApp(QMainWindow):
         else:
             QMessageBox.critical(self, "Input Error",
                                  "The Build Model Design Process name cannot be empty or just spaces.")
-
     # =======================================================================
     def define_project_button_func(self):
         if self.ui.ProjectName.toPlainText().strip():
@@ -9981,7 +9466,6 @@ class MyApp(QMainWindow):
                     print("No changes were made.")
         else:
             QMessageBox.critical(self, "Input Error", "The project name cannot be empty or just spaces.")
-
     # =======================================================================
     def define_supervisor_func(self):
         if self.ui.supervisor_name.toPlainText().strip():
@@ -10009,8 +9493,6 @@ class MyApp(QMainWindow):
         else:
             QMessageBox.critical(self, "Input Error", "Supervisor name cannot be empty or just spaces.")
     # =======================================================================
-
-
 if __name__ == "__main__":
     Layer_Pre_Heating_Strategy = Layer_Pre_Heating_Strategy_class()
     AM_Part_Layer_Pre_Heating_Strategy = AM_Part_Layer_Pre_Heating_Strategy_class()
@@ -10072,7 +9554,7 @@ if __name__ == "__main__":
     global error_flag
     error_flag = 0
     PBF_AMP_Onto_classes = []
-    PBF_AM_Process_Chain = PBF_AM_Process_Chain_class()  # project name group box, start tab
+    PBF_AM_Process_Chain = PBF_AM_Process_Chain_class()
     PBF_AM_Process_Chains_list = []
     Build_Model_Design_Process_process = Build_Model_Design_Process_class()
     Build_Model_Support_list = []
@@ -10116,11 +9598,14 @@ if __name__ == "__main__":
     for s in g.subjects(RDF.type, OWL.Class):
         label = g.value(s, RDFS.label)
         comment = g.value(s, RDFS.comment)
-        concept_names_definition.append({
-            "uri": str(s),
-            "label": str(label) if label else s.split("#")[-1],
-            "comment": str(comment) if comment else "No comment available"
-        })
+        if comment:
+            concept_names_definition.append({
+
+                "uri": str(s),
+                "label": str(label) if label else str(s).split("#")[-1],
+                "comment": str(comment) if comment else "No comment available"
+
+            })
     # ---------------------------------------------------------
     g.parse("PBFAMP_ontology/PBF-AMP-Onto-AMPCore-v2.rdf", format="xml")
     classes = set(g.subjects(RDF.type, OWL.Class))
@@ -10131,11 +9616,14 @@ if __name__ == "__main__":
     for s in g.subjects(RDF.type, OWL.Class):
         label = g.value(s, RDFS.label)
         comment = g.value(s, RDFS.comment)
-        concept_names_definition.append({
+        if comment:
+            concept_names_definition.append({
+
             "uri": str(s),
-            "label": str(label) if label else s.split("#")[-1],
+            "label": str(label) if label else str(s).split("#")[-1],
             "comment": str(comment) if comment else "No comment available"
-        })
+
+            })
     # ---------------------------------------------------------
     g.parse("PBFAMP_ontology/PBF-AMP-Onto-Core-v3.rdf", format="xml")
     classes = set(g.subjects(RDF.type, OWL.Class))
@@ -10146,11 +9634,15 @@ if __name__ == "__main__":
     for s in g.subjects(RDF.type, OWL.Class):
         label = g.value(s, RDFS.label)
         comment = g.value(s, RDFS.comment)
-        concept_names_definition.append({
-            "uri": str(s),
-            "label": str(label) if label else s.split("#")[-1],
-            "comment": str(comment) if comment else "No comment available"
-        })
+        if comment:
+
+            concept_names_definition.append({
+
+                "uri": str(s),
+                "label": str(label) if label else str(s).split("#")[-1],
+                "comment": str(comment) if comment else "No comment available"
+
+            })
     # ---------------------------------------------------------
     app = QApplication(sys.argv)
     window = MyApp()
