@@ -401,12 +401,12 @@
     
 
 
-    <!-- http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#hasRecordedData -->
+    <!-- http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#hasProducedData -->
 
-    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#hasRecordedData">
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#hasProducedData">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#PBFPrintingMachineSensor"/>
-        <rdfs:label xml:lang="en">has recorded data</rdfs:label>
+        <rdfs:label xml:lang="en">has produced data</rdfs:label>
     </owl:DatatypeProperty>
     
 
@@ -1259,11 +1259,11 @@
                     <owl:Class>
                         <owl:intersectionOf rdf:parseType="Collection">
                             <owl:Restriction>
-                                <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#hasRecordedData"/>
+                                <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#hasProducedData"/>
                                 <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
                             </owl:Restriction>
                             <owl:Restriction>
-                                <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#hasRecordedData"/>
+                                <owl:onProperty rdf:resource="http://www.semanticweb.org/minab62/ontologies/2025/5/PBF-AMP-Onto:Core#hasProducedData"/>
                                 <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
                                 <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
                             </owl:Restriction>
