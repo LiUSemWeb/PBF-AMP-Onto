@@ -952,7 +952,7 @@
                 </owl:intersectionOf>
             </owl:Class>
         </rdfs:subClassOf>
-        <rdfs:comment xml:lang="en">PBF Control System is a closed-loop system that automatically monitors operations using sensors and adjust process parameters or maintenance actions without human intervention.</rdfs:comment>
+        <rdfs:comment xml:lang="en">PBF control system is a system that collects and analyzes monitoring data taken during a PBF Printing Process from various sensors and integrates those into a feedback control loop to maintain process stability for the entire duration of the PBF Printing Process without human intervention.</rdfs:comment>
         <rdfs:label xml:lang="en">PBF Control System</rdfs:label>
     </owl:Class>
     
@@ -1417,6 +1417,7 @@
                 </owl:intersectionOf>
             </owl:Class>
         </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">PBF process instruction updates are updated instructions as output of the PBF Control System and provide updated instructions to the PBF Printing Process. These updates modify or adjust the original PBF Printing Process Instructions in real time, based on feedback from the control system, to ensure the printing process remains stable.</rdfs:comment>
         <rdfs:label xml:lang="en">PBF Printing Process Instructions Updates</rdfs:label>
     </owl:Class>
     
